@@ -22,10 +22,11 @@ public class PlayerControl : MonoBehaviour {
     private void FixedUpdate()
     {
         // Update the player's movespeed based on input axis (-1 to 1)
+
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
 
-        rb2d.AddForce(new Vector2(moveForce * moveX, moveForce * moveY));
+        rb2d.velocity = new Vector2(maxMoveSpeed * moveX, maxMoveSpeed * moveY);
 
         if(Mathf.Abs(rb2d.velocity.x) > maxMoveSpeed)
         {
@@ -35,7 +36,5 @@ public class PlayerControl : MonoBehaviour {
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Sign(rb2d.velocity.y) * maxMoveSpeed);
         }
-
-        Debug.Log("Velocity X: " + rb2d.velocity.x + "Velocity Y: " + rb2d.velocity.y);
     }
 }
