@@ -9,7 +9,14 @@ public class InputManager : MonoBehaviour {
 
     private void Update()
     {
-        for(int i = 1; i < 6; i++)
+
+        if (Input.GetButton("joystick 1 button 0"))
+        {
+            Debug.Log("joystick 1 pressed");
+        }
+
+
+        for (int i = 1; i < 6; i++)
         {
             if(Input.GetButtonDown("J" + i + "Fire2"))
             {
@@ -17,6 +24,7 @@ public class InputManager : MonoBehaviour {
                 {
                     AddControllerAndPlayer(i);
                     break;
+
                 }
             }
         }
