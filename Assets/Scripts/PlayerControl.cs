@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class PlayerControl : MonoBehaviour {
 
-    public GameObject TestCrap;
+    Rewired.Player player;
 
     // Stats that will affect the player movespeed
     public float maxMoveSpeed;
