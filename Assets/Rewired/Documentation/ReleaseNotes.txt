@@ -1,9 +1,3 @@
-1.1.10.1:
-
-    Changes:
-      - Control Mapper: Full axis mappings are now displayed in input fields for button-type Actions.
-      - Now logs a warning in the editor when the wrong version of Rewired is installed for the Unity editor version being used.
-
 1.1.10.0:
 
     API Changes:

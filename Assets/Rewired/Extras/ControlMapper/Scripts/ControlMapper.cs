@@ -1717,6 +1717,7 @@ namespace Rewired.UI.ControlMapper {
                                 inputGrid.AddAction(set.mapCategoryId, action, AxisRange.Positive);
                             }
                         }
+
                     }
 
                 } else { // list individual user-assigned actions
@@ -2149,13 +2150,13 @@ namespace Rewired.UI.ControlMapper {
                         inputGrid.PopulateField(currentMapCategoryId, actionSet.actionId, actionSet.axisRange, controllerType, controllerId, count, aem.id, aem.elementIdentifierName, aem.invert);
 
                     } else if(actionSet.axisRange == AxisRange.Positive) {
-                        if(aem.axisRange == AxisRange.Full && ReInput.mapping.GetAction(actionSet.actionId).type != InputActionType.Button) continue;
+                        if(aem.axisRange == AxisRange.Full) continue;
                         if(aem.axisContribution == Pole.Negative) continue;
 
                         inputGrid.PopulateField(currentMapCategoryId, actionSet.actionId, actionSet.axisRange, controllerType, controllerId, count, aem.id, aem.elementIdentifierName, false);
 
                     } else if(actionSet.axisRange == AxisRange.Negative) {
-                        if(aem.axisRange == AxisRange.Full && ReInput.mapping.GetAction(actionSet.actionId).type != InputActionType.Button) continue;
+                        if(aem.axisRange == AxisRange.Full) continue;
                         if(aem.axisContribution == Pole.Positive) continue;
 
                         inputGrid.PopulateField(currentMapCategoryId, actionSet.actionId, actionSet.axisRange, controllerType, controllerId, count, aem.id, aem.elementIdentifierName, false);
