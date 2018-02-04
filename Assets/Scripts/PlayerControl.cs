@@ -6,7 +6,7 @@ using Rewired;
 public class PlayerControl : MonoBehaviour {
 
     // Rewired player object
-    Rewired.Player player;
+    public Rewired.Player player { get; set; }
 
     // Stats that will affect the player movespeed
     public float maxMoveSpeed;
@@ -34,12 +34,18 @@ public class PlayerControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        UpdateReticleRotation(controllerNumber);
+        if(player.isPlaying)
+        {
+            UpdateReticleRotation(controllerNumber);
+        }
     }
 
     private void FixedUpdate()
     {
-        UpdatePlayerMovement();
+        if (player.isPlaying)
+        {
+            UpdatePlayerMovement();
+        }
     }
 
     private void UpdateReticleRotation(int controllerNumber)
@@ -59,6 +65,8 @@ public class PlayerControl : MonoBehaviour {
             // Get reticle rotation based on controller analog
             Vector2 axis = new Vector2(player.GetAxis("Rotate Horizontal"), 
                 player.GetAxis("Rotate Vertical"));
+
+            Debug.Log(axis);
 
             if(Mathf.Abs(axis.x) > 0.4 || Mathf.Abs(axis.y) > 0.4)
             {

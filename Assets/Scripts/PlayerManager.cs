@@ -1,24 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
-public class InputManager : MonoBehaviour {
+public class PlayerManager : MonoBehaviour
+{
 
     private List<int> assignedControllers = new List<int>();
     public GameObject playerPrefab;
 
     private void Update()
     {
-        for (int i = 1; i < 6; i++)
+        // We need to test if any players want to join the game
+        IList <Rewired.Player> players = Rewired.ReInput.players.GetPlayers(false);
+        for(int i = 0; i < players.Count; i++)
         {
-            if(Input.GetButtonDown("J" + i + "Fire2"))
+            // Assign the player 
+            if(!players[i].isPlaying && players[i].GetButtonDown("Start"))
             {
-                if(!assignedControllers.Contains(i))
-                {
-                    AddControllerAndPlayer(i);
-                    break;
-
-                }
+                GameObject pFab = Instantiate(playerPrefab);
+                PlayerControl pControl = pFab.GetComponent<PlayerControl>();
+                pControl.player = Rewired.ReInput.players.GetPlayer(i);
+                pControl.player.isPlaying = true;
             }
         }
     }
