@@ -35,6 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4672206455157204}
+  - component: {fileID: 114631857353290316}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -162,6 +163,23 @@ MonoBehaviour:
   maxMoveSpeed: 40
   moveForce: 2000
   aimReticle: {fileID: 1514113879761304}
+  theGun: {fileID: 114631857353290316}
+--- !u!114 &114631857353290316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514113879761304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c32c1b7379793541b4cec059d5313e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFiring: 0
+  bullet: {fileID: 114235545059977038, guid: 92273da5264c6b1408fe26fe6587a577, type: 2}
+  bulletSpeed: 5
+  timeBetweenShots: 0.1
+  firePoint: {fileID: 4672206455157204}
 --- !u!114 &114893467757226410
 MonoBehaviour:
   m_ObjectHideFlags: 1

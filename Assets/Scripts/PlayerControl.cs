@@ -21,6 +21,8 @@ public class PlayerControl : MonoBehaviour {
     // Player's rigidbody that will be used for setting velocity
     private Rigidbody2D rb2d;
 
+    public GunController theGun;
+
     private void Awake()
     {
         // Just set the player to the zero index
@@ -35,7 +37,15 @@ public class PlayerControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        UpdateReticleRotation(controllerNumber); 
+        UpdateReticleRotation(controllerNumber);
+        if (player.GetButton("RightBumper"))
+        {
+            theGun.isFiring = true;
+        }
+        else
+        {
+            theGun.isFiring = false;
+        }
     }
 
     private void FixedUpdate()
