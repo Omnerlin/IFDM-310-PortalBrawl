@@ -23,6 +23,7 @@ public class PlayerControl : MonoBehaviour {
 
     private void Awake()
     {
+        // Just set the player to the zero index
         player = Rewired.ReInput.players.GetPlayer(0);
     }
 
@@ -34,24 +35,24 @@ public class PlayerControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(player.isPlaying)
-        {
-            UpdateReticleRotation(controllerNumber);
-        }
+        UpdateReticleRotation(controllerNumber); 
     }
 
     private void FixedUpdate()
     {
-        if (player.isPlaying)
-        {
-            UpdatePlayerMovement();
-        }
+        UpdatePlayerMovement();
     }
 
     private void UpdateReticleRotation(int controllerNumber)
     {
-        // If using keyboard
-        if(controllerNumber == 775)
+        // Return if the player isn't, well, playing
+        if (!player.isPlaying)
+        {
+            return;
+        }
+
+        // If using keyboard, get the mouse position for aiming, otherwise use controller axis
+        if(player.controllers.hasKeyboard)
         {
             // Get the position of the mouse in screen coordinates, and convert it to world coordinates
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -66,9 +67,7 @@ public class PlayerControl : MonoBehaviour {
             Vector2 axis = new Vector2(player.GetAxis("Rotate Horizontal"), 
                 player.GetAxis("Rotate Vertical"));
 
-            Debug.Log(axis);
-
-            if(Mathf.Abs(axis.x) > 0.4 || Mathf.Abs(axis.y) > 0.4)
+            if(Mathf.Abs(axis.x) > 0.3 || Mathf.Abs(axis.y) > 0.3)
             {
                 Vector2 totalPos = new Vector2(this.gameObject.transform.position.x + axis.x, this.gameObject.transform.position.y + axis.y);
 
@@ -83,9 +82,18 @@ public class PlayerControl : MonoBehaviour {
 
     private void UpdatePlayerMovement()
     {
+        // Return if the player isn't, well, playing
+        if (!player.isPlaying)
+        {
+            return;
+        }
 
         // Update the player's movespeed based on input axis (-1 to 1) and normalize it (for diagonal movement)
         Vector2 moveInput = new Vector2(player.GetAxis("Move Horizontal"), player.GetAxis("Move Vertical"));
+        if(moveInput.magnitude > 1)
+        {
+            moveInput = moveInput.normalized;
+        }
 
         // Immediately set the player's velocity based on the normalized input
         rb2d.velocity = new Vector2(maxMoveSpeed * moveInput.x, maxMoveSpeed * moveInput.y);

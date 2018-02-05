@@ -6,8 +6,23 @@ using Rewired;
 public class PlayerManager : MonoBehaviour
 {
 
+    public static PlayerManager instance;
+
     private List<int> assignedControllers = new List<int>();
     public GameObject playerPrefab;
+
+    private void Awake()
+    {
+        // This will be a singleton
+        if(instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     private void Update()
     {
