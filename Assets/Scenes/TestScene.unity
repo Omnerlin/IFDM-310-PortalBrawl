@@ -1200,8 +1200,10 @@ CompositeCollider2D:
         Y: 99701107
       - X: 48221404
         Y: 99760960
-      - X: 36214464
+      - X: 36214468
         Y: 99701107
+      - X: 36214468
+        Y: 99760960
       - X: 36214464
         Y: 99760960
       - X: 24207530
@@ -1220,14 +1222,24 @@ CompositeCollider2D:
         Y: 99701107
       - X: -11813276
         Y: 99760960
-      - X: -23820212
+      - X: -23820210
         Y: 99701107
+      - X: -23820210
+        Y: 99760960
       - X: -23820212
         Y: 99760960
-      - X: -35827148
+      - X: -35355117
+        Y: 99703460
+      - X: -24313799
+        Y: 99758500
+      - X: -35827144
         Y: 99701107
+      - X: -35827144
+        Y: 99760960
       - X: -35827148
         Y: 99760960
+      - X: -47111131
+        Y: 99704711
       - X: -47834080
         Y: 99701107
       - X: -47834080
@@ -1252,6 +1264,10 @@ CompositeCollider2D:
         Y: 24207506
       - X: -65232572
         Y: 36214424
+      - X: -65232572
+        Y: 36214428
+      - X: -65268393
+        Y: 36214428
       - X: -65268393
         Y: 36214424
       - X: -65269548
@@ -1296,17 +1312,23 @@ CompositeCollider2D:
         Y: 95861720
       - X: -24120396
         Y: 85336144
+      - X: -24120392
+        Y: 85336144
       - X: -12113522
         Y: 85344128
       - X: -12197502
         Y: 95861720
       - X: -12113458
         Y: 85336144
+      - X: -12113457
+        Y: 85336144
       - X: -106586
         Y: 85344128
       - X: -106951
         Y: 85389891
       - X: -106522
+        Y: 85336144
+      - X: -106521
         Y: 85336144
       - X: 11900350
         Y: 85344128
@@ -1319,6 +1341,8 @@ CompositeCollider2D:
       - X: 23906917
         Y: 85389891
       - X: 23907346
+        Y: 85336144
+      - X: 23907350
         Y: 85336144
       - X: 35914220
         Y: 85344128
@@ -1398,14 +1422,16 @@ CompositeCollider2D:
         Y: 35827108
       - X: 113318400
         Y: 36214424
+      - X: 113318400
+        Y: 36214428
       - X: 113290616
-        Y: 36214424
-      - X: 113319296
-        Y: 23820186
+        Y: 36214428
       - X: 113318400
         Y: 24207506
       - X: 113290616
         Y: 24207506
+      - X: 113319296
+        Y: 11813263
       - X: 113318400
         Y: 12200583
       - X: 113290616
@@ -1420,36 +1446,62 @@ CompositeCollider2D:
         Y: -2130260
       - X: 110973520
         Y: -4449016
+      - X: 110973520
+        Y: -4449015
       - X: 107868744
         Y: -4438974
       - X: 107868744
-        Y: -4456834
+        Y: -4456833
       - X: 95861816
         Y: -4440883
       - X: 95861816
-        Y: -4456834
+        Y: -4456833
       - X: 83854888
         Y: -4440883
       - X: 83854888
-        Y: -4456834
+        Y: -4456833
       - X: 71847952
         Y: -4440883
       - X: 71847952
-        Y: -4456834
+        Y: -4456833
       - X: 59841012
         Y: -4440883
       - X: 59841012
-        Y: -4456834
+        Y: -4456833
       - X: 47834080
         Y: -4440883
       - X: 47834080
-        Y: -4456834
+        Y: -4456833
       - X: 35827144
         Y: -4440883
       - X: 35827144
-        Y: -4456834
+        Y: -4456833
       - X: 23820212
         Y: -4440883
+      - X: 23820212
+        Y: -4456833
+      - X: 17867922
+        Y: -4448926
+      - X: 20581637
+        Y: -4452531
+      - X: 16283983
+        Y: -4446822
+      - X: 15071491
+        Y: -4445211
+      - X: 13368493
+        Y: -4442949
+      - X: 14126593
+        Y: -4443956
+      - X: 14923104
+        Y: -4445014
+      - X: 15071491
+        Y: -4445211
+      - X: 15098990
+        Y: -4445248
+      - X: 15914956
+        Y: -4446332
+      - X: 16283983
+        Y: -4446822
       - X: 23820212
         Y: -4456834
       - X: 12200595
@@ -1457,9 +1509,9 @@ CompositeCollider2D:
       - X: 12200595
         Y: -2130260
       - X: 10651314
-        Y: 193659
+        Y: 193660
       - X: 10167162
-        Y: 193659
+        Y: 193660
       - X: 9876673
         Y: -193659
       - X: 12200595
@@ -1469,43 +1521,49 @@ CompositeCollider2D:
       - X: 10651314
         Y: 12200583
       - X: 10651314
-        Y: 21108942
+        Y: 21108944
       - X: 9102032
         Y: 22658226
       - X: 2904904
         Y: 22658226
-      - X: -193660
-        Y: 21108942
+      - X: -1
+        Y: 21205773
       - X: 0
         Y: 21205772
       - X: -2904904
         Y: 22658226
       - X: -9102031
         Y: 22658226
+      - X: -10651313
+        Y: 21108944
+      - X: -10651313
+        Y: 21108943
       - X: -10651314
         Y: 21108942
       - X: -10651314
         Y: 2904901
-      - X: -9295690
-        Y: 193659
-      - X: -10651314
-        Y: 193659
+      - X: -9295691
+        Y: 193660
+      - X: -10651313
+        Y: 193660
       - X: -12200595
         Y: -2130260
       - X: -12200595
-        Y: -4456834
+        Y: -4456833
+      - X: -24207528
+        Y: -4440883
       - X: -24207530
         Y: -4440883
       - X: -24207530
-        Y: -4456834
+        Y: -4456833
       - X: -36214468
         Y: -4440883
       - X: -36214468
-        Y: -4456834
+        Y: -4456833
       - X: -48221404
         Y: -4440883
       - X: -48221404
-        Y: -4456834
+        Y: -4456833
       - X: -60228332
         Y: -4440883
       - X: -60228332
@@ -1517,7 +1575,9 @@ CompositeCollider2D:
       - X: -63715816
         Y: -2132541
       - X: -63714296
-        Y: 193659
+        Y: 193660
+      - X: -65268393
+        Y: 193660
       - X: -65268393
         Y: 193659
       - X: -65269548
@@ -1534,12 +1594,10 @@ CompositeCollider2D:
         Y: 35827108
     - - X: 26167244
         Y: 38946856
-      - X: 26183896
+      - X: 26183898
         Y: 48221348
-      - X: 26162411
+      - X: 26162412
         Y: 48221348
-      - X: 26162324
-        Y: 47834032
       - X: 26164582
         Y: 57941880
       - X: 35827144
@@ -1558,6 +1616,14 @@ CompositeCollider2D:
         Y: 39005352
       - X: 35827144
         Y: 38922324
+    - - X: 1
+        Y: 21205774
+      - X: -2904903
+        Y: 22658226
+      - X: -2904904
+        Y: 22658226
+      - X: -1
+        Y: 21205773
   m_CompositePaths:
     m_Paths:
     - - {x: 12.026301, y: 10.825597}
@@ -1573,7 +1639,8 @@ CompositeCollider2D:
       - {x: 6.0228333, y: 9.976096}
       - {x: 4.8221407, y: 9.970111}
       - {x: 4.8221407, y: 9.976096}
-      - {x: 3.6214464, y: 9.970111}
+      - {x: 3.6214468, y: 9.970111}
+      - {x: 3.6214468, y: 9.976096}
       - {x: 3.6214464, y: 9.976096}
       - {x: 2.420753, y: 9.970111}
       - {x: 2.420753, y: 9.976096}
@@ -1583,10 +1650,15 @@ CompositeCollider2D:
       - {x: 0.019366, y: 9.976096}
       - {x: -1.1813276, y: 9.970111}
       - {x: -1.1813276, y: 9.976096}
-      - {x: -2.3820212, y: 9.970111}
+      - {x: -2.382021, y: 9.970111}
+      - {x: -2.382021, y: 9.976096}
       - {x: -2.3820212, y: 9.976096}
-      - {x: -3.5827148, y: 9.970111}
+      - {x: -3.5355117, y: 9.9703455}
+      - {x: -2.43138, y: 9.97585}
+      - {x: -3.5827146, y: 9.970111}
+      - {x: -3.5827146, y: 9.976096}
       - {x: -3.5827148, y: 9.976096}
+      - {x: -4.7111135, y: 9.970471}
       - {x: -4.783408, y: 9.970111}
       - {x: -4.783408, y: 9.976096}
       - {x: -5.984102, y: 9.970111}
@@ -1596,7 +1668,8 @@ CompositeCollider2D:
       - {x: 12.026301, y: -1.2200583}
     - - {x: -6.2926507, y: -0.2145756}
       - {x: -6.3715816, y: -0.21325411}
-      - {x: -6.3714294, y: 0.019365901}
+      - {x: -6.3714294, y: 0.019366}
+      - {x: -6.5268393, y: 0.019366}
       - {x: -6.5268393, y: 0.019365901}
       - {x: -6.5269547, y: -0.019365901}
       - {x: -6.5232573, y: 1.2200583}
@@ -1605,6 +1678,8 @@ CompositeCollider2D:
       - {x: -6.5232573, y: 2.4207506}
       - {x: -6.5268393, y: 2.4207506}
       - {x: -6.5232573, y: 3.6214426}
+      - {x: -6.5232573, y: 3.6214428}
+      - {x: -6.5268393, y: 3.6214428}
       - {x: -6.5268393, y: 3.6214426}
       - {x: -6.5269547, y: 3.5827107}
       - {x: -6.5232573, y: 4.822135}
@@ -1627,18 +1702,22 @@ CompositeCollider2D:
       - {x: -2.412046, y: 8.534413}
       - {x: -2.4204435, y: 9.586172}
       - {x: -2.4120395, y: 8.533614}
+      - {x: -2.4120393, y: 8.533614}
       - {x: -1.2113522, y: 8.534413}
       - {x: -1.2197502, y: 9.586172}
       - {x: -1.2113458, y: 8.533614}
+      - {x: -1.2113457, y: 8.533614}
       - {x: -0.0106586, y: 8.534413}
       - {x: -0.0106951, y: 8.538989}
       - {x: -0.0106522, y: 8.533614}
+      - {x: -0.0106521, y: 8.533614}
       - {x: 1.190035, y: 8.534413}
       - {x: 1.1816369, y: 9.586172}
       - {x: 1.1900414, y: 8.533614}
       - {x: 2.3907282, y: 8.534413}
       - {x: 2.3906915, y: 8.538989}
       - {x: 2.3907347, y: 8.533614}
+      - {x: 2.390735, y: 8.533614}
       - {x: 3.591422, y: 8.534413}
       - {x: 3.5830235, y: 9.586172}
       - {x: 3.5914285, y: 8.533614}
@@ -1678,10 +1757,11 @@ CompositeCollider2D:
       - {x: 11.3290615, y: 4.822135}
       - {x: 11.33193, y: 3.5827107}
       - {x: 11.3318405, y: 3.6214426}
-      - {x: 11.3290615, y: 3.6214426}
-      - {x: 11.33193, y: 2.3820186}
+      - {x: 11.3318405, y: 3.6214428}
+      - {x: 11.3290615, y: 3.6214428}
       - {x: 11.3318405, y: 2.4207506}
       - {x: 11.3290615, y: 2.4207506}
+      - {x: 11.33193, y: 1.1813263}
       - {x: 11.3318405, y: 1.2200583}
       - {x: 11.3290615, y: 1.2200583}
       - {x: 11.331844, y: 0.0176433}
@@ -1689,49 +1769,65 @@ CompositeCollider2D:
       - {x: 11.328658, y: -0.2123729}
       - {x: 11.096732, y: -0.213026}
       - {x: 11.097352, y: -0.44490162}
+      - {x: 11.097352, y: -0.4449015}
       - {x: 10.786875, y: -0.4438974}
-      - {x: 10.786875, y: -0.44568342}
+      - {x: 10.786875, y: -0.4456833}
       - {x: 9.586182, y: -0.4440883}
-      - {x: 9.586182, y: -0.44568342}
+      - {x: 9.586182, y: -0.4456833}
       - {x: 8.3854885, y: -0.4440883}
-      - {x: 8.3854885, y: -0.44568342}
+      - {x: 8.3854885, y: -0.4456833}
       - {x: 7.1847954, y: -0.4440883}
-      - {x: 7.1847954, y: -0.44568342}
+      - {x: 7.1847954, y: -0.4456833}
       - {x: 5.9841013, y: -0.4440883}
-      - {x: 5.9841013, y: -0.44568342}
+      - {x: 5.9841013, y: -0.4456833}
       - {x: 4.783408, y: -0.4440883}
-      - {x: 4.783408, y: -0.44568342}
+      - {x: 4.783408, y: -0.4456833}
       - {x: 3.5827146, y: -0.4440883}
-      - {x: 3.5827146, y: -0.44568342}
+      - {x: 3.5827146, y: -0.4456833}
       - {x: 2.3820212, y: -0.4440883}
+      - {x: 2.3820212, y: -0.4456833}
+      - {x: 1.7867923, y: -0.44489262}
+      - {x: 2.0581636, y: -0.4452531}
+      - {x: 1.6283983, y: -0.4446822}
+      - {x: 1.5071491, y: -0.4445211}
+      - {x: 1.3368493, y: -0.4442949}
+      - {x: 1.4126593, y: -0.4443956}
+      - {x: 1.4923104, y: -0.4445014}
+      - {x: 1.5071491, y: -0.4445211}
+      - {x: 1.509899, y: -0.4445248}
+      - {x: 1.5914956, y: -0.44463322}
+      - {x: 1.6283983, y: -0.4446822}
       - {x: 2.3820212, y: -0.44568342}
       - {x: 1.2200595, y: -0.4441398}
       - {x: 1.2200595, y: -0.213026}
-      - {x: 1.0651314, y: 0.019365901}
-      - {x: 1.0167162, y: 0.019365901}
+      - {x: 1.0651314, y: 0.019366}
+      - {x: 1.0167162, y: 0.019366}
       - {x: 0.9876673, y: -0.019365901}
       - {x: 1.2200595, y: 0.2904901}
       - {x: 1.2200595, y: 0.9876662}
       - {x: 1.0651314, y: 1.2200583}
-      - {x: 1.0651314, y: 2.1108942}
+      - {x: 1.0651314, y: 2.1108944}
       - {x: 0.9102032, y: 2.2658226}
       - {x: 0.2904904, y: 2.2658226}
-      - {x: -0.019366, y: 2.1108942}
+      - {x: -0.0000001, y: 2.1205773}
       - {x: 0, y: 2.1205773}
       - {x: -0.2904904, y: 2.2658226}
       - {x: -0.9102031, y: 2.2658226}
+      - {x: -1.0651313, y: 2.1108944}
+      - {x: -1.0651313, y: 2.1108944}
       - {x: -1.0651314, y: 2.1108942}
       - {x: -1.0651314, y: 0.2904901}
-      - {x: -0.929569, y: 0.019365901}
-      - {x: -1.0651314, y: 0.019365901}
+      - {x: -0.9295691, y: 0.019366}
+      - {x: -1.0651313, y: 0.019366}
       - {x: -1.2200595, y: -0.213026}
-      - {x: -1.2200595, y: -0.44568342}
+      - {x: -1.2200595, y: -0.4456833}
+      - {x: -2.4207528, y: -0.4440883}
       - {x: -2.420753, y: -0.4440883}
-      - {x: -2.420753, y: -0.44568342}
+      - {x: -2.420753, y: -0.4456833}
       - {x: -3.6214468, y: -0.4440883}
-      - {x: -3.6214468, y: -0.44568342}
+      - {x: -3.6214468, y: -0.4456833}
       - {x: -4.8221407, y: -0.4440883}
-      - {x: -4.8221407, y: -0.44568342}
+      - {x: -4.8221407, y: -0.4456833}
       - {x: -6.0228333, y: -0.4440883}
       - {x: -6.0228333, y: -0.4461542}
       - {x: -6.293548, y: -0.4464003}
@@ -1740,9 +1836,8 @@ CompositeCollider2D:
       - {x: 2.3820212, y: 3.5827107}
       - {x: 4.8221407, y: 3.5827107}
     - - {x: 2.6167245, y: 3.8946857}
-      - {x: 2.6183896, y: 4.822135}
+      - {x: 2.6183898, y: 4.822135}
       - {x: 2.6162412, y: 4.822135}
-      - {x: 2.6162324, y: 4.7834034}
       - {x: 2.6164582, y: 5.794188}
       - {x: 3.5827146, y: 5.7921567}
       - {x: 3.5827146, y: 5.78283}
@@ -1752,6 +1847,10 @@ CompositeCollider2D:
       - {x: 4.5187426, y: 3.898588}
       - {x: 3.5827146, y: 3.9005353}
       - {x: 3.5827146, y: 3.8922324}
+    - - {x: 0.0000001, y: 2.1205773}
+      - {x: -0.2904903, y: 2.2658226}
+      - {x: -0.2904904, y: 2.2658226}
+      - {x: -0.0000001, y: 2.1205773}
   m_VertexDistance: 0.0005
 --- !u!50 &1113795854
 Rigidbody2D:
@@ -1815,6 +1914,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1204228113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1204228114}
+  - component: {fileID: 1204228115}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1204228114
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1204228113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1221742590}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1204228115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1204228113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd24ed1c610bf24091b8fbfd8f930a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1812097893898530, guid: 78b46b308f9a2bd41aa88964d0ceca1d,
+    type: 2}
 --- !u!1 &1210838321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,13 +2017,13 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Left Click to spawn character, or press X (on ps4 controller)
+  m_Text: Press the Return key to spawn a character, or Press Start on a controller.
 --- !u!222 &1210838324
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1914,52 +2055,11 @@ Transform:
   m_LocalPosition: {x: 0.21204087, y: -0.3840581, z: -0.006288561}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1263534234}
+  - {fileID: 1642101062}
+  - {fileID: 1204228114}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1263534233
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1263534234}
-  - component: {fileID: 1263534235}
-  m_Layer: 0
-  m_Name: InputManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1263534234
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1263534233}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1221742590}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1263534235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1263534233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30820b911e1786e41a0617fd67f05723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1812097893898530, guid: 78b46b308f9a2bd41aa88964d0ceca1d,
-    type: 2}
 --- !u!1 &1571354472
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,6 +3488,804 @@ Tilemap:
   m_TileRefreshArray:
   - serializedVersion: 1
     m_DirtyIndex: 0
+--- !u!1 &1642101061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1642101062}
+  - component: {fileID: 1642101063}
+  m_Layer: 0
+  m_Name: Rewired Input Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1642101062
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642101061}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.21204087, y: 0.3840581, z: 0.006288561}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1221742590}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1642101063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1642101061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dontDestroyOnLoad: 1
+  _userData:
+    configVars:
+      updateLoop: 3
+      alwaysUseUnityInput: 0
+      windowsStandalonePrimaryInputSource: 0
+      osx_primaryInputSource: 0
+      linux_primaryInputSource: 0
+      windowsUWP_primaryInputSource: 0
+      xboxOne_primaryInputSource: 0
+      ps4_primaryInputSource: 0
+      webGL_primaryInputSource: 0
+      useXInput: 1
+      useNativeMouse: 1
+      useEnhancedDeviceSupport: 1
+      windowsStandalone_useSteamRawInputControllerWorkaround: 0
+      osxStandalone_useEnhancedDeviceSupport: 1
+      android_supportUnknownGamepads: 1
+      ps4_assignJoysticksByPS4JoyId: 1
+      useSteamControllerSupport: 1
+      platformVars_windowsStandalone:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+        useNativeKeyboard: 1
+        joystickRefreshRate: 240
+      platformVars_linuxStandalone:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_osxStandalone:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_windows8Store:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_windowsUWP:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+        useGamepadAPI: 1
+        useHIDAPI: 1
+      platformVars_iOS:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_tvOS:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_android:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_ps3:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_ps4:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_psVita:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_xbox360:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_xboxOne:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_wii:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_wiiu:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_switch:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      platformVars_webGL:
+        disableKeyboard: 0
+        ignoreInputWhenAppNotInFocus: 1
+      maxJoysticksPerPlayer: 1
+      autoAssignJoysticks: 1
+      assignJoysticksToPlayingPlayersOnly: 0
+      distributeJoysticksEvenly: 1
+      reassignJoystickToPreviousOwnerOnReconnect: 1
+      defaultJoystickAxis2DDeadZoneType: 1
+      force4WayHats: 0
+      deferControllerConnectedEventsOnStart: 0
+      editorSettings:
+        exportConsts_useParentClass: 0
+        exportConsts_parentClassName: RewiredConsts
+        exportConsts_useNamespace: 1
+        exportConsts_namespace: RewiredConsts
+        exportConsts_actions: 1
+        exportConsts_actionsClassName: Action
+        exportConsts_actionsIncludeActionCategory: 0
+        exportConsts_actionsCreateClassesForActionCategories: 0
+        exportConsts_mapCategories: 1
+        exportConsts_mapCategoriesClassName: Category
+        exportConsts_layouts: 1
+        exportConsts_layoutsClassName: Layout
+        exportConsts_players: 1
+        exportConsts_playersClassName: Player
+        exportConsts_customControllers: 1
+        exportConsts_customControllersClassName: CustomController
+        exportConsts_customControllersAxesClassName: Axis
+        exportConsts_customControllersButtonsClassName: Button
+        exportConsts_allCapsConstantNames: 0
+    players:
+    - _id: 9999999
+      _name: System
+      _descriptiveName: System
+      _startPlaying: 1
+      _defaultJoystickMaps: []
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 1
+      _assignKeyboardOnStart: 1
+      _excludeFromControllerAutoAssignment: 1
+    - _id: 1
+      _name: Player0
+      _descriptiveName: Player0
+      _startPlaying: 0
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
+      _excludeFromControllerAutoAssignment: 0
+    - _id: 2
+      _name: Player1
+      _descriptiveName: Player1
+      _startPlaying: 0
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
+      _excludeFromControllerAutoAssignment: 0
+    - _id: 3
+      _name: Player2
+      _descriptiveName: Player2
+      _startPlaying: 0
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
+      _excludeFromControllerAutoAssignment: 0
+    - _id: 4
+      _name: Player3
+      _descriptiveName: Player3
+      _startPlaying: 0
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
+      _excludeFromControllerAutoAssignment: 0
+    - _id: 5
+      _name: Player4
+      _descriptiveName: Player4
+      _startPlaying: 0
+      _defaultJoystickMaps: []
+      _defaultMouseMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      _defaultKeyboardMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 1
+      _assignKeyboardOnStart: 1
+      _excludeFromControllerAutoAssignment: 0
+    actions:
+    - _id: 0
+      _name: Move Horizontal
+      _type: 0
+      _descriptiveName: Move Horizontal
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 1
+      _name: Move Vertical
+      _type: 0
+      _descriptiveName: Move Vertical
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 2
+      _name: Rotate Horizontal
+      _type: 0
+      _descriptiveName: Rotate Horizontal
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 3
+      _name: Rotate Vertical
+      _type: 0
+      _descriptiveName: Rotate Vertical
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 4
+      _name: XButton
+      _type: 1
+      _descriptiveName: XButton
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 5
+      _name: SquareButton
+      _type: 1
+      _descriptiveName: SquareButton
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 6
+      _name: TriangleButton
+      _type: 1
+      _descriptiveName: TriangleButton
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 7
+      _name: CircleButton
+      _type: 1
+      _descriptiveName: CircleButton
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 8
+      _name: LeftBumper
+      _type: 1
+      _descriptiveName: LeftBumper
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 9
+      _name: RightBumper
+      _type: 1
+      _descriptiveName: RightBumper
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 10
+      _name: Start
+      _type: 1
+      _descriptiveName: Start
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 11
+      _name: Select
+      _type: 1
+      _descriptiveName: Select
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    actionCategories:
+    - _name: Default
+      _descriptiveName: Default
+      _tag: 
+      _id: 0
+      _userAssignable: 1
+    - _name: Gameplay
+      _descriptiveName: Gameplay
+      _tag: 
+      _id: 1
+      _userAssignable: 1
+    - _name: Menu
+      _descriptiveName: Menu
+      _tag: 
+      _id: 2
+      _userAssignable: 1
+    actionCategoryMap:
+      list:
+      - categoryId: 0
+        actionIds: 
+      - categoryId: 1
+        actionIds: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b000000
+      - categoryId: 2
+        actionIds: 
+    inputBehaviors:
+    - _id: 0
+      _name: Default
+      _joystickAxisSensitivity: 1
+      _digitalAxisSimulation: 1
+      _digitalAxisSnap: 1
+      _digitalAxisInstantReverse: 0
+      _digitalAxisGravity: 12
+      _digitalAxisSensitivity: 12
+      _mouseXYAxisMode: 0
+      _mouseOtherAxisMode: 0
+      _mouseXYAxisSensitivity: 1
+      _mouseXYAxisDeltaCalc: 0
+      _mouseOtherAxisSensitivity: 1
+      _customControllerAxisSensitivity: 1
+      _buttonDoublePressSpeed: 0.3
+      _buttonShortPressTime: 0.25
+      _buttonShortPressExpiresIn: 0
+      _buttonLongPressTime: 1
+      _buttonLongPressExpiresIn: 0
+      _buttonDeadZone: 0.5
+      _buttonDownBuffer: 0
+      _buttonRepeatRate: 30
+      _buttonRepeatDelay: 0
+    mapCategories:
+    - _name: Default
+      _descriptiveName: Default
+      _tag: 
+      _id: 0
+      _userAssignable: 1
+      _checkConflictsWithAllCategories: 1
+      _checkConflictsCategoryIds: 
+    joystickLayouts:
+    - _name: Default
+      _descriptiveName: Default
+      _id: 0
+    keyboardLayouts:
+    - _name: Default
+      _descriptiveName: Default
+      _id: 0
+    mouseLayouts:
+    - _name: Default
+      _descriptiveName: Default
+      _id: 0
+    customControllerLayouts:
+    - _name: Default
+      _descriptiveName: Default
+      _id: 0
+    joystickMaps:
+    - id: 0
+      categoryId: 0
+      layoutId: 0
+      name: 
+      hardwareGuidString: 83b427e4-086f-47f3-bb06-be266abd1ca5
+      customControllerUid: 0
+      actionElementMaps:
+      - _actionCategoryId: 0
+        _actionId: 0
+        _elementType: 0
+        _elementIdentifierId: 0
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 0
+        _elementIdentifierId: 1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 2
+        _elementType: 0
+        _elementIdentifierId: 2
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 3
+        _elementType: 0
+        _elementIdentifierId: 3
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 4
+        _elementType: 1
+        _elementIdentifierId: 4
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 7
+        _elementType: 1
+        _elementIdentifierId: 5
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 6
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 5
+        _elementType: 1
+        _elementIdentifierId: 7
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 6
+        _elementType: 1
+        _elementIdentifierId: 8
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 9
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 8
+        _elementType: 1
+        _elementIdentifierId: 10
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 11
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 9
+        _elementType: 1
+        _elementIdentifierId: 12
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 13
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 11
+        _elementType: 1
+        _elementIdentifierId: 14
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 10
+        _elementType: 1
+        _elementIdentifierId: 15
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 16
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 17
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 18
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 19
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 20
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 21
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: -1
+        _elementType: 1
+        _elementIdentifierId: 22
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+    keyboardMaps:
+    - id: 0
+      categoryId: 0
+      layoutId: 0
+      name: 
+      hardwareGuidString: 
+      customControllerUid: 0
+      actionElementMaps:
+      - _actionCategoryId: 0
+        _actionId: 0
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 97
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 0
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 100
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 1
+        _keyboardKeyCode: 115
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 1
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 119
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 10
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 13
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+    mouseMaps:
+    - id: 0
+      categoryId: 0
+      layoutId: 0
+      name: 
+      hardwareGuidString: 
+      customControllerUid: 0
+      actionElementMaps:
+      - _actionCategoryId: 0
+        _actionId: 4
+        _elementType: 1
+        _elementIdentifierId: 3
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 3
+        _elementType: 0
+        _elementIdentifierId: 1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 2
+        _elementType: 0
+        _elementIdentifierId: 0
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+    customControllerMaps: []
+    customControllers: []
+    playerIdCounter: 6
+    actionIdCounter: 12
+    actionCategoryIdCounter: 3
+    inputBehaviorIdCounter: 1
+    mapCategoryIdCounter: 1
+    joystickLayoutIdCounter: 1
+    keyboardLayoutIdCounter: 1
+    mouseLayoutIdCounter: 1
+    customControllerLayoutIdCounter: 1
+    joystickMapIdCounter: 1
+    keyboardMapIdCounter: 1
+    mouseMapIdCounter: 1
+    customControllerMapIdCounter: 0
+    customControllerIdCounter: 0
+  _controllerDataFiles: {fileID: 11400000, guid: d21d2b20df8369642b76aafbb2576ba7,
+    type: 2}
 --- !u!1 &1861208884
 GameObject:
   m_ObjectHideFlags: 0
