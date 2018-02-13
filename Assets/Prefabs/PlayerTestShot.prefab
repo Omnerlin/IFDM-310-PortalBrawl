@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 114228152002719742}
   - component: {fileID: 61242050384241340}
   - component: {fileID: 50183841288962322}
-  - component: {fileID: 114107596386180932}
   m_Layer: 0
   m_Name: PlayerTestShot
   m_TagString: Player
@@ -179,18 +178,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.86, y: 0.9582772}
   m_EdgeRadius: 0
---- !u!114 &114107596386180932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1040078941703914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 193a5a28b67e67c4b85ebf8ee8f0e397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  theGun: {fileID: 114783476853139862}
 --- !u!114 &114228152002719742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,10 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f9acbf8c75ccb4aabc60979e6aa520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestCrap: {fileID: 0}
   maxMoveSpeed: 40
   moveForce: 2000
   aimReticle: {fileID: 1905633994010560}
+  theGun: {fileID: 114783476853139862}
 --- !u!114 &114783476853139862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFiring: 0
-  bullet: {fileID: 114446316466521370, guid: 2cdb931f19a49c041b5c595b8ac6a6b5, type: 2}
+  bullet: {fileID: 114235545059977038, guid: 92273da5264c6b1408fe26fe6587a577, type: 2}
   bulletSpeed: 5
   timeBetweenShots: 0.1
   firePoint: {fileID: 4061303184172688}
