@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
     public GameObject cameraFollowGroup;
 
-    private List<int> assignedControllers = new List<int>();
+    //private List<int> assignedControllers = new List<int>();
     public GameObject playerPrefab;
 
     private void Awake()

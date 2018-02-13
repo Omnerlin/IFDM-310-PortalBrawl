@@ -90,7 +90,7 @@ Grid:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811659364521486}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellSize: {x: 0.16, y: 0.16, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -141,6 +141,15 @@ Tilemap:
   m_GameObject: {fileID: 1939217283136538}
   m_Enabled: 1
   m_Tiles:
+  - first: {x: -3, y: -8, z: 0}
+    second:
+      m_TileIndex: 234
+      m_TileSpriteIndex: 234
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 2
+      m_ColliderType: 1
   - first: {x: -2, y: -8, z: 0}
     second:
       m_TileIndex: 213
@@ -2717,6 +2726,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 1882f4995f770144abcd87090a8fd431, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 0b021000bcb78694c9d791f6c55fb1b2, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: f808e259f2313e54ea57e834f7e21050, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: cc0de125c535c20478f67ebe750a29ed, type: 3}
@@ -3186,8 +3197,10 @@ Tilemap:
     m_Data: {fileID: 21300464, guid: cc0de125c535c20478f67ebe750a29ed, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300466, guid: cc0de125c535c20478f67ebe750a29ed, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 6a00392c15d0c6e428000a9a60e7580d, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 234
+  - m_RefCount: 235
     m_Data:
       e00: 1
       e01: 0
@@ -3206,12 +3219,12 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 234
+  - m_RefCount: 235
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -2, y: -8, z: 0}
-  m_Size: {x: 24, y: 10, z: 1}
+  m_Origin: {x: -3, y: -8, z: 0}
+  m_Size: {x: 25, y: 10, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -3232,6 +3245,8 @@ Tilemap:
     e32: 0
     e33: 1
   m_TileRefreshArray:
+  - serializedVersion: 1
+    m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1

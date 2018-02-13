@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
+using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace UnityEngine
 {
@@ -45,34 +47,10 @@ namespace UnityEngine
 
 		public override void GetTileData(Vector3Int position, ITilemap tileMap, ref TileData tileData)
 		{
-			tileData.sprite = m_DefaultSprite;
+			tileData.sprite = null;
 			tileData.colliderType = m_DefaultColliderType;
 			tileData.flags = TileFlags.LockTransform;
 			tileData.transform = Matrix4x4.identity;
-			
-			foreach (TilingRule rule in m_TilingRules)
-			{
-				Matrix4x4 transform = Matrix4x4.identity;
-				if (RuleMatches(rule, position, tileMap, ref transform))
-				{
-					switch (rule.m_Output)
-					{
-							case TilingRule.OutputSprite.Single:
-							case TilingRule.OutputSprite.Animation:
-								tileData.sprite = rule.m_Sprites[0];
-							break;
-							case TilingRule.OutputSprite.Random:
-								int index = Mathf.Clamp(Mathf.FloorToInt(GetPerlinValue(position, rule.m_PerlinScale, 100000f) * rule.m_Sprites.Length), 0, rule.m_Sprites.Length - 1);
-								tileData.sprite = rule.m_Sprites[index];
-								if (rule.m_RandomTransform != TilingRule.Transform.Fixed)
-									transform = ApplyRandomTransform(rule.m_RandomTransform, transform, rule.m_PerlinScale, position);
-							break;
-					}
-					tileData.transform = transform;
-					tileData.colliderType = rule.m_ColliderType;
-					break;
-				}
-			}
 		}
 
 		private static float GetPerlinValue(Vector3Int position, float scale, float offset)
@@ -232,5 +210,17 @@ namespace UnityEngine
 		{
 			return new Vector3Int(original.x * (mirrorX ? -1 : 1), original.y * (mirrorY ? -1 : 1), original.z);
 		}
-	}
+
+        public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go)
+        {
+
+            //ileData data = new TileData();
+            //etTileData(position, tilemap, ref data);
+            base.StartUp(position, tilemap, go);
+         
+
+            return true;
+        }
+
+    }
 }

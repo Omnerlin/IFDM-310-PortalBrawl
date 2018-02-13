@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cc0de125c535c20478f67ebe750a29ed
-timeCreated: 1516683895
+timeCreated: 1518476132
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -536,12 +536,10 @@ TextureImporter:
         - {x: 8, y: 4}
         - {x: 4, y: 6}
       physicsShape:
-      - - {x: -4, y: 6}
-        - {x: -6, y: 4}
-        - {x: -6, y: -8}
+      - - {x: -3.77388, y: -8}
         - {x: 8, y: -8}
-        - {x: 8, y: 4}
-        - {x: 4, y: 6}
+        - {x: 8, y: -7.2672577}
+        - {x: -3.6894073, y: -7.213028}
       tessellationDetail: 0
     - serializedVersion: 2
       name: dungeon_sheet_9
@@ -562,13 +560,11 @@ TextureImporter:
         - {x: 4, y: 6}
         - {x: -4, y: 6}
       physicsShape:
-      - - {x: -8, y: 4}
+      - - {x: -8, y: -7.2206116}
         - {x: -8, y: -8}
-        - {x: 6, y: -8}
-        - {x: 6, y: 4}
-        - {x: 4, y: 6}
-        - {x: -4, y: 6}
-      tessellationDetail: 0
+        - {x: 3.931244, y: -8}
+        - {x: 3.9312592, y: -7.1938324}
+      tessellationDetail: 1
     - serializedVersion: 2
       name: dungeon_sheet_10
       rect:
@@ -1135,9 +1131,10 @@ TextureImporter:
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       physicsShape:
-      - - {x: -6, y: 8}
-        - {x: -6, y: -4}
-        - {x: -4, y: -8}
+      - - {x: -4.055191, y: 8}
+        - {x: -4.055191, y: -3.0276031}
+        - {x: -1.025589, y: -2.966385}
+        - {x: -0.98043823, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
@@ -1160,12 +1157,12 @@ TextureImporter:
         - {x: 8, y: 5}
         - {x: 6, y: 8}
       physicsShape:
-      - - {x: -8, y: 8}
+      - - {x: 1.1297302, y: -3.0186005}
+        - {x: 3.9882507, y: -3.0586243}
+        - {x: 4.017288, y: 8}
+        - {x: -8, y: 8}
         - {x: -8, y: -8}
-        - {x: 5, y: -8}
-        - {x: 8, y: -4}
-        - {x: 8, y: 5}
-        - {x: 6, y: 8}
+        - {x: 1.0771332, y: -8}
       tessellationDetail: 0
     - serializedVersion: 2
       name: dungeon_sheet_34
@@ -1696,8 +1693,8 @@ TextureImporter:
         - {x: -8, y: 8}
         - {x: -8, y: -8}
       physicsShape:
-      - - {x: 6, y: -8}
-        - {x: 5, y: 8}
+      - - {x: 1.1726379, y: -8}
+        - {x: 0.9771881, y: 8}
         - {x: -8, y: 8}
         - {x: -8, y: -8}
       tessellationDetail: 0
@@ -2754,10 +2751,10 @@ TextureImporter:
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      - - {x: -8, y: -2.5900726}
+        - {x: -8, y: -5.9714203}
+        - {x: 8, y: -5.9165955}
+        - {x: 8, y: -2.576744}
       tessellationDetail: 0
     - serializedVersion: 2
       name: dungeon_sheet_102
