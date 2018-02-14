@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b7185d090469c488cb57ce49505880, type: 3}
+  m_Name: Chest
+  m_EditorClassIdentifier: 
+  defaultSprite: {fileID: 21300352, guid: cc0de125c535c20478f67ebe750a29ed, type: 3}
+  tilePrefab: {fileID: 1928929981391556, guid: e438386d5f3bcc14c911b748e3da8fd4, type: 2}
+  m_DefaultColliderType: 0
