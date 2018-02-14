@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine.Tilemaps;
 using UnityEngine.Rendering;
 
-[CreateAssetMenu]
 [CustomGridBrush(false, false, false, "Sorted Tile Brush")]
 public class SortedTileBrush : GridBrushBase
 {
@@ -15,6 +14,7 @@ public class SortedTileBrush : GridBrushBase
 
     public override void Pick(GridLayout gridLayout, GameObject brushTarget, BoundsInt position, Vector3Int pivot)
     {
+        // Want to make sure people can only pick one prefab at a time
         //BoundsInt bounds = new BoundsInt(min, randomBrush.size);
         //if(position.allPositionsWithin.MoveNext() == position.allPositionsWithin.)
         //{

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cc0de125c535c20478f67ebe750a29ed
-timeCreated: 1516683895
+timeCreated: 1518649515
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -1066,7 +1066,9 @@ TextureImporter:
       physicsShape:
       - - {x: -8, y: 8}
         - {x: -8, y: -8}
-        - {x: 8, y: -8}
+        - {x: 0.9700546, y: -8}
+        - {x: 1.1222229, y: -7.0267487}
+        - {x: 8, y: -6.9022064}
         - {x: 8, y: 8}
       tessellationDetail: 0
     - serializedVersion: 2
@@ -1111,9 +1113,9 @@ TextureImporter:
       - - {x: -8, y: 8}
         - {x: -8, y: -6.017517}
         - {x: -3.99926, y: -6.023926}
-        - {x: -3.9846878, y: -7.0199738}
-        - {x: -0.9933777, y: -7.0200043}
-        - {x: -1.0014801, y: -8}
+        - {x: -3.9846878, y: -6.96315}
+        - {x: -0.9123993, y: -6.9938354}
+        - {x: -0.9642334, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
@@ -1135,9 +1137,10 @@ TextureImporter:
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       physicsShape:
-      - - {x: -6, y: 8}
-        - {x: -6, y: -4}
-        - {x: -4, y: -8}
+      - - {x: -3.9942322, y: 8}
+        - {x: -3.9938507, y: -2.9961243}
+        - {x: -0.927124, y: -3.0198364}
+        - {x: -0.9536743, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
@@ -1162,10 +1165,10 @@ TextureImporter:
       physicsShape:
       - - {x: -8, y: 8}
         - {x: -8, y: -8}
-        - {x: 5, y: -8}
-        - {x: 8, y: -4}
-        - {x: 8, y: 5}
-        - {x: 6, y: 8}
+        - {x: 1.0548553, y: -8}
+        - {x: 1.0491028, y: -3.027359}
+        - {x: 4.0849457, y: -3.0290375}
+        - {x: 4.0208282, y: 8}
       tessellationDetail: 0
     - serializedVersion: 2
       name: dungeon_sheet_34
@@ -1606,8 +1609,8 @@ TextureImporter:
         - {x: -8, y: 8}
         - {x: -8, y: -8}
       physicsShape:
-      - - {x: 0.99220276, y: -8}
-        - {x: 1.0399323, y: 8}
+      - - {x: 0.9673233, y: -8}
+        - {x: 0.9798584, y: 8}
         - {x: -8, y: 8}
         - {x: -8, y: -8}
       tessellationDetail: 0
@@ -1650,8 +1653,8 @@ TextureImporter:
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       physicsShape:
-      - - {x: -1.0008087, y: 8}
-        - {x: -0.9637985, y: -8}
+      - - {x: -0.92596436, y: 8}
+        - {x: -1.0133591, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
@@ -2176,11 +2179,9 @@ TextureImporter:
       - - {x: -8, y: 8}
         - {x: -8, y: -8}
         - {x: 8, y: -8}
-        - {x: 8, y: 1.9909515}
-        - {x: 4.005295, y: 1.98732}
-        - {x: 4.016884, y: 4.9799957}
-        - {x: 2.9979477, y: 4.997055}
-        - {x: 2.9999084, y: 8}
+        - {x: 8, y: -1.0155182}
+        - {x: 1.0566788, y: -1.0533905}
+        - {x: 0.9898224, y: 8}
       tessellationDetail: 0
     - serializedVersion: 2
       name: dungeon_sheet_78
@@ -2201,8 +2202,8 @@ TextureImporter:
       physicsShape:
       - - {x: -8, y: -8}
         - {x: 8, y: -8}
-        - {x: 8, y: 1.9959106}
-        - {x: -8, y: 2.0171661}
+        - {x: 8, y: -1.0915909}
+        - {x: -8, y: -1.0017242}
       tessellationDetail: 0
     - serializedVersion: 2
       name: dungeon_sheet_79
@@ -2222,11 +2223,9 @@ TextureImporter:
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       physicsShape:
-      - - {x: -1.0056381, y: 7.977661}
-        - {x: -1.0060196, y: 5.0084305}
-        - {x: -3.9999924, y: 5}
-        - {x: -3.9919968, y: 2.006668}
-        - {x: -8, y: 2.0196304}
+      - - {x: -1.0021744, y: 8}
+        - {x: -0.92352295, y: -0.98831177}
+        - {x: -7.9313965, y: -0.9306488}
         - {x: -8, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
