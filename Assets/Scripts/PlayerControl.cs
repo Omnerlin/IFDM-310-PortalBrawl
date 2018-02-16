@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour {
 
     // Rewired player object
     public Rewired.Player player { get; set; }
+	public Player playerInfo;
 
     // Stats that will affect the player movespeed
     public float maxMoveSpeed;
@@ -30,7 +31,10 @@ public class PlayerControl : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start () 
+	{
+		playerInfo = gameObject.GetComponent<Player>();
+		playerInfo.playerNumber = player.id;
         rb2d = GetComponent<Rigidbody2D>();
 	}
 
