@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using Rewired;
 
+
 public class MainMenu : MonoBehaviour {
     public int index = 0;
     public int totalOptions;
@@ -15,7 +16,8 @@ public class MainMenu : MonoBehaviour {
 
     public void Awake()
     {
-        player = Rewired.ReInput.players.GetPlayer(0);
+        player = ReInput.players.GetPlayer(4);
+
     }
 
     private void OnMouseUp()
@@ -47,7 +49,13 @@ public class MainMenu : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (player.GetAxis("Move Vertical") < 0)
+        
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        if (player.GetButtonDown("DPadDown"))
         {
             if (index <= (totalOptions - 1))
             {
@@ -57,7 +65,7 @@ public class MainMenu : MonoBehaviour {
                 transform.position = postion;
             }
         }
-        if (player.GetAxis("Move Vertical") > 0)
+        if (player.GetButtonDown("DPadUp"))
         {
             if ((index > 0))
             {
@@ -67,11 +75,6 @@ public class MainMenu : MonoBehaviour {
                 transform.position = postion;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update ()
-    {
 
         if (player.GetButton("Start"))
         {
