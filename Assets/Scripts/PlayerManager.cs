@@ -28,14 +28,22 @@ public class PlayerManager : MonoBehaviour
 
 	private void Start()
 	{
-		if (GlobalControl.instance.loadData ().characterName != null) 
+		//Check all of the RewiredPlayers. If they selected a character and have saved data, make them an instance
+		//of the player by calling AddPlayer
+		IList <Rewired.Player> players = ReInput.players.GetPlayers(false);
+		for(int i = 0; i < players.Count; i++)
 		{
-			AddPlayer (GlobalControl.instance.loadData ().playerNumber);
+			// Assign the player 
+			if(players[i].isPlaying && GlobalControl.instance.hasCharacter(players[i].id))
+			{
+				AddPlayer(i);                
+			}
 		}
 	}
 
     private void Update()
     {
+		//todo: Delete this. Characters should only be spawned from the Start.
         // We need to test if any players want to join the game
         IList <Rewired.Player> players = ReInput.players.GetPlayers(false);
         for(int i = 0; i < players.Count; i++)
@@ -50,6 +58,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Add a controller to the list of initialized controls
+	//TODO: Some of this may be reduntant to happen in every scene.
     private void AddPlayer(int playerID)
     {
         GameObject pFab = Instantiate(playerPrefab);

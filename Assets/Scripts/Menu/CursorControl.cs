@@ -13,9 +13,9 @@ using Rewired;
 public class CursorControl : MonoBehaviour {
 
 	// Rewired player object
-	public Rewired.Player player { get; set; }
+	public Rewired.Player rewiredPlayer { get; set; }
 
-	public Player playerInfo;
+	public Player playerScript;
 
 	// Stats that will affect the player movespeed
 	public float movementScale;
@@ -32,7 +32,7 @@ public class CursorControl : MonoBehaviour {
 	private void Awake()
 	{
 		// Just set the player to the zero index
-		player = Rewired.ReInput.players.GetPlayer(0);
+		rewiredPlayer = Rewired.ReInput.players.GetPlayer(0);
 	}
 
 	// Use this for initialization
@@ -42,9 +42,9 @@ public class CursorControl : MonoBehaviour {
 		myCollider = GetComponent<Collider2D>();
 
 		//Every controller should load player info on start?
-		playerInfo = gameObject.GetComponent<Player>();
-		playerInfo.playerNumber = player.id;
-		GetComponent<SpriteRenderer>().color = playerInfo.getColor();
+		playerScript = GetComponent<Player>();
+		playerScript.setPlayerNumber(rewiredPlayer.id);
+		GetComponent<SpriteRenderer>().color = playerScript.getColor();
 
 		//Setup the cameraRect bounds.
 		Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -60,7 +60,7 @@ public class CursorControl : MonoBehaviour {
 	{
 		//Check if cursor is selecting a button. If this collider is colliding with another, get that
 		//collider's button, assign its name to this character, and set that button to "selected."
-		if(player.GetButton("Select"))
+		if(rewiredPlayer.GetButton("Select"))
 		{
 			//If the player has already selected someone, return.
 
@@ -69,23 +69,26 @@ public class CursorControl : MonoBehaviour {
 			ContactFilter2D contactFilter = new ContactFilter2D ();
 			contactFilter.NoFilter ();
 			int numColliding = myCollider.OverlapCollider (contactFilter, results);
-			//Debug.Log ("Results: "+ numColliding.ToString());
 			if (numColliding > 0) 
 			{
 				GameObject selected = (results [0]).gameObject;
-				Debug.Log ("Player " + player.id + " selected " + selected.name + "!");
+				Debug.Log ("Player " + playerScript.getPlayerNumber() + " selected " + selected.name + "!");
 				//Run a script on the button that says you've selected it so it changes its display
 				if (selected.GetComponent<characterButtonScript> () != null &&
 					!selected.GetComponent<characterButtonScript> ().selected) //If this character hasn't already been selected **
 				{ 
-					if (playerInfo.getCharacterName () != null)
+					if (playerScript.getCharacterName () != null) {
+						Debug.Log ("Player " + playerScript.getPlayerNumber() + " has already selected " + playerScript.getCharacterName () + ". You can't select "+ selected.name +".");
 						return;
+					}
 					else 
 					{
+						Debug.Log ("Assigning " + selected.name + " to Player " + rewiredPlayer.id + ".");
 						string name = selected.GetComponent<characterButtonScript> ().choose (gameObject.GetComponent<Collider2D> ());
-						playerInfo.setCharacterName (name);
+						playerScript.setCharacterName (name);
 					}
 				} 
+				//If it wasn't a character button, it must be the LoadScene button
 				else if (selected.GetComponent<LoadScene> () != null)
 					selected.GetComponent<LoadScene> ().loadScene();
 			}
@@ -102,7 +105,7 @@ public class CursorControl : MonoBehaviour {
 	private void UpdatePlayerMovement()
 	{
 		// Return if the player isn't, well, playing
-		if (!player.isPlaying)
+		if (!rewiredPlayer.isPlaying)
 		{
 			return;
 		}
@@ -114,7 +117,7 @@ public class CursorControl : MonoBehaviour {
 			myTransform.position.z);
 
 		// Update the player's movespeed based on input axis (-1 to 1) and normalize it (for diagonal movement)
-		Vector2 moveInput = new Vector2(player.GetAxis("Move Horizontal"), player.GetAxis("Move Vertical"));
+		Vector2 moveInput = new Vector2(rewiredPlayer.GetAxis("Move Horizontal"), rewiredPlayer.GetAxis("Move Vertical"));
 		if(moveInput.magnitude > 1)
 		{
 			moveInput = moveInput.normalized;

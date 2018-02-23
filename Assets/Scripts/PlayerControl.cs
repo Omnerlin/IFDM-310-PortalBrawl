@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour {
     void Start () 
 	{
 		playerInfo = gameObject.GetComponent<Player>();
-		playerInfo.playerNumber = player.id;
+		playerInfo.setPlayerNumber (player.id);
         rb2d = GetComponent<Rigidbody2D>();
 	}
 
