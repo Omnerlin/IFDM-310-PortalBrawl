@@ -5,13 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public Transform startPosition;
-	public string characterName { get; set; }
     public int playerNumber { get; set; } //Numbers have colors associated with them.
 
-	public PlayerInfo myInfo;
+	private PlayerInfo localPlayerData = new PlayerInfo ();
 
 	//The player's color is at the index of the playerNumber
 	public static Color[] playerColors = {Color.blue, Color.magenta, Color.green, Color.yellow, Color.black};
+	public static string pathToLoadSprites = "Assets/Sprites/Placeholder/Characters/Resources/";
 
 	public Color getColor()
 	{
@@ -21,12 +21,43 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		//GlobalControl.load (playerNumber);
+		loadPlayerData ();
+		if (localPlayerData.characterName != null) //If they have a character assigned
+		{
+			Debug.Log ("Player loading data from " + pathToLoadSprites + localPlayerData.characterName);
+			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
+			myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
+			//I was going to do the switch-case, but then I realized that localPlayerData.characterName was the exact string we needed. --Anna
+			//switch (localPlayerData.characterName) 
+			//{
+				//case "Anix":
+				//	myRenderer.sprite = Resources.Load<Sprite> (pathToLoadSprites+"Anix");
+				//	break;
+			//}
+		}
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		
+	}
+
+	void OnDestroy()
+	{
+		savePlayerData ();
+	}
+
+	public string getCharacterName() { return localPlayerData.characterName; }
+
+	public void setCharacterName(string name) { localPlayerData.characterName = name; }
+
+	public int getPlayerNumber(){ return playerNumber; }
+
+	public void setPlayerNumber(int num)
+	{
+		playerNumber = num;
+		localPlayerData.playerNumber = num;
 	}
 
 	//Register yourself with Global so your info can be reloaded next time.
@@ -34,4 +65,17 @@ public class Player : MonoBehaviour {
 	{
 		//GlobalControl.instance.register (myInfo);
 	}
+
+	//Save info with the GlobalControl object so that it can be reloaded in the next scene
+	public void savePlayerData()
+	{
+		GlobalControl.instance.saveData(localPlayerData);
+	}
+
+	public void loadPlayerData()
+	{
+		//GlobalControl global = (GlobalControl)FindObjectOfType (GlobalControl);
+		localPlayerData = GlobalControl.instance.loadData();
+	}
+
 }

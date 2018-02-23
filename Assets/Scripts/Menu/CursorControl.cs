@@ -78,10 +78,13 @@ public class CursorControl : MonoBehaviour {
 				if (selected.GetComponent<characterButtonScript> () != null &&
 					!selected.GetComponent<characterButtonScript> ().selected) //If this character hasn't already been selected **
 				{ 
-					if (playerInfo.characterName != null)
+					if (playerInfo.getCharacterName () != null)
 						return;
-					else
-						playerInfo.characterName = selected.GetComponent<characterButtonScript> ().choose (gameObject.GetComponent<Collider2D> ());
+					else 
+					{
+						string name = selected.GetComponent<characterButtonScript> ().choose (gameObject.GetComponent<Collider2D> ());
+						playerInfo.setCharacterName (name);
+					}
 				} 
 				else if (selected.GetComponent<LoadScene> () != null)
 					selected.GetComponent<LoadScene> ().loadScene();

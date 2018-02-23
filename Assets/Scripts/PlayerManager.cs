@@ -26,6 +26,14 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+	private void Start()
+	{
+		if (GlobalControl.instance.loadData ().characterName != null) 
+		{
+			AddPlayer (GlobalControl.instance.loadData ().playerNumber);
+		}
+	}
+
     private void Update()
     {
         // We need to test if any players want to join the game
@@ -38,6 +46,7 @@ public class PlayerManager : MonoBehaviour
                 AddPlayer(i);                
             }
         }
+			
     }
 
     // Add a controller to the list of initialized controls
