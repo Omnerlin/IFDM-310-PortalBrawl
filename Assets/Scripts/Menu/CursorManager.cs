@@ -48,8 +48,8 @@ public class CursorManager : MonoBehaviour {
 	{
 		GameObject pFab = Instantiate(cursorPrefab);
 		CursorControl pControl = pFab.GetComponent<CursorControl>();
-		pControl.player = ReInput.players.GetPlayer(playerID);
-		pControl.player.isPlaying = true;
+		//pControl.player = ReInput.players.GetPlayer(playerID);
+		//pControl.player.isPlaying = true;
 
 		//camera tracking removed
 	}

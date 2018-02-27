@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 4711431551105308}
   - component: {fileID: 212985353387058762}
   - component: {fileID: 114290091447880312}
+  - component: {fileID: 114575553322133488}
   - component: {fileID: 114893467757226410}
   - component: {fileID: 61013607902015298}
   - component: {fileID: 50452318982938686}
@@ -190,10 +191,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f9acbf8c75ccb4aabc60979e6aa520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInfo: {fileID: 0}
   maxMoveSpeed: 40
   moveForce: 2000
   aimReticle: {fileID: 1514113879761304}
   theGun: {fileID: 114631857353290316}
+--- !u!114 &114575553322133488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812097893898530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96ca94b8d1f644458597bafa6010c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 10
+  currentHP: 0
 --- !u!114 &114631857353290316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,6 +237,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {fileID: 0}
+  playerColors:
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
 --- !u!210 &210725938293918806
 SortingGroup:
   m_ObjectHideFlags: 1
