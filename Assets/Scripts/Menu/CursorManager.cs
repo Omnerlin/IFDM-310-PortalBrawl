@@ -34,7 +34,7 @@ public class CursorManager : MonoBehaviour {
 		IList <Rewired.Player> players = ReInput.players.GetPlayers(false);
 		for(int i = 0; i < players.Count; i++)
 		{
-			// Assign the player 
+			// Assign the player
 			if(!players[i].isPlaying && players[i].GetButtonDown("Start"))
 			{
 				AddPlayer(i);                
@@ -48,8 +48,8 @@ public class CursorManager : MonoBehaviour {
 	{
 		GameObject pFab = Instantiate(cursorPrefab);
 		CursorControl pControl = pFab.GetComponent<CursorControl>();
-		pControl.player = ReInput.players.GetPlayer(playerID);
-		pControl.player.isPlaying = true;
+		pControl.rewiredPlayer = ReInput.players.GetPlayer(playerID);
+		pControl.rewiredPlayer.isPlaying = true;
 
 		//camera tracking removed
 	}

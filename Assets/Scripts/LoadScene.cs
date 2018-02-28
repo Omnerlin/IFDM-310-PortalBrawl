@@ -14,6 +14,7 @@ public class LoadScene : MonoBehaviour {
 		if (!hasBeenPressed) 
 		{
 			//TODO: Change to actual scene
+
 			SceneManager.LoadScene (sceneToLoad);
 			hasBeenPressed = true;
 		}

@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 	private PlayerInfo localPlayerData = new PlayerInfo ();
 
 	//The player's color is at the index of the playerNumber
-	public Color[] playerColors = {Color.blue, Color.magenta, Color.green, Color.yellow, Color.black};
+	public static Color[] playerColors = {Color.blue, Color.magenta, Color.green, Color.yellow, Color.black};
 	//public static string pathToLoadSprites = "Assets/Sprites/Placeholder/Characters/Resources/";
 
 	public Color getColor()

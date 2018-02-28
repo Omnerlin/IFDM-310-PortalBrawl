@@ -15,7 +15,7 @@ public class CursorControl : MonoBehaviour {
 	// Rewired player object
 	public Rewired.Player rewiredPlayer { get; set; }
 
-	public Player playerScript;
+	private Player playerScript;
 
 	// Stats that will affect the player movespeed
 	public float movementScale;
@@ -42,7 +42,7 @@ public class CursorControl : MonoBehaviour {
 		myCollider = GetComponent<Collider2D>();
 
 		//Every controller should load player info on start?
-		playerScript = GetComponent<Player>();
+		playerScript = this.gameObject.GetComponent<Player>();
 		playerScript.setPlayerNumber(rewiredPlayer.id);
 		GetComponent<SpriteRenderer>().color = playerScript.getColor();
 
