@@ -33,6 +33,7 @@ public class CursorControl : MonoBehaviour {
 	{
 		// Just set the player to the zero index
 		rewiredPlayer = Rewired.ReInput.players.GetPlayer(0);
+		playerScript = gameObject.AddComponent<Player>();
 	}
 
 	// Use this for initialization
@@ -42,7 +43,7 @@ public class CursorControl : MonoBehaviour {
 		myCollider = GetComponent<Collider2D>();
 
 		//Every controller should load player info on start?
-		playerScript = this.gameObject.GetComponent<Player>();
+		//playerScript = this.gameObject.GetComponent<Player>();
 		playerScript.setPlayerNumber(rewiredPlayer.id);
 		GetComponent<SpriteRenderer>().color = playerScript.getColor();
 
