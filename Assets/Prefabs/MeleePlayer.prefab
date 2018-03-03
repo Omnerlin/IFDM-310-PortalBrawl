@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 0}
-  maxMoveSpeed: 30
+  maxMoveSpeed: 40
   moveForce: 0
   aimReticle: {fileID: 1514113879761304}
   theGun: {fileID: 114631857353290316}
