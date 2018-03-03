@@ -24,26 +24,28 @@ public class PlayerManager : MonoBehaviour
         {
             instance = this;
         }
-    }
 
-	private void Start()
-	{
 		//Check all of the RewiredPlayers. If they selected a character and have saved data, make them an instance
 		//of the player by calling AddPlayer
 		IList <Rewired.Player> players = ReInput.players.GetPlayers(false);
 		for(int i = 0; i < players.Count; i++)
 		{
 			// Assign the player 
-			if(players[i].isPlaying && GlobalControl.instance.hasCharacter(players[i].id))
+			if(players[i].isPlaying && GlobalControl.instance.hasPlayer(players[i].id))
 			{
 				AddPlayer(i);                
 			}
 		}
+    }
+
+	private void Start()
+	{
+		
 	}
 
     private void Update()
     {
-		//todo: Delete this. Characters should only be spawned from the Start.
+		//TODO: Delete this. Characters should only be spawned from the Start.
         // We need to test if any players want to join the game
         IList <Rewired.Player> players = ReInput.players.GetPlayers(false);
         for(int i = 0; i < players.Count; i++)

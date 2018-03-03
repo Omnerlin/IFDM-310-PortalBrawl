@@ -28,6 +28,7 @@ public class PlayerControl : MonoBehaviour {
     {
         // Just set the player to the zero index
         player = Rewired.ReInput.players.GetPlayer(0);
+		playerInfo = gameObject.AddComponent<Player>();
     }
 
     // Use this for initialization

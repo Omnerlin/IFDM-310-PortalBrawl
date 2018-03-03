@@ -13,7 +13,7 @@ using UnityEngine;
 public class GlobalControl : MonoBehaviour {
 
 	public static GlobalControl instance;
-	private PlayerInfo[] savedPlayerData = new PlayerInfo[] {new PlayerInfo (), new PlayerInfo(), new PlayerInfo(), new PlayerInfo(), new PlayerInfo()}; //5 data members because 4+keyboard
+	public PlayerInfo[] savedPlayerData = new PlayerInfo[5]; //5 data members because 4+keyboard
 
 	//Store varuables that need to be reloaded here.
 	//Player[] players = Player[5];
@@ -43,11 +43,22 @@ public class GlobalControl : MonoBehaviour {
 	//Players call this method to load data when the object is created initially in each new scene.
 	public PlayerInfo loadData(int playerNumber)
 	{
+		string toPrint = "GlobalControl contains:\n";
+		for(int i=0; i<savedPlayerData.Length; i++)
+		{
+			if(savedPlayerData[i]!=null)
+				toPrint = toPrint + savedPlayerData[i].toString() +"\n";
+			else toPrint = toPrint + "null\n";
+		}
+		Debug.Log (toPrint);
+
+		if (savedPlayerData [playerNumber] == null) //If this player has not been initialized before, initialize it.
+			savedPlayerData [playerNumber] = new PlayerInfo ();
 		return savedPlayerData[playerNumber];
 	}
 
-	//Returns the ID's of all players that created characters and are playing.
-	public bool hasCharacter(int playerNumber)
+	//Returns true if the player has saved any data.
+	public bool hasPlayer(int playerNumber)
 	{
 		return savedPlayerData [playerNumber] != null;
 	}

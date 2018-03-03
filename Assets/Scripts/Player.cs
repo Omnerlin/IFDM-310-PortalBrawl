@@ -11,7 +11,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public Transform startPosition;
-    public int playerNumber { get; set; } //Numbers have colors associated with them.
+	public int playerNumber; //Numbers have colors associated with them.
 
 	private PlayerInfo localPlayerData = new PlayerInfo ();
 
@@ -25,28 +25,28 @@ public class Player : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
-		loadPlayerData ();
-		if (localPlayerData.characterName != null) //If they have a character assigned
-		{
-			Debug.Log ("Player loading data from "+localPlayerData.characterName);
-			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
-			myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
-			//I was going to do the switch-case, but then I realized that localPlayerData.characterName was the exact string we needed. --Anna
-			//switch (localPlayerData.characterName) 
-			//{
-				//case "Anix":
-				//	myRenderer.sprite = Resources.Load<Sprite> (pathToLoadSprites+"Anix");
-				//	break;
-			//}
-		}
+		setPlayerNumber (playerNumber);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		loadPlayerData ();
+		if (localPlayerData.characterName != null) //If they have a character assigned
+		{
+			Debug.Log ("Player "+playerNumber+" loading data of character "+localPlayerData.characterName);
+			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
+			myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
+			//I was going to do the switch-case, but then I realized that localPlayerData.characterName was the exact string we needed. --Anna
+			//switch (localPlayerData.characterName) 
+			//{
+			//case "Anix":
+			//	myRenderer.sprite = Resources.Load<Sprite> (pathToLoadSprites+"Anix");
+			//	break;
+			//}
+		}
 	}
 
 	void OnDestroy()
@@ -75,6 +75,7 @@ public class Player : MonoBehaviour {
 	//Save info with the GlobalControl object so that it can be reloaded in the next scene
 	public void savePlayerData()
 	{
+		Debug.Log ("Player "+playerNumber+" saving data of character "+localPlayerData.characterName);
 		GlobalControl.instance.saveData(localPlayerData);
 	}
 
