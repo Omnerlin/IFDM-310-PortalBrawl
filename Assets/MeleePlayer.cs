@@ -109,8 +109,19 @@ public class MeleePlayer : MonoBehaviour
         {
             moveInput = moveInput.normalized;
         }
-        GetComponent<Animator>().SetFloat("MoveX", moveInput.x);
-        GetComponent<Animator>().SetFloat("MoveY", moveInput.y);
+
+        Animator animator = GetComponent<Animator>();
+        // Set the last movement with a direction in the animator
+        if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0)
+        {
+            animator.SetFloat("MoveX", moveInput.x);
+            animator.SetFloat("MoveY", moveInput.y);
+            animator.SetBool("Walking", true);
+        }
+        else
+        {
+            animator.SetBool("Walking", false);
+        }
 
 
         // Immediately set the player's velocity based on the normalized input
