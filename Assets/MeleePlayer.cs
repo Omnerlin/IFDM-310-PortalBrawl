@@ -21,9 +21,10 @@ public class MeleePlayer : MonoBehaviour
     public GameObject aimReticle;
 
     // Player's rigidbody that will be used for setting velocity
+    public GunController theGun;
     private Rigidbody2D rb2d;
 
-    public GunController theGun;
+    private bool isAttacking = false;
 
     private void Awake()
     {
@@ -46,6 +47,10 @@ public class MeleePlayer : MonoBehaviour
         if (player.GetButton("RightBumper"))
         {
             theGun.isFiring = true;
+            if(!isAttacking)
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("Attack");
+            }
         }
         else
         {
@@ -112,7 +117,7 @@ public class MeleePlayer : MonoBehaviour
 
         Animator animator = GetComponent<Animator>();
         // Set the last movement with a direction in the animator
-        if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0)
+        if ((Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0) && !isAttacking)
         {
             animator.SetFloat("MoveX", moveInput.x);
             animator.SetFloat("MoveY", moveInput.y);
@@ -123,9 +128,16 @@ public class MeleePlayer : MonoBehaviour
             animator.SetBool("Walking", false);
         }
 
-
+        
         // Immediately set the player's velocity based on the normalized input
-        rb2d.velocity = new Vector2(maxMoveSpeed * moveInput.x, maxMoveSpeed * moveInput.y);
+        if(!isAttacking)
+        {
+            rb2d.velocity = new Vector2(maxMoveSpeed * moveInput.x, maxMoveSpeed * moveInput.y);
+        }
+        else
+        {
+            rb2d.velocity = new Vector2(0, 0);
+        }
 
 
         // These if statements aren't really necessary at this point (Since we're using normalized input)
@@ -137,5 +149,10 @@ public class MeleePlayer : MonoBehaviour
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Sign(rb2d.velocity.y) * maxMoveSpeed);
         }
+    }
+
+    public void SetAttacking(bool attacking)
+    {
+        isAttacking = attacking;
     }
 }
