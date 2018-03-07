@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,11 +35,11 @@ public class Player : MonoBehaviour {
 	void Start () 
 	{
 		loadPlayerData ();
-		if (localPlayerData.characterName != null) //If they have a character assigned
+		if (!String.IsNullOrEmpty(localPlayerData.characterName)) //If they have a character assigned
 		{
 			Debug.Log ("Player "+playerNumber+" loading data of character "+localPlayerData.characterName);
 			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
-			//myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
+			myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
 		}
 		localPlayerData.playerNumber = playerNumber;
 	}
