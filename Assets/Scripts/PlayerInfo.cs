@@ -1,7 +1,7 @@
 ﻿
 public class PlayerInfo {
 
-	public string characterName;
+	public string characterName = "";
 	public int playerNumber=1;
 	public int health = 100;
 	//Health, etc

@@ -38,7 +38,7 @@ public class Player : MonoBehaviour {
 		{
 			Debug.Log ("Player "+playerNumber+" loading data of character "+localPlayerData.characterName);
 			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
-			myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
+			//myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
 		}
 		localPlayerData.playerNumber = playerNumber;
 	}
