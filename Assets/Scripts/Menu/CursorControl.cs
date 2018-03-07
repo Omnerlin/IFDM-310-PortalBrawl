@@ -56,49 +56,64 @@ public class CursorControl : MonoBehaviour {
 		cameraRect = new Rect (bottomLeft.x, bottomLeft.y, topRight.x - bottomLeft.x, topRight.y - bottomLeft.y);
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-		//Check if cursor is selecting a button. If this collider is colliding with another, get that
-		//collider's button, assign its name to this character, and set that button to "selected."
-		if(rewiredPlayer.GetButton("Select"))
-		{
-			//If the player has already selected someone, return.
+    // Update is called once per frame
+    void Update()
+    {
+        if (rewiredPlayer == null)
+        {
+            return;
+        }
 
-			
-			Collider2D[] results = new Collider2D[1];
-			ContactFilter2D contactFilter = new ContactFilter2D ();
-			contactFilter.NoFilter ();
-			int numColliding = myCollider.OverlapCollider (contactFilter, results);
-			if (numColliding > 0) 
-			{
-				GameObject selected = (results [0]).gameObject;
-				Debug.Log ("Player " + playerScript.getPlayerNumber() + " selected " + selected.name + "!");
-				//Run a script on the button that says you've selected it so it changes its display
-				if (selected.GetComponent<characterButtonScript> () != null &&
-					!selected.GetComponent<characterButtonScript> ().selected) //If this character hasn't already been selected **
-				{ 
-					if (playerScript.getCharacterName () != null) {
-						Debug.Log ("Player " + playerScript.getPlayerNumber() + " has already selected " + playerScript.getCharacterName () + ". You can't select "+ selected.name +".");
-						return;
-					}
-					else 
-					{
-						Debug.Log ("Assigning " + selected.name + " to Player " + rewiredPlayer.id + ".");
-						string name = selected.GetComponent<characterButtonScript> ().choose (gameObject.GetComponent<Collider2D> ());
-						playerScript.setCharacterName (name);
-					}
-				} 
-				//If it wasn't a character button, it must be the LoadScene button
-				else if (selected.GetComponent<LoadScene> () != null)
-					selected.GetComponent<LoadScene> ().loadScene();
-			}
-		}
+        //Check if cursor is selecting a button. If this collider is colliding with another, get that
+        //collider's button, assign its name to this character, and set that button to "selected."
+        if (rewiredPlayer.GetButton("Select"))
+        {
+            //If the player has already selected someone, return.
 
-		//TODO: add deselection button
-	}
 
-	private void FixedUpdate()
+            Collider2D[] results = new Collider2D[1];
+            ContactFilter2D contactFilter = new ContactFilter2D();
+            contactFilter.NoFilter();
+            int numColliding = myCollider.OverlapCollider(contactFilter, results);
+            if (numColliding > 0)
+            {
+                GameObject selected = (results[0]).gameObject;
+                Debug.Log("Player " + playerScript.getPlayerNumber() + " selected " + selected.name + "!");
+                //Run a script on the button that says you've selected it so it changes its display
+                if (selected.GetComponent<characterButtonScript>() != null &&
+                    !selected.GetComponent<characterButtonScript>().selected) //If this character hasn't already been selected **
+                {
+                    // We want the player to be able to switch characters after they've already selected, so see if they already have a name assigned.
+                    // We should probably offer a "back" button to undo character select. Otherwise, nobody could change their choice if they decided
+                    // that they wanted a different character
+                    if (playerScript.getCharacterName() != "")
+                    {
+                        GameObject cursorthang = GameObject.Find(playerScript.getCharacterName());
+
+                        if (!cursorthang)
+                        {
+                            Debug.Log("uhhh.... what? Name must have been changed.");
+                        }
+
+                        // Set our old selection back to normal, and assign our player to the new selection
+                        cursorthang.GetComponent<characterButtonScript>().selected = false;
+                        cursorthang.GetComponent<SpriteRenderer>().color = Color.white;
+
+                        Debug.Log("Assigning " + selected.name + " to Player " + rewiredPlayer.id + ".");
+                        string name = selected.GetComponent<characterButtonScript>().choose(gameObject.GetComponent<Collider2D>());
+                        playerScript.setCharacterName(name);
+                    }
+                }
+                //If it wasn't a character button, it must be the LoadScene button
+                else if (selected.GetComponent<LoadScene>() != null)
+                    selected.GetComponent<LoadScene>().loadScene();
+            }
+        }
+
+        //TODO: add deselection button
+    }
+
+    private void FixedUpdate()
 	{
 		UpdatePlayerMovement();
 	}
