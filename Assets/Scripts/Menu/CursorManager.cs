@@ -12,7 +12,7 @@ public class CursorManager : MonoBehaviour {
 
 	public static CursorManager instance;
 
-	private List<int> assignedControllers = new List<int>();
+	private List<Rewired.Player> assignedPlayers = new List<Rewired.Player>();
 	public GameObject cursorPrefab;
 
 	private void Awake()
@@ -40,18 +40,22 @@ public class CursorManager : MonoBehaviour {
 				AddPlayer(i);                
 			}
 		}
-		//TODO: Enable 'continue' if all players have selected a character?
+		//TODO: Enable 'continue' once everyone who has joined has selected a character.
 	}
 
 	// Add a controller to the list of initialized controls
 	private void AddPlayer(int playerID)
 	{
+        Debug.Log("EYYYYYYYYYYYYYYYYYYYYYYY");
+        assignedPlayers.Add(ReInput.players.GetPlayer(playerID));
 		GameObject pFab = Instantiate(cursorPrefab);
 		CursorControl pControl = pFab.GetComponent<CursorControl>();
 		pControl.rewiredPlayer = ReInput.players.GetPlayer(playerID);
 		pControl.rewiredPlayer.isPlaying = true;
+        pControl.GetComponent<Player>().playerNumber = assignedPlayers.Count - 1;
+        pControl.GetComponent<SpriteRenderer>().color = pControl.GetComponent<Player>().getColor();
 
-		//camera tracking removed
-	}
+        //camera tracking removed
+    }
 
 }

@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
 		loadPlayerData ();
 		if (!String.IsNullOrEmpty(localPlayerData.characterName)) //If they have a character assigned
 		{
-			Debug.Log ("Player "+playerNumber+" loading data of character "+localPlayerData.characterName);
+			Debug.Log ("Player "+ playerNumber +" loading data of character "+localPlayerData.characterName);
 			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
 			myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
 		}
@@ -64,13 +64,12 @@ public class Player : MonoBehaviour {
 	//Save info with the GlobalControl object so that it can be reloaded in the next scene
 	public void savePlayerData()
 	{
-		Debug.Log ("Player "+playerNumber+" saving data of character "+localPlayerData.characterName);
+		Debug.Log ("Player " + playerNumber + " saving data of character " + localPlayerData.characterName);
 		GlobalControl.instance.saveData(playerNumber, localPlayerData);
 	}
 
 	public void loadPlayerData()
 	{
-		//GlobalControl global = (GlobalControl)FindObjectOfType (GlobalControl);
 		localPlayerData = GlobalControl.instance.loadData(playerNumber);
 	}
 

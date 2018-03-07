@@ -42,11 +42,6 @@ public class CursorControl : MonoBehaviour {
 		myTransform = GetComponent<Transform>();
 		myCollider = GetComponent<Collider2D>();
 
-		//Every controller should load player info on start?
-		//playerScript = this.gameObject.GetComponent<Player>();
-		playerScript.setPlayerNumber(rewiredPlayer.id);
-		GetComponent<SpriteRenderer>().color = playerScript.getColor();
-
 		//Setup the cameraRect bounds.
 		Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		Vector3 bottomLeft = camera.ScreenToWorldPoint(Vector3.zero);
