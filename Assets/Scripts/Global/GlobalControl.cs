@@ -35,22 +35,16 @@ public class GlobalControl : MonoBehaviour {
 		
 
 	//Call this method to save your data as a player
-	public void saveData(PlayerInfo data)
+	public void saveData(int playerNumber, PlayerInfo data)
 	{
-		instance.savedPlayerData[data.playerNumber] = data;
+		instance.savedPlayerData[playerNumber] = data;
+		Debug.Log ("Saved: "+toString());
 	}
 
 	//Players call this method to load data when the object is created initially in each new scene.
 	public PlayerInfo loadData(int playerNumber)
 	{
-		string toPrint = "GlobalControl contains:\n";
-		for(int i=0; i<savedPlayerData.Length; i++)
-		{
-			if(savedPlayerData[i]!=null)
-				toPrint = toPrint + savedPlayerData[i].toString() +"\n";
-			else toPrint = toPrint + "null\n";
-		}
-		Debug.Log (toPrint);
+		Debug.Log ("Loaded: "+toString());
 
 		if (savedPlayerData [playerNumber] == null) //If this player has not been initialized before, initialize it.
 			savedPlayerData [playerNumber] = new PlayerInfo ();
@@ -61,6 +55,18 @@ public class GlobalControl : MonoBehaviour {
 	public bool hasPlayer(int playerNumber)
 	{
 		return savedPlayerData [playerNumber] != null;
+	}
+
+	public string toString()
+	{
+		string toPrint = "GlobalControl contains:\n";
+		for(int i=0; i<savedPlayerData.Length; i++)
+		{
+			if(savedPlayerData[i]!=null)
+				toPrint = toPrint + savedPlayerData[i].toString() +"\n";
+			else toPrint = toPrint + "null\n";
+		}
+		return toPrint;
 	}
 		
 }

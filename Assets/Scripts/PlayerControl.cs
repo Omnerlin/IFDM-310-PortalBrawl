@@ -29,13 +29,12 @@ public class PlayerControl : MonoBehaviour {
         // Just set the player to the zero index
         player = Rewired.ReInput.players.GetPlayer(0);
 		playerInfo = gameObject.AddComponent<Player>();
+		playerInfo.setPlayerNumber (player.id);
     }
 
     // Use this for initialization
     void Start () 
 	{
-		playerInfo = gameObject.GetComponent<Player>();
-		playerInfo.setPlayerNumber (player.id);
         rb2d = GetComponent<Rigidbody2D>();
 	}
 
