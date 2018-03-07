@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Trying to load players");
         // This will be a singleton
         if(instance != null)
         {
@@ -25,23 +26,32 @@ public class PlayerManager : MonoBehaviour
             instance = this;
         }
 
-		//Check all of the RewiredPlayers. If they selected a character and have saved data, make them an instance
-		//of the player by calling AddPlayer
-		IList <Rewired.Player> players = ReInput.players.GetPlayers(false);
-		for(int i = 0; i < players.Count; i++)
-		{
-			// Assign the player 
-			if(players[i].isPlaying && GlobalControl.instance.hasPlayer(players[i].id))
-			{
-				AddPlayer(i);                
-			}
-		}
-    }
+        //Check all of the RewiredPlayers. If they selected a character and have saved data, make them an instance
+        //of the player by calling AddPlayer
 
-	private void Start()
-	{
-		
-	}
+        //IList<Rewired.Player> players = ReInput.players.GetPlayers(false);
+        //for (int i = 0; i < players.Count; i++)
+        //{
+        //    // Assign the player 
+        //    if (players[i].isPlaying && GlobalControl.instance.hasPlayer(players[i].id))
+        //    {
+        //        AddPlayer(i);
+        //    }
+        //}
+
+        // Instaniate characters based 
+        foreach(PlayerInfo info in GlobalControl.instance.savedPlayerData)
+        {
+            if (info != null && !string.IsNullOrEmpty(info.characterName))
+            {
+                GameObject go = Instantiate(playerPrefab);
+               
+                go.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(info.characterName);
+                go.GetComponent<Player>().playerNumber = info.playerNumber;
+                go.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(info.controllerID);
+            }
+        }
+    }
 
     private void Update()
     {

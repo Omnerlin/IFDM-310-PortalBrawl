@@ -13,12 +13,12 @@ public class Player : MonoBehaviour {
 
     public Transform startPosition;
 	public int playerNumber; //Numbers have colors associated with them.
+    [HideInInspector] public int controllerID;
 
 	private PlayerInfo localPlayerData = new PlayerInfo();
 
 	//The player's color is at the index of the playerNumber
 	public static Color[] playerColors = {Color.blue, Color.magenta, Color.green, Color.yellow, Color.black};
-	//public static string pathToLoadSprites = "Assets/Sprites/Placeholder/Characters/Resources/";
 
 	public Color getColor()
 	{
@@ -29,20 +29,16 @@ public class Player : MonoBehaviour {
 	void Awake () 
 	{
 		//setPlayerNumber (playerNumber);
-	}
-	
-	// Update is called once per frame
-	void Start () 
-	{
 		loadPlayerData ();
 		if (!String.IsNullOrEmpty(localPlayerData.characterName)) //If they have a character assigned
 		{
-			Debug.Log ("Player "+ playerNumber +" loading data of character "+localPlayerData.characterName);
+			Debug.Log ("Player " + playerNumber +" loading data of character " + localPlayerData.characterName);
 			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
 			myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
 		}
 		localPlayerData.playerNumber = playerNumber;
 	}
+	
 
 	void OnDestroy()
 	{
@@ -55,6 +51,12 @@ public class Player : MonoBehaviour {
 
 	public int getPlayerNumber(){ return playerNumber; }
 
+    public void SetControllerID(int id)
+    {
+        controllerID = id;
+        localPlayerData.controllerID = id;
+    }
+
 	public void setPlayerNumber(int num)
 	{
 		playerNumber = num;
@@ -64,7 +66,7 @@ public class Player : MonoBehaviour {
 	//Save info with the GlobalControl object so that it can be reloaded in the next scene
 	public void savePlayerData()
 	{
-		Debug.Log ("Player " + playerNumber + " saving data of character " + localPlayerData.characterName);
+		Debug.Log ("Player " + playerNumber + " saving data of character " + localPlayerData.characterName + " with controller ID " + controllerID);
 		GlobalControl.instance.saveData(playerNumber, localPlayerData);
 	}
 

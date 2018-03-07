@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour {
 
     // Rewired player object
     public Rewired.Player player { get; set; }
-	public Player playerInfo;
+	public Player playerScript;
 
     // Stats that will affect the player movespeed
     public float maxMoveSpeed;
@@ -27,9 +27,9 @@ public class PlayerControl : MonoBehaviour {
     private void Awake()
     {
         // Just set the player to the zero index
-        player = Rewired.ReInput.players.GetPlayer(0);
-		playerInfo = gameObject.AddComponent<Player>();
-		playerInfo.setPlayerNumber (player.id);
+        // player = Rewired.ReInput.players.GetPlayer(0);
+		playerScript = gameObject.AddComponent<Player>();
+		// playerInfo.setPlayerNumber (player.id);
     }
 
     // Use this for initialization

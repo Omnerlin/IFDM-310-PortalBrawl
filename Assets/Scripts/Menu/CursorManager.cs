@@ -46,13 +46,21 @@ public class CursorManager : MonoBehaviour {
 	// Add a controller to the list of initialized controls
 	private void AddPlayer(int playerID)
 	{
-        Debug.Log("EYYYYYYYYYYYYYYYYYYYYYYY");
+        // Add the player to the array of assigned players. This is mainly just to make sure that the player number is set based on 
+        // the order of who pressed start. The player's number should be treated separately from the player's controller ID.
         assignedPlayers.Add(ReInput.players.GetPlayer(playerID));
+
+
 		GameObject pFab = Instantiate(cursorPrefab);
 		CursorControl pControl = pFab.GetComponent<CursorControl>();
 		pControl.rewiredPlayer = ReInput.players.GetPlayer(playerID);
+
+        // Set the variables for the cursor control here. We could possibly call a public method called "Init"
+        // on the cursor controll script to initialize all these values. This shouldn't be done in the script because 
+        // the start and awake methods will override what we are trying to set here.
 		pControl.rewiredPlayer.isPlaying = true;
-        pControl.GetComponent<Player>().playerNumber = assignedPlayers.Count - 1;
+        pControl.GetComponent<Player>().setPlayerNumber(assignedPlayers.Count - 1);
+        pControl.GetComponent<Player>().SetControllerID(playerID);
         pControl.GetComponent<SpriteRenderer>().color = pControl.GetComponent<Player>().getColor();
 
         //camera tracking removed

@@ -88,20 +88,22 @@ public class CursorControl : MonoBehaviour {
                     }
                     if (playerScript.getCharacterName() != "")
                     {
+                        // Set our old selection back to normal, and assign our player to the new selection
                         GameObject oldSelection = GameObject.Find(playerScript.getCharacterName());
 
+                        // Make sure that we can find our old selection based off of name.... If we can't
+                        // something went wrong. Maybe changed the name of the selection box or the player.
                         if (!oldSelection)
                         {
                             Debug.Log("uhhh.... what? Name must have been changed.");
                             return;
                         }
 
-                        // Set our old selection back to normal, and assign our player to the new selection
                         oldSelection.GetComponent<characterButtonScript>().selected = false;
                         oldSelection.GetComponent<SpriteRenderer>().color = Color.white;
                     }
 
-                    Debug.Log("Assigning " + selected.name + " to Player " + rewiredPlayer.id + ".");
+                    Debug.Log("Assigning " + selected.name + " to Player " + playerScript.getPlayerNumber() + ".");
                     string name = selected.name;
                     playerScript.setCharacterName(name);
                     selected.GetComponent<SpriteRenderer>().color = playerScript.getColor();
