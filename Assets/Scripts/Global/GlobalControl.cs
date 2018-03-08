@@ -25,15 +25,10 @@ public class GlobalControl : MonoBehaviour {
 		} 
 		else if (instance != this)	Destroy(gameObject);
 	}
-
-	void Start()
-	{
-		
-	}
 		
 
 	//Call this method to save your data as a player
-	public void saveData(int playerNumber, PlayerInfo data)
+	public void SaveData(int playerNumber, PlayerInfo data)
 	{
 		instance.savedPlayerData[playerNumber] = data;
 		Debug.Log ("Saved: "+toString());
@@ -50,7 +45,7 @@ public class GlobalControl : MonoBehaviour {
 	}
 
 	//Returns true if the player has saved any data.
-	public bool hasPlayer(int playerNumber)
+	public bool HasPlayer(int playerNumber)
 	{
 		return savedPlayerData [playerNumber] != null;
 	}

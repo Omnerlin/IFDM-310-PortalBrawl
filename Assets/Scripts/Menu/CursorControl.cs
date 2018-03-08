@@ -10,30 +10,74 @@ using Rewired;
  * and responds to the player's button presses.
  * If the cursor is over another box with a collider, it will assign
  * that collider's name to playerInfo.characterName. */
+
+// Alex's notes:
+// Sorry for kinda making things all different and stuff. 
+// I know that it's weird that we're saving data from the cursors, but
+// I think that it should be fine since we're only using these cursors for 
+// chararcter select. I think Player scripts should just be put on players
+// to avoid having to manage two scripts conflicting with each other, ya know?
+
+// We can just have the player data be saved once the start button is pressed since we 
+// to the next scene we're going to the gameplay state from there.
+
+// These seems reasonable since we're getting all of our input and stuff from this object anyways.
+// I think it'll be easier to manage just having interactions between this, cursormanager and the global control.
 public class CursorControl : MonoBehaviour {
+
+    // Let's just store the player's information here.
+    [HideInInspector] public PlayerInfo info = new PlayerInfo();
 
 	// Rewired player object
 	public Rewired.Player rewiredPlayer { get; set; }
 
-	private Player playerScript;
-
 	// Stats that will affect the player movespeed
 	public float movementScale;
-
-	// Number of the player's controller (Used to check for separate input)
-	public int controllerNumber { get; set; }
 
 	private Transform myTransform;
 	private Collider2D myCollider;
 
-	//Used to constrain the cursor's movement to inside the camera
-	private Rect cameraRect;
+    //Used to constrain the cursor's movement to inside the camera
+    private Rect cameraRect;
+
+    // Color that we're going to use for the player
+    public Color playerColor;
+
+    // Variables for accessing the data that we want to save for this player.
+    public int playerNumber
+    {
+        get { return info.playerNumber; }
+        set { info.playerNumber = value; }
+    }
+
+    public int controllerID
+    {
+        get { return info.controllerID; }
+        set { info.controllerID = value; }
+    }
+
+    public int health
+    {
+        get { return info.health; }
+        set { info.health = value; }
+    }
+
+    public string characterName
+    {
+        get { return info.characterName; }
+        set { info.characterName = value; }
+    }
+
+
+    public void SaveData()
+    {
+        GlobalControl.instance.SaveData(info.playerNumber, info);
+    }
 
 	private void Awake()
 	{
 		// Just set the player to the zero index
 		rewiredPlayer = Rewired.ReInput.players.GetPlayer(0);
-		playerScript = gameObject.AddComponent<Player>();
 	}
 
 	// Use this for initialization
@@ -73,23 +117,23 @@ public class CursorControl : MonoBehaviour {
             if (numColliding > 0)
             {
                 GameObject selected = (results[0]).gameObject;
-                Debug.Log("Player " + playerScript.getPlayerNumber() + " tried selecting " + selected.name + "!");
+                Debug.Log("Player " + info.playerNumber + " tried selecting " + selected.name + "!");
                 //Run a script on the button that says you've selected it so it changes its display
                 if (selected.GetComponent<characterButtonScript>() != null &&
                     !selected.GetComponent<characterButtonScript>().selected) //If this character hasn't already been selected **
                 {
-                    // We want the player to be able to switch characters after they've already selected, so see if they already have a name assigned.
+                    // TODO: We want the player to be able to switch characters after they've already selected, so see if they already have a name assigned.
                     // We should probably offer a "back" button to undo character select. Otherwise, nobody could change their character if everyone
                     // has picked one, ya see?
-                    if(playerScript.getCharacterName() == selected.name)
+                    if(characterName == selected.name)
                     {
-                        Debug.Log("Player " + playerScript.getPlayerNumber() + "already selected " + selected.name);
+                        Debug.Log("Player " + playerNumber + "already selected " + selected.name);
                         return;
                     }
-                    if (playerScript.getCharacterName() != "")
+                    if (characterName != "")
                     {
                         // Set our old selection back to normal, and assign our player to the new selection
-                        GameObject oldSelection = GameObject.Find(playerScript.getCharacterName());
+                        GameObject oldSelection = GameObject.Find(characterName);
 
                         // Make sure that we can find our old selection based off of name.... If we can't
                         // something went wrong. Maybe changed the name of the selection box or the player.
@@ -103,19 +147,26 @@ public class CursorControl : MonoBehaviour {
                         oldSelection.GetComponent<SpriteRenderer>().color = Color.white;
                     }
 
-                    Debug.Log("Assigning " + selected.name + " to Player " + playerScript.getPlayerNumber() + ".");
+                    Debug.Log("Assigning " + selected.name + " to Player " + playerNumber + ".");
                     string name = selected.name;
-                    playerScript.setCharacterName(name);
-                    selected.GetComponent<SpriteRenderer>().color = playerScript.getColor();
+                    characterName = name;
+                    selected.GetComponent<SpriteRenderer>().color = playerColor;
                     selected.GetComponent<characterButtonScript>().selected = true;
                 }
                 //If it wasn't a character button, it must be the LoadScene button
                 else if (selected.GetComponent<LoadScene>() != null)
+                {
                     selected.GetComponent<LoadScene>().loadScene();
+                }
             }
         }
 
         //TODO: add deselection button
+    }
+
+    private void OnDestroy()
+    {
+        SaveData();
     }
 
     private void FixedUpdate()

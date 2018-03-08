@@ -67,7 +67,7 @@ public class Player : MonoBehaviour {
 	public void savePlayerData()
 	{
 		Debug.Log ("Player " + playerNumber + " saving data of character " + localPlayerData.characterName + " with controller ID " + controllerID);
-		GlobalControl.instance.saveData(playerNumber, localPlayerData);
+		GlobalControl.instance.SaveData(playerNumber, localPlayerData);
 	}
 
 	public void loadPlayerData()
