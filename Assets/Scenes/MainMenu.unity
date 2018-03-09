@@ -1117,6 +1117,7 @@ GameObject:
   - component: {fileID: 627132073}
   - component: {fileID: 627132072}
   - component: {fileID: 627132071}
+  - component: {fileID: 627132075}
   m_Layer: 5
   m_Name: FancyTransitionCanvas
   m_TagString: Untagged
@@ -1152,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -1179,7 +1180,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &627132074
 RectTransform:
@@ -1200,6 +1201,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &627132075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627132070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a757f53be20a684a929a6c1510650fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewiredManager: {fileID: 97773056}
+  disableInputWhileTransitioning: 1
+  swipeImage: {fileID: 1635443301}
+  whiteFadeImage: {fileID: 0}
 --- !u!1 &884640276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,7 +1249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: 164}
+  m_AnchoredPosition: {x: -0.00001335142, y: 75.77402}
   m_SizeDelta: {x: 455.51, y: 85.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &884640278
@@ -1337,10 +1353,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 480, y: 270}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1531,8 +1547,9 @@ GameObject:
   - component: {fileID: 1635443300}
   - component: {fileID: 1635443302}
   - component: {fileID: 1635443301}
+  - component: {fileID: 1635443303}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Swipe Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1553,9 +1570,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00001049, y: 0}
+  m_AnchoredPosition: {x: -766, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1635443301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1589,3 +1606,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1635443299}
+--- !u!95 &1635443303
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1635443299}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31fb5b841ecba4040b18fb1c36153b8d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
