@@ -15,10 +15,14 @@ public class MainMenu : MonoBehaviour {
 
     private int totalOptions;
 
-    public void Awake()
+    private void Awake()
     {
         player = ReInput.players.GetPlayer(4);
         totalOptions = menuButtons.Count - 1;
+    }
+
+    private void Start()
+    {
         menuButtons[index].Select();
     }
 
