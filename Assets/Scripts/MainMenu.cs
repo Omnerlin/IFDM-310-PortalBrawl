@@ -80,7 +80,7 @@ public class MainMenu : MonoBehaviour {
         {
             if(index == 0)
             {
-                SceneManager.LoadScene("CharacterSelection");
+                SceneTransitionManager.Instance.TransitionToScene("CharacterSelection", SceneTransitionManager.AnimationType.forward);
             }
             if(index == 1)
             {

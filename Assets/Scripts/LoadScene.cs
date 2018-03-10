@@ -13,9 +13,9 @@ public class LoadScene : MonoBehaviour {
 	{
 		if (!hasBeenPressed) 
 		{
-			//TODO: Change to actual scene
+            //TODO: Change to actual scene
 
-			SceneManager.LoadScene (sceneToLoad);
+            SceneTransitionManager.Instance.TransitionToScene("TestScene", SceneTransitionManager.AnimationType.forward);
 			hasBeenPressed = true;
 		}
 	}
