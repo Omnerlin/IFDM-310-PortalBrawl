@@ -3,48 +3,23 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using Rewired;
-
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
     public int index = 0;
-    public int totalOptions;
     public float yOffset;
 
     public Rewired.Player player { get; set;}
 
-    //public bool isStart;
+    public List<Button> menuButtons;
+
+    private int totalOptions;
 
     public void Awake()
     {
         player = ReInput.players.GetPlayer(4);
-
-    }
-
-    private void OnMouseUp()
-
-    {
-
-        /*if (isStart)
-
-        {
-
-            SceneManager.LoadScene("TestScene");
-
-        }
-
-        if (!isStart)
-
-        {
-
-            Application.Quit();
-
-        }*/
-
-    }
-
-    // Use this for initialization
-    void Start ()
-    {
+        totalOptions = menuButtons.Count - 1;
+        menuButtons[index].Select();
     }
 
     void FixedUpdate()
@@ -55,45 +30,32 @@ public class MainMenu : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (player.GetButtonDown("DPadDown"))
+        if (player.GetButtonDown("DPadUp"))
         {
-            if (index <= (totalOptions - 1))
+            if (index > 0)
             {
-                index++;
+                index--;
+                menuButtons[index].Select();
                 Vector2 postion = transform.position;
-                postion.y -= yOffset;
+                postion.y += yOffset;
                 transform.position = postion;
             }
         }
-        if (player.GetButtonDown("DPadUp"))
+        if (player.GetButtonDown("DPadDown"))
         {
-            if ((index > 0))
+            if ((index < totalOptions))
             {
-                index--;
+                index++;
+                menuButtons[index].Select();
                 Vector2 postion = transform.position;
-                postion.y += yOffset;
+                postion.y -= yOffset;
                 transform.position = postion;
             }
         }
 
         if (player.GetButton("Start"))
         {
-            if(index == 0)
-            {
-                SceneTransitionManager.Instance.TransitionToScene("CharacterSelection", SceneTransitionManager.AnimationType.forward);
-            }
-            if(index == 1)
-            {
-                Debug.Log("Load game was selected, but is not available yet");
-            }
-            if (index == 2)
-            {
-                Debug.Log("Options were selected, but is not available yet");
-            }
-            if (index == 3)
-            {
-                Application.Quit();
-            }
+            menuButtons[index].onClick.Invoke();
         }
     }
 }
