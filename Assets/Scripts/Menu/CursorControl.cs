@@ -107,9 +107,6 @@ public class CursorControl : MonoBehaviour {
         //collider's button, assign its name to this character, and set that button to "selected."
         if (rewiredPlayer.GetButtonDown("Select"))
         {
-            //If the player has already selected someone, return.
-
-
             Collider2D[] results = new Collider2D[1];
             ContactFilter2D contactFilter = new ContactFilter2D();
             contactFilter.NoFilter();
@@ -143,15 +140,12 @@ public class CursorControl : MonoBehaviour {
                             return;
                         }
 
-                        oldSelection.GetComponent<characterButtonScript>().selected = false;
-                        oldSelection.GetComponent<SpriteRenderer>().color = Color.white;
+						oldSelection.GetComponent<characterButtonScript>().deselect();
                     }
 
                     Debug.Log("Assigning " + selected.name + " to Player " + playerNumber + ".");
-                    string name = selected.name;
-                    characterName = name;
-                    selected.GetComponent<SpriteRenderer>().color = playerColor;
-                    selected.GetComponent<characterButtonScript>().selected = true;
+					characterName = selected.name;
+					selected.GetComponent<characterButtonScript>().select(myCollider);
                 }
                 //If it wasn't a character button, it must be the LoadScene button
                 else if (selected.GetComponent<LoadScene>() != null)
@@ -161,7 +155,13 @@ public class CursorControl : MonoBehaviour {
             }
         }
 
-        //TODO: add deselection button
+		if (rewiredPlayer.GetButtonDown ("Back")) 
+		{
+			GameObject oldSelection = GameObject.Find(characterName);
+			oldSelection.GetComponent<characterButtonScript>().deselect();
+			characterName = "";
+		}
+
     }
 
     private void OnDestroy()
