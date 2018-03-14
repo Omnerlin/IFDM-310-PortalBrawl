@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: 67a65081ed050bd42a8b9ceaf7bc8366
-timeCreated: 1518215716
+timeCreated: 1521058570
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - sceneTransitionCanvasPrefab: {fileID: 1416777117688130, guid: b0370c8c7d100ba41bccaee85b0fbb18,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

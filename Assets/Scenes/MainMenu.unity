@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 456510960}
   - component: {fileID: 456510959}
   - component: {fileID: 456510958}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BlueArrow
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
-  yOffset: 0.9
+  yOffset: 1.8
   menuButtons:
   - {fileID: 1628001138}
   - {fileID: 1351752736}
@@ -1174,7 +1174,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 456510956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.91, y: -1.25, z: 0}
+  m_LocalPosition: {x: -3.64, y: -1.47, z: 0}
   m_LocalScale: {x: 0.098436356, y: 0.045159534, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1243,8 +1243,8 @@ Canvas:
   m_GameObject: {fileID: 1119799669}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 382763005}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1690,6 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a65081ed050bd42a8b9ceaf7bc8366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneTransitionCanvasPrefab: {fileID: 0}
   sceneToLoad: CharacterSelection
   hasBeenPressed: 0
 --- !u!1 &1656691879
