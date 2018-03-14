@@ -114,8 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  timeBetweenMove: 2
-  timeToMove: 2
 --- !u!212 &212293367873168606
 SpriteRenderer:
   m_ObjectHideFlags: 1

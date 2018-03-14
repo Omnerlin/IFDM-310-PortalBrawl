@@ -2002,6 +2002,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraFollowGroup: {fileID: 0}
+  anixPrefab: {fileID: 1812097893898530, guid: 25818d25a923d9f468ffe6e56ddf5f2d, type: 2}
+  dennisPrefab: {fileID: 1812097893898530, guid: cb74e43a405e05d439665603e7aac72c,
+    type: 2}
+  revdiocPrefab: {fileID: 1812097893898530, guid: 3b2cbee0fe804ab4bb19679130710a0b,
+    type: 2}
+  zerandiPrefab: {fileID: 1812097893898530, guid: 5342938b5bc11964680164cae7084d68,
+    type: 2}
   playerPrefab: {fileID: 1812097893898530, guid: 78b46b308f9a2bd41aa88964d0ceca1d,
     type: 2}
 --- !u!1 &1210838321

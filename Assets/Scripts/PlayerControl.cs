@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 
-public class PlayerControl : MonoBehaviour {
+public class PlayerControl : MonoBehaviour
+{
 
     // Rewired player object
     public Rewired.Player player { get; set; }
-	public Player playerScript;
+    public Player playerInfo;
 
     // Stats that will affect the player movespeed
     public float maxMoveSpeed;
@@ -20,23 +21,22 @@ public class PlayerControl : MonoBehaviour {
     public GameObject aimReticle;
 
     // Player's rigidbody that will be used for setting velocity
-    private Rigidbody2D rb2d;
-
     public GunController theGun;
+    private Rigidbody2D rb2d;
 
     private void Awake()
     {
         // Just set the player to the zero index
-        // player = Rewired.ReInput.players.GetPlayer(0);
-		playerScript = gameObject.AddComponent<Player>();
-		// playerInfo.setPlayerNumber (player.id);
+        player = Rewired.ReInput.players.GetPlayer(0);
     }
 
     // Use this for initialization
-    void Start () 
-	{
+    void Start()
+    {
         rb2d = GetComponent<Rigidbody2D>();
-	}
+        playerInfo = gameObject.GetComponent<Player>();
+        playerInfo.setPlayerNumber(player.id);
+    }
 
     // Update is called once per frame
     void Update()
@@ -45,6 +45,7 @@ public class PlayerControl : MonoBehaviour {
         if (player.GetButton("RightBumper"))
         {
             theGun.isFiring = true;
+            gameObject.GetComponent<Animator>().SetTrigger("Attack");
         }
         else
         {
@@ -66,7 +67,7 @@ public class PlayerControl : MonoBehaviour {
         }
 
         // If using keyboard, get the mouse position for aiming, otherwise use controller axis
-        if(player.controllers.hasKeyboard)
+        if (player.controllers.hasKeyboard)
         {
             // Get the position of the mouse in screen coordinates, and convert it to world coordinates
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -78,17 +79,17 @@ public class PlayerControl : MonoBehaviour {
         else
         {
             // Get reticle rotation based on controller analog
-            Vector2 axis = new Vector2(player.GetAxis("Rotate Horizontal"), 
+            Vector2 axis = new Vector2(player.GetAxis("Rotate Horizontal"),
                 player.GetAxis("Rotate Vertical"));
 
-            if(Mathf.Abs(axis.x) > 0.3 || Mathf.Abs(axis.y) > 0.3)
+            if (Mathf.Abs(axis.x) > 0.3 || Mathf.Abs(axis.y) > 0.3)
             {
                 Vector2 totalPos = new Vector2(this.gameObject.transform.position.x + axis.x, this.gameObject.transform.position.y + axis.y);
 
-                float aimAngle = Mathf.Atan2((this.gameObject.transform.position.y - totalPos.y), 
+                float aimAngle = Mathf.Atan2((this.gameObject.transform.position.y - totalPos.y),
                     (this.gameObject.transform.position.x - totalPos.x)) * Mathf.Rad2Deg;
 
-                
+
                 aimReticle.transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
             }
         }
@@ -104,13 +105,39 @@ public class PlayerControl : MonoBehaviour {
 
         // Update the player's movespeed based on input axis (-1 to 1) and normalize it (for diagonal movement)
         Vector2 moveInput = new Vector2(player.GetAxis("Move Horizontal"), player.GetAxis("Move Vertical"));
-        if(moveInput.magnitude > 1)
+        if (moveInput.magnitude > 1)
         {
             moveInput = moveInput.normalized;
         }
 
+        Animator animator = GetComponent<Animator>();
+
+        if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0)
+        {
+            animator.SetFloat("MoveX", moveInput.x);
+            animator.SetFloat("MoveY", moveInput.y);
+
+            if (moveInput.x < 0)
+            {
+                animator.SetFloat("DirectionX", -1);
+            }
+            else if (moveInput.x > 0)
+            {
+                animator.SetFloat("DirectionX", 1);
+            }
+
+
+            animator.SetBool("Walking", true);
+        }
+        else
+        {
+            animator.SetBool("Walking", false);
+        }
+
+
         // Immediately set the player's velocity based on the normalized input
         rb2d.velocity = new Vector2(maxMoveSpeed * moveInput.x, maxMoveSpeed * moveInput.y);
+
 
 
         // These if statements aren't really necessary at this point (Since we're using normalized input)

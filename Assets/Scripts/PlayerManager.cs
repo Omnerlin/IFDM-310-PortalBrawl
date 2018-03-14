@@ -10,6 +10,11 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
     public GameObject cameraFollowGroup;
 
+    public GameObject anixPrefab;
+    public GameObject dennisPrefab;
+    public GameObject revdiocPrefab;
+    public GameObject zerandiPrefab;
+
     //private List<int> assignedControllers = new List<int>();
     public GameObject playerPrefab;
 
@@ -26,29 +31,39 @@ public class PlayerManager : MonoBehaviour
             instance = this;
         }
 
-        //Check all of the RewiredPlayers. If they selected a character and have saved data, make them an instance
-        //of the player by calling AddPlayer
-
-        //IList<Rewired.Player> players = ReInput.players.GetPlayers(false);
-        //for (int i = 0; i < players.Count; i++)
-        //{
-        //    // Assign the player 
-        //    if (players[i].isPlaying && GlobalControl.instance.hasPlayer(players[i].id))
-        //    {
-        //        AddPlayer(i);
-        //    }
-        //}
-
-        // Instaniate characters based 
+        // Instaniate characters based on their character name
         foreach(PlayerInfo info in GlobalControl.instance.savedPlayerData)
         {
             if (info != null && !string.IsNullOrEmpty(info.characterName))
             {
-                GameObject go = Instantiate(playerPrefab);
-               
-                go.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(info.characterName);
-                go.GetComponent<Player>().playerNumber = info.playerNumber;
-                go.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(info.controllerID);
+                // Run through the list of character names and instaniate the prefab that matches
+                // Doing this since we only have 4 characters. Otherwise we could do something more generic 
+                GameObject playerObject = null;
+                switch(info.characterName)
+                {
+                    case "Anix":
+                        playerObject = Instantiate(anixPrefab);
+                        break;
+                    case "Dennis":
+                        playerObject = Instantiate(dennisPrefab);
+                        break;
+                    case "Revdioc":
+                        playerObject = Instantiate(revdiocPrefab);
+                        break;
+                    case "Zerandi":
+                        playerObject = Instantiate(zerandiPrefab);
+                        break;
+                }
+
+                // Return with an error if the player name doesn't match any of the cases above
+                if(!playerObject)
+                {
+                    Debug.LogError("Player object name could not find a prefab to spawn!");
+                    return;
+                }
+
+                playerObject.GetComponent<Player>().playerNumber = info.playerNumber;
+                playerObject.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(info.controllerID);
             }
         }
     }

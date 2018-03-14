@@ -72,9 +72,10 @@ GameObject:
   - component: {fileID: 50452318982938686}
   - component: {fileID: 210725938293918806}
   - component: {fileID: 95855530838369530}
-  - component: {fileID: 114811174376742958}
+  - component: {fileID: 114059245627474414}
+  - component: {fileID: 114173298127511458}
   m_Layer: 0
-  m_Name: MeleePlayer
+  m_Name: AnixPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1812097893898530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7008963, y: -0.4427064, z: -0.021349125}
+  m_LocalPosition: {x: 3.7399666, y: -2.0345805, z: -0.021349125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4672206455157204}
@@ -189,7 +190,7 @@ Animator:
   m_GameObject: {fileID: 1812097893898530}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9863fc90d26442148918fec217f88b77, type: 2}
+  m_Controller: {fileID: 9100000, guid: 58facd5a584c71d448125ab64e2272ac, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -197,6 +198,36 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114059245627474414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812097893898530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63639969e2f70643a83edf2b9a69e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {fileID: 0}
+  playerNumber: 0
+  controllerID: 0
+--- !u!114 &114173298127511458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812097893898530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f9acbf8c75ccb4aabc60979e6aa520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInfo: {fileID: 0}
+  maxMoveSpeed: 40
+  moveForce: 0
+  aimReticle: {fileID: 1514113879761304}
+  theGun: {fileID: 114631857353290316}
 --- !u!114 &114575553322133488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,22 +257,6 @@ MonoBehaviour:
   bulletSpeed: 10
   timeBetweenShots: 0.25
   firePoint: {fileID: 4341796621201270}
---- !u!114 &114811174376742958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1812097893898530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7fa17667a30fbc4485ad8091f9aaf9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInfo: {fileID: 0}
-  maxMoveSpeed: 40
-  moveForce: 0
-  aimReticle: {fileID: 1514113879761304}
-  theGun: {fileID: 114631857353290316}
 --- !u!210 &210725938293918806
 SortingGroup:
   m_ObjectHideFlags: 1
@@ -338,5 +353,5 @@ SpriteRenderer:
   m_Size: {x: 8.46, y: 7.02}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0

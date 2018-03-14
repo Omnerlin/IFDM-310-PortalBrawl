@@ -3159,6 +3159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraFollowGroup: {fileID: 734950014}
+  anixPrefab: {fileID: 0}
+  dennisPrefab: {fileID: 0}
+  revdiocPrefab: {fileID: 0}
+  zerandiPrefab: {fileID: 0}
   playerPrefab: {fileID: 1812097893898530, guid: 5342938b5bc11964680164cae7084d68,
     type: 2}
 --- !u!1 &988061208
@@ -8110,7 +8114,7 @@ Transform:
   m_GameObject: {fileID: 1900381236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.08, y: 1.08, z: 1.08}
+  m_LocalScale: {x: 1.3917526, y: 1.3917526, z: 1.3917526}
   m_Children:
   - {fileID: 1512956319}
   m_Father: {fileID: 1568180858}
