@@ -24,12 +24,17 @@ public class PlayerControl : MonoBehaviour {
 
     public GunController theGun;
 
+    public float ultTimer;
+    public float ultCounter;
+    public ZerandiUltimate zerandi;
+
     private void Awake()
     {
         // Just set the player to the zero index
         // player = Rewired.ReInput.players.GetPlayer(0);
 		playerScript = gameObject.AddComponent<Player>();
-		// playerInfo.setPlayerNumber (player.id);
+        // playerInfo.setPlayerNumber (player.id);
+        ultCounter = ultTimer;
     }
 
     // Use this for initialization
@@ -42,6 +47,7 @@ public class PlayerControl : MonoBehaviour {
     void Update()
     {
         UpdateReticleRotation(controllerNumber);
+        ultForZen();
         if (player.GetButton("RightBumper"))
         {
             theGun.isFiring = true;
@@ -121,6 +127,20 @@ public class PlayerControl : MonoBehaviour {
         if (Mathf.Abs(rb2d.velocity.y) > maxMoveSpeed)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Sign(rb2d.velocity.y) * maxMoveSpeed);
+        }
+    }
+
+    private void ultForZen()
+    {
+        ultCounter += Time.deltaTime;
+        if (player.GetButton("LeftBumper"))
+        {
+            if (ultCounter >= ultTimer)
+            {
+                zerandi.isActive = true;
+                ultCounter = 0;
+            }
+
         }
     }
 }
