@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 52683019}
   - component: {fileID: 52683018}
   m_Layer: 5
-  m_Name: RevdiocText (1)
+  m_Name: DennisText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
+  statInfo: {fileID: 52683018}
 --- !u!1 &281877703
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a65081ed050bd42a8b9ceaf7bc8366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneTransitionCanvasPrefab: {fileID: 0}
   sceneToLoad: TestScene
   hasBeenPressed: 0
 --- !u!4 &402599130
@@ -651,6 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
+  statInfo: {fileID: 718554502}
 --- !u!1 &664601663
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,6 +851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a65081ed050bd42a8b9ceaf7bc8366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneTransitionCanvasPrefab: {fileID: 1416777117688130, guid: b0370c8c7d100ba41bccaee85b0fbb18,
+    type: 2}
   sceneToLoad: TestScene
   hasBeenPressed: 0
 --- !u!61 &669360593
@@ -2089,6 +2094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
+  statInfo: {fileID: 1472514060}
 --- !u!1 &1611184270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,6 +2386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
+  statInfo: {fileID: 1611184272}
 --- !u!4 &2072799326 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4274839997381818, guid: c304ec51e80cab647b8e2c69d09c2ddf,
