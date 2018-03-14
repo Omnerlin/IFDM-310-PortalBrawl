@@ -116,11 +116,22 @@ public class MeleePlayer : MonoBehaviour
         }
 
         Animator animator = GetComponent<Animator>();
-        // Set the last movement with a direction in the animator
+
         if ((Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0) && !isAttacking)
         {
             animator.SetFloat("MoveX", moveInput.x);
             animator.SetFloat("MoveY", moveInput.y);
+
+            if(moveInput.x < 0)
+            {
+                animator.SetFloat("DirectionX", -1);
+            }
+            else if (moveInput.x > 0)
+            {
+                animator.SetFloat("DirectionX", 1);
+            }
+
+
             animator.SetBool("Walking", true);
         }
         else
