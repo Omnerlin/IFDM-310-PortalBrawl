@@ -74,7 +74,7 @@ public class PlayerManager : MonoBehaviour
     private void AddPlayer(int playerID)
     {
         GameObject pFab = Instantiate(playerPrefab);
-        PlayerControl pControl = pFab.GetComponent<PlayerControl>();
+        MeleePlayer pControl = pFab.GetComponent<MeleePlayer>();
         pControl.player = ReInput.players.GetPlayer(playerID);
         pControl.player.isPlaying = true;
 
