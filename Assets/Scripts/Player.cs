@@ -67,11 +67,23 @@ public class Player : MonoBehaviour {
 	public void savePlayerData()
 	{
 		Debug.Log ("Player " + playerNumber + " saving data of character " + localPlayerData.characterName + " with controller ID " + controllerID);
+
+        if(!GlobalControl.instance)
+        {
+            Debug.LogWarning("Global Control Instance doesn't exist: did not save character data");
+            return;
+        }
 		GlobalControl.instance.SaveData(playerNumber, localPlayerData);
 	}
 
 	public void loadPlayerData()
 	{
+        if(!GlobalControl.instance)
+        {
+            Debug.LogWarning("Global Control Instance doesn't exist");
+            return;
+        }
+
 		localPlayerData = GlobalControl.instance.loadData(playerNumber);
 	}
 

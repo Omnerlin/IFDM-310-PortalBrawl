@@ -45,7 +45,6 @@ public class PlayerControl : MonoBehaviour
         if (player.GetButton("RightBumper"))
         {
             theGun.isFiring = true;
-            gameObject.GetComponent<Animator>().SetTrigger("Attack");
         }
         else
         {

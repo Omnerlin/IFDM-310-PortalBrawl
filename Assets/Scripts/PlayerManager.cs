@@ -32,6 +32,11 @@ public class PlayerManager : MonoBehaviour
         }
 
         // Instaniate characters based on their character name
+        if(!GlobalControl.instance)
+        {
+            return;
+        }
+
         foreach(PlayerInfo info in GlobalControl.instance.savedPlayerData)
         {
             if (info != null && !string.IsNullOrEmpty(info.characterName))
@@ -64,6 +69,17 @@ public class PlayerManager : MonoBehaviour
 
                 playerObject.GetComponent<Player>().playerNumber = info.playerNumber;
                 playerObject.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(info.controllerID);
+
+                // Add the player to the group of objects to be tracked by the camera
+                // while keeping the other targets
+                CinemachineTargetGroup groupComp = cameraFollowGroup.GetComponent<CinemachineTargetGroup>();
+                List<CinemachineTargetGroup.Target> group = new List<CinemachineTargetGroup.Target>(groupComp.m_Targets);
+                CinemachineTargetGroup.Target newTarget = new CinemachineTargetGroup.Target();
+                newTarget.target = playerObject.transform;
+                newTarget.weight = 1.0f;
+                group.Add(newTarget);
+
+                groupComp.m_Targets = group.ToArray();
             }
         }
     }
@@ -89,7 +105,7 @@ public class PlayerManager : MonoBehaviour
     private void AddPlayer(int playerID)
     {
         GameObject pFab = Instantiate(playerPrefab);
-        MeleePlayer pControl = pFab.GetComponent<MeleePlayer>();
+        PlayerControl pControl = pFab.GetComponent<PlayerControl>();
         pControl.player = ReInput.players.GetPlayer(playerID);
         pControl.player.isPlaying = true;
 

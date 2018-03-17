@@ -83,7 +83,7 @@ namespace UnityEngine.Tilemaps
             {
                 tile.m_AnimatedSprites[i] = (Sprite) EditorGUILayout.ObjectField("Sprite " + (i+1), tile.m_AnimatedSprites[i], typeof(Sprite), false, null);
             }
-            
+
             float minSpeed = EditorGUILayout.FloatField("Minimum Speed", tile.m_MinSpeed);
             float maxSpeed = EditorGUILayout.FloatField("Maximum Speed", tile.m_MaxSpeed);
             if (minSpeed < 0.0f)

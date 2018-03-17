@@ -61,5 +61,13 @@ public class GlobalControl : MonoBehaviour {
 		}
 		return toPrint;
 	}
-		
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
 }
