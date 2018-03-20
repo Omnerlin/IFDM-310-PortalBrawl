@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class DennisPlayerController : PlayerControl
+public partial class RevdiocPlayerController : PlayerControl
 {
     // Extended class of PlayerState that has a reference to the DennisPlayerController
-    public abstract class DennisState : PlayerState {
-        public DennisPlayerController pControl; public DennisState(DennisPlayerController cont) {pControl = cont;}
+    public abstract class RevdiocState : PlayerState
+    {
+        public RevdiocPlayerController pControl; public RevdiocState(RevdiocPlayerController cont) { pControl = cont; }
     }
 
     // Class that will be execute when dennis can roam freely
-    public class WalkState : DennisState
+    public class WalkState : RevdiocState
     {
-        public WalkState(DennisPlayerController cont) : base(cont){}
+        public WalkState(RevdiocPlayerController cont) : base(cont) { }
 
-        public override void OnEnter(){}
-        public override void OnExit(){}
+        public override void OnEnter() { }
+        public override void OnExit() { }
 
         public override PlayerState UpdateState()
         {
@@ -24,14 +24,14 @@ public partial class DennisPlayerController : PlayerControl
             pControl.UpdateAttack();
             pControl.UpdateReticleRotation();
             pControl.UpdatePlayerMovement();
-            
+
             return this;
         }
     }
 
-    public class StunState : DennisState
+    public class StunState : RevdiocState
     {
-        public StunState(DennisPlayerController cont) : base(cont) { }
+        public StunState(RevdiocPlayerController cont) : base(cont) { }
 
         public override void OnEnter() { }
         public override void OnExit() { }

@@ -5,10 +5,11 @@ using Rewired;
 
 public class PlayerControl : MonoBehaviour
 {
-
     // Rewired player object
     public Rewired.Player player { get; set; }
-    public Player playerInfo;
+
+    // Info about the player that will be saved to the global store
+    [HideInInspector] public Player playerInfo;
 
     // Stats that will affect the player movespeed
     public float maxMoveSpeed;
@@ -16,7 +17,6 @@ public class PlayerControl : MonoBehaviour
 
     // Number of the player's controller (Used to check for separate input)
     public int controllerNumber { get; set; }
-
 
     protected Rigidbody2D rb2d;
 
@@ -35,19 +35,7 @@ public class PlayerControl : MonoBehaviour
         playerInfo.setPlayerNumber(player.id);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void FixedUpdate()
-    {
-        UpdatePlayerMovement();
-    }
-
-
-    private void UpdatePlayerMovement()
+    protected void UpdatePlayerMovement()
     {
         // Return if the player isn't, well, playing
         if (!player.isPlaying)
@@ -64,16 +52,19 @@ public class PlayerControl : MonoBehaviour
 
         Animator animator = GetComponent<Animator>();
 
-        if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0)
-        {
-            animator.SetFloat("MoveX", moveInput.x);
-            animator.SetFloat("MoveY", moveInput.y);
+        // Immediately set the player's velocity based on the normalized input
+        rb2d.velocity = new Vector2(maxMoveSpeed * moveInput.x, maxMoveSpeed * moveInput.y);
 
-            if (moveInput.x < 0)
+        animator.SetFloat("MoveX", rb2d.velocity.x);
+        animator.SetFloat("MoveY", rb2d.velocity.y);
+
+        if (Mathf.Abs(rb2d.velocity.magnitude) > 0)
+        {
+            if (rb2d.velocity.x < 0)
             {
                 animator.SetFloat("DirectionX", -1);
             }
-            else if (moveInput.x > 0)
+            else if (rb2d.velocity.x > 0)
             {
                 animator.SetFloat("DirectionX", 1);
             }
@@ -85,12 +76,6 @@ public class PlayerControl : MonoBehaviour
         {
             animator.SetBool("Walking", false);
         }
-
-
-        // Immediately set the player's velocity based on the normalized input
-        rb2d.velocity = new Vector2(maxMoveSpeed * moveInput.x, maxMoveSpeed * moveInput.y);
-
-
 
         // These if statements aren't really necessary at this point (Since we're using normalized input)
         if (Mathf.Abs(rb2d.velocity.x) > maxMoveSpeed)

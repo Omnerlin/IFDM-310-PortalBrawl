@@ -3,19 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public partial class DennisPlayerController : PlayerControl {
-
-    // Player's rigidbody that will be used for setting velocity
-    public GunController theGun;
+public partial class RevdiocPlayerController : PlayerControl {
 
     // Reticle that will rotate to show aiming direction
-    public GameObject aimReticle;
+    public GameObject hammer;
 
-    // Amount of slerp applied to aiming
-    // public float aimSmoothing = 50f;
-
-    // A statemachine made for dennisStates
-    private StateMachine<DennisState> sMachine;
+    // A statemachine made for revdiocStates
+    private StateMachine<RevdiocState> sMachine;
 
     private Camera mainCamera;
     private Camera pixelCam;
@@ -25,27 +19,20 @@ public partial class DennisPlayerController : PlayerControl {
 
     private void Awake()
     {
-        sMachine = new StateMachine<DennisState>(new WalkState(this));
+        sMachine = new StateMachine<RevdiocState>(new WalkState(this));
 
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         sMachine.UpdateState();
-	}
+    }
 
     private void UpdateAttack()
     {
-        if(player.GetButton("RightBumper"))
-        {
-            theGun.isFiring = true;
-        }
-        else
-        {
-            theGun.isFiring = false;
-        }
     }
 
     private void UpdateReticleRotation()
@@ -70,9 +57,9 @@ public partial class DennisPlayerController : PlayerControl {
                 return;
 
             Vector3 mousePos = mainCamera.ViewportToWorldPoint(hit.textureCoord);
-            aimAngle = Mathf.Atan2((aimReticle.transform.position.y - mousePos.y), (aimReticle.transform.position.x - mousePos.x)) * Mathf.Rad2Deg;
+            aimAngle = Mathf.Atan2((hammer.transform.position.y - mousePos.y), (hammer.transform.position.x - mousePos.x)) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-            aimReticle.transform.rotation = q;
+            hammer.transform.rotation = q;
 
         }
         else
@@ -86,7 +73,7 @@ public partial class DennisPlayerController : PlayerControl {
             {
                 axis = new Vector2(GetComponent<Animator>().GetFloat("MoveX"),
                 GetComponent<Animator>().GetFloat("MoveY"));
-                if(axis.magnitude > 1) { axis = axis.normalized; }
+                if (axis.magnitude > 1) { axis = axis.normalized; }
                 isAiming = false;
 
                 if (Mathf.Abs(axis.magnitude) > 0)
@@ -97,7 +84,7 @@ public partial class DennisPlayerController : PlayerControl {
                         (this.gameObject.transform.position.x - totalPos.x)) * Mathf.Rad2Deg;
 
                     Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-                    aimReticle.transform.rotation = q;
+                    hammer.transform.rotation = q;
                 }
                 else
                 {
@@ -112,7 +99,7 @@ public partial class DennisPlayerController : PlayerControl {
                     (this.gameObject.transform.position.x - totalPos.x)) * Mathf.Rad2Deg;
 
                 Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-                aimReticle.transform.rotation = q;
+                hammer.transform.rotation = q;
             }
         }
 
@@ -122,32 +109,23 @@ public partial class DennisPlayerController : PlayerControl {
         {
             GetComponent<Animator>().SetFloat("AimDirection", 1);
             GetComponent<Animator>().SetFloat("DirectionX", 1);
-            if (aimReticle.transform.localScale.y == 1)
-            {
-                aimReticle.transform.localScale = new Vector3(1, -1, 1);
-            }
         }
         else if (aimAngle > -70 && aimAngle < 70)
         {
             GetComponent<Animator>().SetFloat("AimDirection", -1);
             GetComponent<Animator>().SetFloat("DirectionX", -1);
-
-            if (aimReticle.transform.localScale.y == -1)
-            {
-                aimReticle.transform.localScale = new Vector3(1, 1, 1);
-            }
         }
 
-   
+
         // Decide whether or not the gun should render behind the player based on the angle 
-        if(aimAngle < -15 && aimAngle > -165)
-        {
-            aimReticle.GetComponent<SortingGroup>().sortingOrder = -1;
-        }
-        else
-        {
-            aimReticle.GetComponent<SortingGroup>().sortingOrder = 0;
-        }
+        //if (aimAngle < -15 && aimAngle > -165)
+        //{
+        //    hammer.GetComponent<SortingGroup>().sortingOrder = -1;
+        //}
+        //else
+        //{
+        //    hammer.GetComponent<SortingGroup>().sortingOrder = 0;
+        //}
 
         GetComponent<Animator>().SetBool("isAiming", isAiming);
         previousRotation = aimAngle;

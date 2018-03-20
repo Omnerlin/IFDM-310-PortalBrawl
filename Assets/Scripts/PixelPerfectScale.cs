@@ -15,8 +15,8 @@ public class PixelPerfectScale : MonoBehaviour {
 
     private bool currentCropped = false;
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
 		if(screenPixelsY != (float)Screen.height || currentCropped != preferUncropped)
         {
             screenPixelsY = (float)Screen.height;
