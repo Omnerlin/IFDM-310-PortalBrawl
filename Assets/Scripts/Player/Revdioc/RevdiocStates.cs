@@ -29,6 +29,22 @@ public partial class RevdiocPlayerController : PlayerControl
         }
     }
 
+    public class AttackState : RevdiocState
+    {
+        public AttackState(RevdiocPlayerController cont) : base(cont) { }
+
+        public override void OnEnter() { }
+        public override void OnExit() { }
+
+        public override PlayerState UpdateState()
+        {
+            pControl.UpdateAttack();
+            pControl.UpdateReticleRotation();
+
+            return this;
+        }
+    }
+
     public class StunState : RevdiocState
     {
         public StunState(RevdiocPlayerController cont) : base(cont) { }

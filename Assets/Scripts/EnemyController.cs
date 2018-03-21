@@ -4,60 +4,64 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour {
-    private Rigidbody2D myRB2D;
-    public float moveSpeed;
+    public float moveForce;
+    public float maxMoveSpeed = 30;
+
+    private Rigidbody2D rb2d;
     private Transform target;
 
-    /*private bool isMoving;
-    public float timeBetweenMove;
-    private float timeBetweenMoveCount;
-    public float timeToMove;
-    private float timeToMoveCount;
-    private Vector3 moveDirection;
-
-    public float waitToReload;
-    private bool isReloading;*/
-
-    
+    private Animator animator;
 
 
 	// Use this for initialization
 	void Start () {
-        myRB2D = GetComponent<Rigidbody2D>();
-        
-
-        /*timeBetweenMoveCount = timeBetweenMove;
-        timeToMoveCount = timeToMove;*/
+        rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
+
     void FixedUpdate()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-    }
-
-    // Update is called once per frame
-    void Update () {
-        /*if (isMoving)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player)
         {
-            timeToMoveCount -= Time.deltaTime;
-            myRB2D.velocity = moveDirection;
-            if(timeToMoveCount < 0f)
+
+            target = player.GetComponent<Transform>();
+
+            // Get the direction of the player and move in that direction
+            Vector3 heading = target.position - transform.position;
+            Vector3 direction = heading / heading.magnitude;
+            rb2d.AddForce((moveForce * Time.deltaTime) * direction);
+
+            if(rb2d.velocity.magnitude > maxMoveSpeed)
             {
-                isMoving = false;
-                timeBetweenMoveCount = timeBetweenMove;
+                rb2d.velocity = rb2d.velocity.normalized * maxMoveSpeed;
             }
+        }
+
+        if(rb2d.velocity.x == 0)
+        {
+            animator.SetBool("isWalking", false);
         }
         else
         {
-            timeBetweenMoveCount -= Time.deltaTime;
-            myRB2D.velocity = Vector2.zero;
-            if(timeBetweenMoveCount < 0f)
-            {
-                isMoving = true;
-                timeToMoveCount = timeToMove;
-                moveDirection = new Vector3(Random.Range(-1f, 1f)*moveSpeed, Random.Range(-1f, 1f)*moveSpeed, 0f);
-            }
-        }*/
-        transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed*Time.deltaTime);
+            animator.SetBool("isWalking", true);
+        }
+
+        if (rb2d.velocity.x > 0)
+        {
+            animator.SetFloat("MoveDirectionX", 1);
+        }
+        else if(rb2d.velocity.x < 0)
+        {
+            animator.SetFloat("MoveDirectionX", -1);
+        }
+
+
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
         
     }
     

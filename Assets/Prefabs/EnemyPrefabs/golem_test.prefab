@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 50333427124335142}
   - component: {fileID: 114019417228387372}
   - component: {fileID: 114422641468937306}
+  - component: {fileID: 95222180191415648}
+  - component: {fileID: 210089823905908692}
   m_Layer: 0
   m_Name: golem_test
   m_TagString: Untagged
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1423105977789258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5788164, y: -0.3906827, z: 0}
+  m_LocalPosition: {x: -4.59, y: -5.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,9 +62,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61619780753568886
 BoxCollider2D:
@@ -80,7 +82,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1, y: 1.5}
+    oldSize: {x: 1.0625, y: 1.1875}
     newSize: {x: 1, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -89,6 +91,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7493925, y: 0.43973923}
   m_EdgeRadius: 0
+--- !u!95 &95222180191415648
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423105977789258}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2f70f47e448e284bb9f8b2038893b9d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114019417228387372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c6078cea3473a4ba8e013876a96a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveForce: 500
+  maxMoveSpeed: 30
 --- !u!114 &114422641468937306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +134,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hP: 10
   currentHP: 10
+--- !u!210 &210089823905908692
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423105977789258}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212227936326910654
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -148,7 +178,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 309f6722425240540b9eb840165342ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 825f247968768a846a3e422a323895d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
