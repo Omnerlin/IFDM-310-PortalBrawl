@@ -18,7 +18,7 @@ public partial class DennisPlayerController : PlayerControl
         public override void OnEnter(){}
         public override void OnExit(){}
 
-        public override PlayerState UpdateState()
+        public override PlayerState Update()
         {
 
             pControl.UpdateAttack();
@@ -36,7 +36,7 @@ public partial class DennisPlayerController : PlayerControl
         public override void OnEnter() { }
         public override void OnExit() { }
 
-        public override PlayerState UpdateState()
+        public override PlayerState Update()
         {
             pControl.UpdateAttack();
             pControl.UpdateReticleRotation();

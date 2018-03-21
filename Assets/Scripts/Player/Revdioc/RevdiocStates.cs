@@ -13,15 +13,20 @@ public partial class RevdiocPlayerController : PlayerControl
     // Class that will be execute when dennis can roam freely
     public class WalkState : RevdiocState
     {
+
         public WalkState(RevdiocPlayerController cont) : base(cont) { }
+
 
         public override void OnEnter() { }
         public override void OnExit() { }
 
-        public override PlayerState UpdateState()
+        public override PlayerState Update()
         {
-
-            pControl.UpdateAttack();
+            // If the player hits the rightbumper, return the attack state
+            if(pControl.player.GetButtonDown("RightBumper"))
+            {
+                return new AttackState(pControl);
+            }
             pControl.UpdateReticleRotation();
             pControl.UpdatePlayerMovement();
 
@@ -31,32 +36,52 @@ public partial class RevdiocPlayerController : PlayerControl
 
     public class AttackState : RevdiocState
     {
-        public AttackState(RevdiocPlayerController cont) : base(cont) { }
+        public AttackState(RevdiocPlayerController cont) : base(cont) { hammerHitBox = pControl.hammerHitBox;
+            timeActive = pControl.hitboxTimeActive; filter = pControl.hitboxFilter; cooldown = pControl.attackCooldown; }
 
-        public override void OnEnter() { }
-        public override void OnExit() { }
+        private GameObject hammerHitBox;
+        private float timeActive; // in seconds
+        private float cooldown;
+        private Collider2D[] hitColliders = new Collider2D[20];
+        private List<GameObject> hitEnemies = new List<GameObject>();
+        private ContactFilter2D filter;
 
-        public override PlayerState UpdateState()
+        public override void OnEnter()
         {
-            pControl.UpdateAttack();
-            pControl.UpdateReticleRotation();
+            // Remove the hitbox from revdioc's transform.... we don't actually want it there. It was just there for organizational purposes.
+            // Enable the hitbox, and check collision with it.
+            hammerHitBox.transform.position = pControl.hammer.transform.position;
+            hammerHitBox.transform.rotation = pControl.hammer.transform.rotation;
 
-            return this;
+            hammerHitBox.transform.parent = null;
+            hammerHitBox.SetActive(true);
         }
-    }
 
-    public class StunState : RevdiocState
-    {
-        public StunState(RevdiocPlayerController cont) : base(cont) { }
-
-        public override void OnEnter() { }
-        public override void OnExit() { }
-
-        public override PlayerState UpdateState()
+        public override void OnExit()
         {
-            pControl.UpdateAttack();
-            pControl.UpdateReticleRotation();
+        }
 
+        public override PlayerState Update()
+        {
+            timeActive -= Time.deltaTime;
+            if(timeActive <= 0) { cooldown -= Time.deltaTime; hammerHitBox.SetActive(false);} // Return walk state if we can attack again
+            if (cooldown <= 0) { return new WalkState(pControl); }
+
+            Physics2D.OverlapCollider(hammerHitBox.GetComponent<Collider2D>(), filter,  hitColliders);
+            foreach (Collider2D col in hitColliders)
+            {
+                if(col != null && col.tag == "Enemy" && !hitEnemies.Contains(col.gameObject))
+                {
+                    col.gameObject.GetComponent<EnemyHp>().HurtEnemy(1);
+                    Vector3 heading = col.transform.position - pControl.transform.position;
+                    Vector3 direction = heading / heading.sqrMagnitude;
+                    col.gameObject.GetComponent<Rigidbody2D>().AddForce(pControl.hitForce * direction);
+                    hitEnemies.Add(col.gameObject);
+                }
+            }
+
+            pControl.UpdatePlayerMovement();
+            pControl.UpdateReticleRotation();
             return this;
         }
     }

@@ -11,6 +11,6 @@ public abstract class PlayerState {
     abstract public void OnExit();
 
     // Function to execute when updateing this state
-    abstract public PlayerState UpdateState();
+    abstract public PlayerState Update();
 
 }

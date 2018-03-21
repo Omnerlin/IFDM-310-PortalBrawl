@@ -30,7 +30,7 @@ public class StateMachine <T> where T : PlayerState {
         }
 
         // Update the current state. If it returns a new state, switch to that state.
-        T newState = currentState.UpdateState() as T; 
+        T newState = currentState.Update() as T; 
         if(newState != currentState)
         {
             currentState.OnExit();

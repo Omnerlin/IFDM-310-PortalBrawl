@@ -8,6 +8,17 @@ public partial class RevdiocPlayerController : PlayerControl {
     // Reticle that will rotate to show aiming direction
     public GameObject hammer;
 
+    // HitBox gameobject to use for telling whether or not we've hit an enemy
+    public GameObject hammerHitBox;
+
+    // Force that enemies will be hit with
+    public float hitForce = 10;
+
+    // Cooldown for melee attacking
+    public float attackCooldown = 1f;
+    public float hitboxTimeActive = 0.2f;
+    public ContactFilter2D hitboxFilter;
+
     // A statemachine made for revdiocStates
     private StateMachine<RevdiocState> sMachine;
 
