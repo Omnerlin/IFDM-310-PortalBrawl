@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 7ef15834a3497a7498d343e75623dca8
-timeCreated: 1520583030
+guid: 3031332452039b74bacaf0e11c2e79a8
+timeCreated: 1521597770
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: chibi_walk_2_flip_0
-    21300002: chibi_walk_2_flip_1
-    21300004: chibi_walk_2_flip_2
-    21300006: chibi_walk_2_flip_3
-    21300008: chibi_walk_2_flip_4
-    21300010: chibi_walk_2_flip_5
-    21300012: chibi_walk_2_flip_6
-    21300014: chibi_walk_2_flip_7
+    21300000: golem_walk_right_0
+    21300002: golem_walk_right_1
+    21300004: golem_walk_right_2
+    21300006: golem_walk_right_3
+    21300008: golem_walk_right_4
+    21300010: golem_walk_right_5
+    21300012: golem_walk_right_6
+    21300014: golem_walk_right_7
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -51,8 +51,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 16
   alphaUsage: 1
@@ -108,13 +108,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chibi_walk_2_flip_0
+      name: golem_walk_right_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 26
-        width: 26
-        height: 26
+        y: 20
+        width: 17
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,13 +122,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: chibi_walk_2_flip_1
+      name: golem_walk_right_1
       rect:
         serializedVersion: 2
-        x: 26
-        y: 26
-        width: 26
-        height: 26
+        x: 17
+        y: 20
+        width: 17
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,13 +136,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: chibi_walk_2_flip_2
+      name: golem_walk_right_2
       rect:
         serializedVersion: 2
-        x: 52
-        y: 26
-        width: 26
-        height: 26
+        x: 34
+        y: 20
+        width: 17
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,13 +150,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: chibi_walk_2_flip_3
+      name: golem_walk_right_3
       rect:
         serializedVersion: 2
-        x: 78
-        y: 26
-        width: 26
-        height: 26
+        x: 51
+        y: 20
+        width: 17
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,13 +164,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: chibi_walk_2_flip_4
+      name: golem_walk_right_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 26
-        height: 26
+        y: 1
+        width: 17
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,13 +178,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: chibi_walk_2_flip_5
+      name: golem_walk_right_5
       rect:
         serializedVersion: 2
-        x: 26
-        y: 0
-        width: 26
-        height: 26
+        x: 17
+        y: 1
+        width: 17
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,13 +192,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: chibi_walk_2_flip_6
+      name: golem_walk_right_6
       rect:
         serializedVersion: 2
-        x: 52
-        y: 0
-        width: 26
-        height: 26
+        x: 34
+        y: 1
+        width: 17
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,13 +206,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: chibi_walk_2_flip_7
+      name: golem_walk_right_7
       rect:
         serializedVersion: 2
-        x: 78
-        y: 0
-        width: 26
-        height: 26
+        x: 51
+        y: 1
+        width: 17
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
