@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using Rewired;
 using Cinemachine;
@@ -14,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject dennisPrefab;
     public GameObject revdiocPrefab;
     public GameObject zerandiPrefab;
+
+	public Text[] playerDisplays = new Text[4]; //Indexed by PLAYER number, NOT Rewired-ID
 
     //private List<int> assignedControllers = new List<int>();
     public GameObject playerPrefab;
@@ -67,7 +70,9 @@ public class PlayerManager : MonoBehaviour
                     return;
                 }
 
+				//Assign the playerNumber and the text display object to the player for its use.
                 playerObject.GetComponent<Player>().playerNumber = info.playerNumber;
+				playerObject.GetComponent<Player> ().myDisplay = playerDisplays [info.playerNumber];
                 playerObject.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(info.controllerID);
 
                 // Add the player to the group of objects to be tracked by the camera
@@ -108,6 +113,7 @@ public class PlayerManager : MonoBehaviour
         PlayerControl pControl = pFab.GetComponent<PlayerControl>();
         pControl.player = ReInput.players.GetPlayer(playerID);
         pControl.player.isPlaying = true;
+		//playerObject.GetComponent<Player> ().myDisplay = playerDisplays [info.playerNumber];
 
         // Add the player to the group of objects to be tracked by the camera
         // while keeping the other targets

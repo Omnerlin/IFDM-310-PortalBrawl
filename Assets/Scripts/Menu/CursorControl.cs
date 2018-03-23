@@ -58,8 +58,8 @@ public class CursorControl : MonoBehaviour {
 
     public int health
     {
-        get { return info.health; }
-        set { info.health = value; }
+        get { return info.currentHealth; }
+        set { info.currentHealth = value; }
     }
 
     public string characterName
@@ -158,6 +158,7 @@ public class CursorControl : MonoBehaviour {
 		if (rewiredPlayer.GetButtonDown ("Back")) 
 		{
 			GameObject oldSelection = GameObject.Find(characterName);
+			Debug.Log ("Player " + playerNumber + " deselected " + oldSelection.name + ".");
 			oldSelection.GetComponent<characterButtonScript>().deselect();
 			characterName = "";
 		}

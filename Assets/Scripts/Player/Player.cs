@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 /* *
@@ -14,11 +15,15 @@ public class Player : MonoBehaviour {
     public Transform startPosition;
 	public int playerNumber; //Numbers have colors associated with them.
     [HideInInspector] public int controllerID;
+	public int maxHP; //load start in prefab
+	//public int currentHP;
 
-	private PlayerInfo localPlayerData = new PlayerInfo();
+	private PlayerInfo myData = new PlayerInfo();
 
 	//The player's color is at the index of the playerNumber
 	public static Color[] playerColors = {Color.blue, Color.magenta, Color.green, Color.yellow, Color.black};
+
+	public Text myDisplay; //This may get bigger.
 
 	public Color getColor()
 	{
@@ -28,52 +33,79 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Awake () 
 	{
+		
+	}
+
+	void Start()
+	{
 		//setPlayerNumber (playerNumber);
 		loadPlayerData ();
-		if (!String.IsNullOrEmpty(localPlayerData.characterName)) //If they have a character assigned
+		if (!String.IsNullOrEmpty(myData.characterName)) //If they have a character assigned
 		{
-			Debug.Log ("Player " + playerNumber +" loading data of character " + localPlayerData.characterName);
+			Debug.Log ("Player " + playerNumber +" loading data of character " + myData.characterName);
 			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
-			myRenderer.sprite = Resources.Load<Sprite> (localPlayerData.characterName);
+			myRenderer.sprite = Resources.Load<Sprite> (myData.characterName);
+			if (myData.currentHealth == -1)
+				setMaxHP();
 		}
-		localPlayerData.playerNumber = playerNumber;
+		myData.playerNumber = playerNumber;
+
+		myDisplay.color = playerColors[playerNumber];
 	}
-	
+
+	void Update()
+	{
+		updateStatDisplay ();
+		if (myData.currentHealth <= 0) {
+			myData.currentHealth = 0;
+			die();
+		}
+	}
 
 	void OnDestroy()
 	{
 		savePlayerData ();
 	}
 
-	public string getCharacterName() { return localPlayerData.characterName; }
+	public void updateStatDisplay()
+	{ //todo: Change this so it shows local stats
+		myDisplay.text = myData.toString ();
+	}
 
-	public void setCharacterName(string name) { localPlayerData.characterName = name; }
+	public string getCharacterName() { return myData.characterName; }
+
+	public void setCharacterName(string name) { myData.characterName = name; }
+
+	public void setDisplay(Text display) { myDisplay = display; }
 
 	public int getPlayerNumber(){ return playerNumber; }
 
     public void SetControllerID(int id)
     {
         controllerID = id;
-        localPlayerData.controllerID = id;
+        myData.controllerID = id;
     }
 
 	public void setPlayerNumber(int num)
 	{
 		playerNumber = num;
-		localPlayerData.playerNumber = num;
+		myData.playerNumber = num;
 	}
 
 	//Save info with the GlobalControl object so that it can be reloaded in the next scene
 	public void savePlayerData()
 	{
-		Debug.Log ("Player " + playerNumber + " saving data of character " + localPlayerData.characterName + " with controller ID " + controllerID);
+		Debug.Log ("Player " + playerNumber + " saving data of character " + myData.characterName + " with controller ID " + controllerID);
 
         if(!GlobalControl.instance)
         {
             Debug.LogWarning("Global Control Instance doesn't exist: did not save character data");
             return;
         }
-		GlobalControl.instance.SaveData(playerNumber, localPlayerData);
+
+		//myData.currentHealth = currentHP;
+
+		GlobalControl.instance.SaveData(playerNumber, myData);
 	}
 
 	public void loadPlayerData()
@@ -84,7 +116,30 @@ public class Player : MonoBehaviour {
             return;
         }
 
-		localPlayerData = GlobalControl.instance.loadData(playerNumber);
+		myData = GlobalControl.instance.loadData(playerNumber);
+	}
+
+
+	//Health stuff
+
+	public void hurtPlayer(int damage)
+	{
+		myData.currentHealth -= damage;
+	}
+
+	public void healPlayer(int heal)
+	{
+		myData.currentHealth += heal;
+	}
+
+	public void setMaxHP()
+	{
+		myData.currentHealth = maxHP;
+	}
+
+	public void die()
+	{
+		Destroy(gameObject);
 	}
 
 }

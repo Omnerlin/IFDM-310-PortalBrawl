@@ -212,6 +212,9 @@ MonoBehaviour:
   startPosition: {fileID: 0}
   playerNumber: 0
   controllerID: 0
+  maxHP: 0
+  currentHP: 0
+  myDisplay: {fileID: 0}
 --- !u!114 &114173298127511458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96ca94b8d1f644458597bafa6010c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
+  maxHP: 100
   currentHP: 0
 --- !u!114 &114631857353290316
 MonoBehaviour:
