@@ -5792,7 +5792,7 @@ GameObject:
   - component: {fileID: 1535002886}
   - component: {fileID: 1535002885}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: RenderTexture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25912,7 +25912,7 @@ GameObject:
   - component: {fileID: 1789157574}
   - component: {fileID: 1789157573}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: PixelPerfectCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25963,8 +25963,8 @@ Canvas:
   m_GameObject: {fileID: 1789157572}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1568180857}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
