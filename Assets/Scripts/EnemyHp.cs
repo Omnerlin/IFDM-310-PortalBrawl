@@ -7,21 +7,54 @@ public class EnemyHp : MonoBehaviour {
     public int hP;
     public int currentHP;
 
-	// Use this for initialization
-	void Start () {
+    [Tooltip("Material to switch to while enemy is hurt")]
+    public Material flashMaterial;
+    public float flashTime = 0.1f;
+
+    private Material baseMat; // make sure we keep a reference to what base material the enemy uses
+
+    private void Awake()
+    {
+        baseMat = GetComponent<SpriteRenderer>().material;
+    }
+    // Use this for initialization
+    void Start () {
         currentHP = hP;
+        GetComponent<SpriteRenderer>().material.color = Color.white;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(currentHP <= 0)
-        {
-            Destroy(gameObject);
-        }
 		
 	}
     public void HurtEnemy(int damage)
     {
         currentHP -= damage;
+        Debug.Log("Enemy hurt for " + damage + ": health now at " + currentHP);
+
+        if (currentHP <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            StopAllCoroutines();
+            StartCoroutine(flashHurtMat());
+        }
+    }
+
+    IEnumerator flashHurtMat()
+    {
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        float timer = flashTime;
+        renderer.material = flashMaterial;
+        while(timer > 0)
+        {
+            timer -= Time.deltaTime;
+            // renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, (timer / flashTime));
+            yield return null;
+        }
+
+        renderer.material = baseMat;
     }
 }

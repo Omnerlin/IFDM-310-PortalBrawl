@@ -5,10 +5,11 @@ using Rewired;
 
 public class PlayerControl : MonoBehaviour
 {
-
     // Rewired player object
     public Rewired.Player player { get; set; }
-    public Player playerInfo;
+
+    // Info about the player that will be saved to the global store
+    [HideInInspector] public Player playerInfo;
 
     // Stats that will affect the player movespeed
     public float maxMoveSpeed;
@@ -17,12 +18,8 @@ public class PlayerControl : MonoBehaviour
     // Number of the player's controller (Used to check for separate input)
     public int controllerNumber { get; set; }
 
-    // Reticle that will rotate to show aiming direction
-    public GameObject aimReticle;
+    protected Rigidbody2D rb2d;
 
-    // Player's rigidbody that will be used for setting velocity
-    public GunController theGun;
-    private Rigidbody2D rb2d;
 
     private void Awake()
     {
@@ -38,63 +35,34 @@ public class PlayerControl : MonoBehaviour
         playerInfo.setPlayerNumber(player.id);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateReticleRotation(controllerNumber);
-        if (player.GetButton("RightBumper"))
-        {
-            theGun.isFiring = true;
-        }
-        else
-        {
-            theGun.isFiring = false;
-        }
-    }
-
     private void FixedUpdate()
     {
-        UpdatePlayerMovement();
-    }
+        Animator animator = GetComponent<Animator>();
 
-    private void UpdateReticleRotation(int controllerNumber)
-    {
-        // Return if the player isn't, well, playing
-        if (!player.isPlaying)
+        animator.SetFloat("MoveX", rb2d.velocity.x);
+        animator.SetFloat("MoveY", rb2d.velocity.y);
+
+        if (Mathf.Abs(rb2d.velocity.sqrMagnitude) > 0.01)
         {
-            return;
-        }
+            if (rb2d.velocity.x < 0)
+            {
+                animator.SetFloat("DirectionX", -1);
+            }
+            else if (rb2d.velocity.x > 0)
+            {
+                animator.SetFloat("DirectionX", 1);
+            }
 
-        // If using keyboard, get the mouse position for aiming, otherwise use controller axis
-        if (player.controllers.hasKeyboard)
-        {
-            // Get the position of the mouse in screen coordinates, and convert it to world coordinates
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            // We'll use this to decide what direction that the player is aiming
-            float aimAngle = Mathf.Atan2((transform.position.y - mousePos.y), (transform.position.x - mousePos.x)) * Mathf.Rad2Deg;
-            aimReticle.transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+            animator.SetBool("Walking", true);
         }
         else
         {
-            // Get reticle rotation based on controller analog
-            Vector2 axis = new Vector2(player.GetAxis("Rotate Horizontal"),
-                player.GetAxis("Rotate Vertical"));
-
-            if (Mathf.Abs(axis.x) > 0.3 || Mathf.Abs(axis.y) > 0.3)
-            {
-                Vector2 totalPos = new Vector2(this.gameObject.transform.position.x + axis.x, this.gameObject.transform.position.y + axis.y);
-
-                float aimAngle = Mathf.Atan2((this.gameObject.transform.position.y - totalPos.y),
-                    (this.gameObject.transform.position.x - totalPos.x)) * Mathf.Rad2Deg;
-
-
-                aimReticle.transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-            }
+            animator.SetBool("Walking", false);
         }
     }
 
-    private void UpdatePlayerMovement()
+    protected void UpdatePlayerMovement()
     {
         // Return if the player isn't, well, playing
         if (!player.isPlaying)
@@ -109,35 +77,8 @@ public class PlayerControl : MonoBehaviour
             moveInput = moveInput.normalized;
         }
 
-        Animator animator = GetComponent<Animator>();
-
-        if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0)
-        {
-            animator.SetFloat("MoveX", moveInput.x);
-            animator.SetFloat("MoveY", moveInput.y);
-
-            if (moveInput.x < 0)
-            {
-                animator.SetFloat("DirectionX", -1);
-            }
-            else if (moveInput.x > 0)
-            {
-                animator.SetFloat("DirectionX", 1);
-            }
-
-
-            animator.SetBool("Walking", true);
-        }
-        else
-        {
-            animator.SetBool("Walking", false);
-        }
-
-
         // Immediately set the player's velocity based on the normalized input
         rb2d.velocity = new Vector2(maxMoveSpeed * moveInput.x, maxMoveSpeed * moveInput.y);
-
-
 
         // These if statements aren't really necessary at this point (Since we're using normalized input)
         if (Mathf.Abs(rb2d.velocity.x) > maxMoveSpeed)
