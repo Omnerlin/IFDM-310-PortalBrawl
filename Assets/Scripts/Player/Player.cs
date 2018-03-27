@@ -17,13 +17,14 @@ public class Player : MonoBehaviour {
     [HideInInspector] public int controllerID;
 	public int maxHP; //load start in prefab
 	//public int currentHP;
+	private bool hasInitialized = false; //This flag is here because Update was being called before Start. This allows health to be initialized.
 
 	private PlayerInfo myData = new PlayerInfo();
 
 	//The player's color is at the index of the playerNumber
 	public static Color[] playerColors = {Color.blue, Color.magenta, Color.green, Color.yellow, Color.black};
 
-	public Text myDisplay; //This may get bigger.
+	public PlayerStatDisplay myDisplay; //This may get bigger.
 
 	public Color getColor()
 	{
@@ -50,13 +51,20 @@ public class Player : MonoBehaviour {
 		}
 		myData.playerNumber = playerNumber;
 
-		myDisplay.color = playerColors[playerNumber];
+		myDisplay.getText().color = playerColors[playerNumber];
+
+		hasInitialized = true;
 	}
 
 	void Update()
 	{
+		if (!hasInitialized)
+			return;
+		
 		updateStatDisplay ();
-		if (myData.currentHealth <= 0) {
+		if (myData.currentHealth <= 0) 
+		{
+			Debug.Log ("Player " + playerNumber + " playing " + myData.characterName + "has died.");
 			myData.currentHealth = 0;
 			die();
 		}
@@ -68,15 +76,21 @@ public class Player : MonoBehaviour {
 	}
 
 	public void updateStatDisplay()
-	{ //todo: Change this so it shows local stats
-		myDisplay.text = myData.toString ();
+	{
+		myDisplay.getText().text = myData.toString ();
+		myDisplay.getHealthBar().GetComponent<healthBar>().updateBar (myData.currentHealth, maxHP);
 	}
 
 	public string getCharacterName() { return myData.characterName; }
 
 	public void setCharacterName(string name) { myData.characterName = name; }
 
-	public void setDisplay(Text display) { myDisplay = display; }
+	public void setDisplay(GameObject display) 
+	{
+		myDisplay = display.GetComponent<PlayerStatDisplay> ();
+		if (myDisplay == null)
+			Debug.LogWarning("Display passed did not have a PlayerStatDisplay script component.");
+	}
 
 	public int getPlayerNumber(){ return playerNumber; }
 
@@ -122,14 +136,21 @@ public class Player : MonoBehaviour {
 
 	//Health stuff
 
+	//Takes damage out of myData.currentHealth. Cannot drop below 0.
+	//Dying is in Update.
 	public void hurtPlayer(int damage)
 	{
 		myData.currentHealth -= damage;
+		if (myData.currentHealth < 0)
+			myData.currentHealth = 0;
 	}
 
+	//Adds heal to myData.currentHeath. Cannot go above maxHP.
 	public void healPlayer(int heal)
 	{
 		myData.currentHealth += heal;
+		if (myData.currentHealth > maxHP)
+			setMaxHP ();
 	}
 
 	public void setMaxHP()

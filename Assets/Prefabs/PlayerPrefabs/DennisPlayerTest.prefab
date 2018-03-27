@@ -84,7 +84,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4443094905996954}
   - component: {fileID: 212935241356754770}
-  - component: {fileID: 114600637701144766}
   - component: {fileID: 61035598168101550}
   - component: {fileID: 50206304626668012}
   - component: {fileID: 210663964946922976}
@@ -243,6 +242,8 @@ MonoBehaviour:
   startPosition: {fileID: 0}
   playerNumber: 0
   controllerID: 0
+  maxHP: 90
+  myDisplay: {fileID: 0}
 --- !u!114 &114481090752733448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,19 +260,6 @@ MonoBehaviour:
   bulletSpeed: 30
   timeBetweenShots: 0.25
   firePoint: {fileID: 4324760408275228}
---- !u!114 &114600637701144766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1895619478501496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96ca94b8d1f644458597bafa6010c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 10
-  currentHP: 0
 --- !u!114 &114767572117017176
 MonoBehaviour:
   m_ObjectHideFlags: 1

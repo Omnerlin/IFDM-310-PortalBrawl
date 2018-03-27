@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject revdiocPrefab;
     public GameObject zerandiPrefab;
 
-	public Text[] playerDisplays = new Text[4]; //Indexed by PLAYER number, NOT Rewired-ID
+	public GameObject[] playerDisplays = new GameObject[4]; //Indexed by PLAYER number, NOT Rewired-ID
 
     //private List<int> assignedControllers = new List<int>();
     public GameObject playerPrefab;
@@ -72,7 +72,7 @@ public class PlayerManager : MonoBehaviour
 
 				//Assign the playerNumber and the text display object to the player for its use.
                 playerObject.GetComponent<Player>().playerNumber = info.playerNumber;
-				playerObject.GetComponent<Player> ().myDisplay = playerDisplays [info.playerNumber];
+				playerObject.GetComponent<Player> ().setDisplay( playerDisplays [info.playerNumber] );
                 playerObject.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(info.controllerID);
 
                 // Add the player to the group of objects to be tracked by the camera

@@ -19,7 +19,7 @@ public class HurtPlayer : MonoBehaviour {
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            other.gameObject.GetComponent<PlayerHP>().HurtPlayer(damageToPlayer);
+            other.gameObject.GetComponent<Player>().hurtPlayer(damageToPlayer);
         }
     }
 }

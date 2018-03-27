@@ -67,7 +67,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4711431551105308}
   - component: {fileID: 212985353387058762}
-  - component: {fileID: 114575553322133488}
   - component: {fileID: 61013607902015298}
   - component: {fileID: 50452318982938686}
   - component: {fileID: 210725938293918806}
@@ -212,22 +211,8 @@ MonoBehaviour:
   startPosition: {fileID: 0}
   playerNumber: 0
   controllerID: 0
-  maxHP: 0
-  currentHP: 0
+  maxHP: 90
   myDisplay: {fileID: 0}
---- !u!114 &114575553322133488
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1812097893898530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96ca94b8d1f644458597bafa6010c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  currentHP: 0
 --- !u!114 &114631857353290316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,8 +243,6 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   maxMoveSpeed: 40
   moveForce: 0
-  aimReticle: {fileID: 1514113879761304}
-  theGun: {fileID: 114631857353290316}
 --- !u!210 &210725938293918806
 SortingGroup:
   m_ObjectHideFlags: 1
