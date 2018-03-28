@@ -9,27 +9,43 @@ public class EnemyController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     private Transform target;
+    private GameObject[] players;
+    GameObject player;
 
     private Animator animator;
+
+    public GunController theGun;
 
 
 	// Use this for initialization
 	void Start () {
+
+        players = GameObject.FindGameObjectsWithTag("Player");
+        player = players[Random.Range(0, players.Length)];
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if(player)
+        if (Vector2.Distance(transform.position, player.transform.position) <= 5 && theGun)
         {
-
+            Vector3 heading =  transform.position - target.position;
+            float angle = Mathf.Atan2(heading.y, heading.x) * Mathf.Rad2Deg;
+            Quaternion look = Quaternion.AngleAxis(angle, Vector3.forward);
+            theGun.firePoint.rotation = look;
+            rb2d.velocity = rb2d.velocity.normalized * 0;
+        }
+        else if (player)
+        {
             target = player.GetComponent<Transform>();
 
             // Get the direction of the player and move in that direction
             Vector3 heading = target.position - transform.position;
             Vector3 direction = heading / heading.magnitude;
+            float angle = Mathf.Atan2(heading.y, heading.x) * Mathf.Rad2Deg;
+            Quaternion look = Quaternion.AngleAxis(angle, Vector3.forward);
+            theGun.firePoint.rotation = look;
             rb2d.AddForce((moveForce * Time.deltaTime) * direction);
 
             if(rb2d.velocity.magnitude > maxMoveSpeed)
@@ -37,6 +53,11 @@ public class EnemyController : MonoBehaviour {
                 rb2d.velocity = rb2d.velocity.normalized * maxMoveSpeed;
             }
         }
+        else
+        {
+            player = players[Random.Range(0, players.Length)];
+        }
+
 
         if(rb2d.velocity.x == 0)
         {
@@ -62,7 +83,18 @@ public class EnemyController : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        
+        if (Vector2.Distance(transform.position, player.transform.position) <= 5 && theGun)
+        {
+            theGun.isFiring = true;
+        }
+        else if(theGun)
+        {
+            theGun.isFiring = false;
+        }
+        if (!player)
+        {
+            theGun.isFiring = false;
+        }
     }
     
 }
