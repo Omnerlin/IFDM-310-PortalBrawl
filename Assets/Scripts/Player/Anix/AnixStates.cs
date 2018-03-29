@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class RevdiocPlayerController : PlayerControl
+public partial class AnixPlayerController : PlayerControl
 {
     // Extended class of PlayerState that has a reference to the DennisPlayerController
-    public abstract class RevdiocState : PlayerState
+    public abstract class AnixState : PlayerState
     {
-        public RevdiocPlayerController pControl; public RevdiocState(RevdiocPlayerController cont) { pControl = cont; }
+        public AnixPlayerController pControl; public AnixState(AnixPlayerController cont) { pControl = cont; }
     }
 
     // Class that will be execute when dennis can roam freely
-    public class WalkState : RevdiocState
+    public class WalkState : AnixState
     {
 
-        public WalkState(RevdiocPlayerController cont) : base(cont) { }
+        public WalkState(AnixPlayerController cont) : base(cont) { }
 
 
         public override void OnEnter() { }
@@ -23,7 +23,7 @@ public partial class RevdiocPlayerController : PlayerControl
         public override PlayerState Update()
         {
             // If the player hits the rightbumper, return the attack state
-            if(pControl.player.GetButtonDown("RightBumper"))
+            if (pControl.player.GetButtonDown("RightBumper"))
             {
                 return new AttackState(pControl);
             }
@@ -34,10 +34,13 @@ public partial class RevdiocPlayerController : PlayerControl
         }
     }
 
-    public class AttackState : RevdiocState
+    public class AttackState : AnixState
     {
-        public AttackState(RevdiocPlayerController cont) : base(cont) { hammerHitBox = pControl.hammerHitBox;
-            timeActive = pControl.hitboxTimeActive; filter = pControl.hitboxFilter; cooldown = pControl.attackCooldown; }
+        public AttackState(AnixPlayerController cont) : base(cont)
+        {
+            hammerHitBox = pControl.staffHitbox;
+            timeActive = pControl.hitboxTimeActive; filter = pControl.hitboxFilter; cooldown = pControl.attackCooldown;
+        }
 
         private GameObject hammerHitBox;
         private float timeActive; // in seconds
@@ -50,13 +53,13 @@ public partial class RevdiocPlayerController : PlayerControl
         {
             // Remove the hitbox from revdioc's transform.... we don't actually want it there. It was just there for organizational purposes.
             // Enable the hitbox, and check collision with it.
-            hammerHitBox.transform.position = pControl.hammer.transform.position;
-            hammerHitBox.transform.rotation = pControl.hammer.transform.rotation;
+            hammerHitBox.transform.position = pControl.staff.transform.position;
+            hammerHitBox.transform.rotation = pControl.staff.transform.rotation;
 
             hammerHitBox.transform.parent = null;
             hammerHitBox.SetActive(true);
 
-            CameraControl.Instance.AddCameraShake(4);
+            CameraControl.Instance.AddCameraShake(5);
         }
 
         public override void OnExit()
@@ -66,13 +69,13 @@ public partial class RevdiocPlayerController : PlayerControl
         public override PlayerState Update()
         {
             timeActive -= Time.deltaTime;
-            if(timeActive <= 0) { cooldown -= Time.deltaTime; hammerHitBox.SetActive(false);} // Return walk state if we can attack again
+            if (timeActive <= 0) { cooldown -= Time.deltaTime; hammerHitBox.SetActive(false); } // Return walk state if we can attack again
             if (cooldown <= 0) { return new WalkState(pControl); }
 
-            Physics2D.OverlapCollider(hammerHitBox.GetComponent<Collider2D>(), filter,  hitColliders);
+            Physics2D.OverlapCollider(hammerHitBox.GetComponent<Collider2D>(), filter, hitColliders);
             foreach (Collider2D col in hitColliders)
             {
-                if(col != null && col.tag == "Enemy" && !hitEnemies.Contains(col.gameObject))
+                if (col != null && col.tag == "Enemy" && !hitEnemies.Contains(col.gameObject))
                 {
                     col.gameObject.GetComponent<EnemyHp>().HurtEnemy(1);
                     Vector3 heading = col.transform.position - pControl.transform.position;
