@@ -64,7 +64,6 @@ public partial class RevdiocPlayerController : PlayerControl {
 
             // We'll use this to decide what direction that the player is aiming
             Vector3 mousePosf = pixelCam.ScreenToViewportPoint(Input.mousePosition);
-            Debug.Log(mousePosf);
             Vector3 mousePos = mainCamera.ViewportToWorldPoint(mousePosf);
             aimAngle = Mathf.Atan2((hammer.transform.position.y - mousePos.y), (hammer.transform.position.x - mousePos.x)) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);

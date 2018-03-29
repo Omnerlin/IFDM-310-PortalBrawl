@@ -65,9 +65,6 @@ public partial class DennisPlayerController : PlayerControl {
             isAiming = true;
 
             // We'll use this to decide what direction that the player is aiming
-            //RaycastHit hit;
-            //if (!Physics.Raycast(pixelCam.ScreenPointToRay(Input.mousePosition), out hit))
-               // return;
             Vector3 mousePosf = pixelCam.ScreenToViewportPoint(Input.mousePosition);
             Vector3 mousePos = mainCamera.ViewportToWorldPoint(mousePosf);
             aimAngle = Mathf.Atan2((aimReticle.transform.position.y - mousePos.y), (aimReticle.transform.position.x - mousePos.x)) * Mathf.Rad2Deg;
