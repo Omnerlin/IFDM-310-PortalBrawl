@@ -276,6 +276,8 @@ MonoBehaviour:
   controllerID: 0
   maxHP: 90
   myDisplay: {fileID: 0}
+  hurtFlashInterval: 0.05
+  hurtInvincibilityDuration: 1
 --- !u!114 &114515108347978730
 MonoBehaviour:
   m_ObjectHideFlags: 1

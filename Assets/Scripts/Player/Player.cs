@@ -26,6 +26,13 @@ public class Player : MonoBehaviour {
 
 	public PlayerStatDisplay myDisplay; //This may get bigger.
 
+    [Tooltip("// Interval speed at which the player will become invisible/visible while hurt")]
+    public float hurtFlashInterval = 0.1f;
+
+    [Tooltip("How long the player will be invincible after taking damage")]
+    public float hurtInvincibilityDuration = 1f;
+
+
 	public Color getColor()
 	{
 		return playerColors [playerNumber];
@@ -58,6 +65,11 @@ public class Player : MonoBehaviour {
 
 	void Update()
 	{
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            hurtPlayer(0);
+        }
+
 		if (!hasInitialized)
 			return;
 		
@@ -143,6 +155,11 @@ public class Player : MonoBehaviour {
 		myData.currentHealth -= damage;
 		if (myData.currentHealth < 0)
 			myData.currentHealth = 0;
+        else
+        {
+            StopAllCoroutines();
+            StartCoroutine(PlayerFlash());
+        }
 	}
 
 	//Adds heal to myData.currentHeath. Cannot go above maxHP.
@@ -162,5 +179,31 @@ public class Player : MonoBehaviour {
 	{
 		Destroy(gameObject);
 	}
+
+    IEnumerator PlayerFlash()
+    {
+        bool visible = false;
+        float hurtTimer = hurtInvincibilityDuration;
+        float timeSinceLastFlash = 0;
+        GetComponent<SpriteRenderer>().enabled = visible;
+
+        while (hurtTimer > 0)
+        {
+            hurtTimer -= Time.deltaTime;
+            timeSinceLastFlash += Time.deltaTime;
+
+            // Swap between visible/invisible if we've reached our interval time
+            if(timeSinceLastFlash >= hurtFlashInterval)
+            {
+                visible = !visible;
+                GetComponent<SpriteRenderer>().enabled = visible;
+                timeSinceLastFlash = 0;
+            }
+
+            yield return null;
+        }
+
+        GetComponent<SpriteRenderer>().enabled = true;
+    }
 
 }
