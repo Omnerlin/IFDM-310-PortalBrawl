@@ -9,6 +9,9 @@ public partial class AnixPlayerController : PlayerControl
     // Reticle that will rotate to show aiming direction
     public GameObject staff;
 
+    // Object that will be the parent of all of the visual elements of the weapon
+    public GameObject staffVisuals;
+
     // HitBox gameobject to use for telling whether or not we've hit an enemy
     public GameObject staffHitbox;
 
@@ -35,6 +38,7 @@ public partial class AnixPlayerController : PlayerControl
 
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
+
     }
 
     // Update is called once per frame

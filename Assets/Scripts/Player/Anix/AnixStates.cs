@@ -59,6 +59,8 @@ public partial class AnixPlayerController : PlayerControl
             hammerHitBox.transform.parent = null;
             hammerHitBox.SetActive(true);
 
+            pControl.staffVisuals.GetComponent<Animator>().SetTrigger("Swing");
+
             CameraControl.Instance.AddCameraShake(5);
         }
 
