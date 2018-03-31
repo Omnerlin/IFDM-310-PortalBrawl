@@ -55,6 +55,8 @@ public partial class RevdiocPlayerController : PlayerControl
 
             hammerHitBox.transform.parent = null;
             hammerHitBox.SetActive(true);
+
+            CameraControl.Instance.AddCameraShake(4);
         }
 
         public override void OnExit()

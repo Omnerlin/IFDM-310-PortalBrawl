@@ -63,15 +63,11 @@ public partial class RevdiocPlayerController : PlayerControl {
             isAiming = true;
 
             // We'll use this to decide what direction that the player is aiming
-            RaycastHit hit;
-            if (!Physics.Raycast(pixelCam.ScreenPointToRay(Input.mousePosition), out hit))
-                return;
-
-            Vector3 mousePos = mainCamera.ViewportToWorldPoint(hit.textureCoord);
+            Vector3 mousePosf = pixelCam.ScreenToViewportPoint(Input.mousePosition);
+            Vector3 mousePos = mainCamera.ViewportToWorldPoint(mousePosf);
             aimAngle = Mathf.Atan2((hammer.transform.position.y - mousePos.y), (hammer.transform.position.x - mousePos.x)) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
             hammer.transform.rotation = q;
-
         }
         else
         {

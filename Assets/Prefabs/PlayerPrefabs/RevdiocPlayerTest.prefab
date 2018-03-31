@@ -293,8 +293,8 @@ MonoBehaviour:
   hammer: {fileID: 1514113879761304}
   hammerHitBox: {fileID: 1958717941958638}
   hitForce: 10000
-  attackCooldown: 0.25
-  hitboxTimeActive: 0.1
+  attackCooldown: 0.05
+  hitboxTimeActive: 0.05
   hitboxFilter:
     useTriggers: 1
     useLayerMask: 1
