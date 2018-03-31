@@ -6,7 +6,8 @@ using UnityEngine;
 public partial class DennisPlayerController : PlayerControl
 {
     // Extended class of PlayerState that has a reference to the DennisPlayerController
-    public abstract class DennisState : PlayerState {
+    public abstract class DennisState : PlayerState 
+	{
         public DennisPlayerController pControl; public DennisState(DennisPlayerController cont) {pControl = cont;}
     }
 
