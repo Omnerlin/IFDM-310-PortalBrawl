@@ -322,6 +322,7 @@ MonoBehaviour:
   playerNumber: 0
   controllerID: 0
   maxHP: 90
+  maxUltimate: 45
   myDisplay: {fileID: 0}
   hurtFlashInterval: 0.05
   hurtInvincibilityDuration: 1
