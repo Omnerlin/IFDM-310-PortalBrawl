@@ -5,10 +5,11 @@ public class PlayerInfo {
 	public int playerNumber = 1;
     public int controllerID = 0;
 	public int currentHealth = -1; //-1 on initialization so it becomes maxHealth at the VERY beginning
-	//Health, etc
+	public float currentUltimate = -1;
+	//add more stats as needed.
 
 	public string toString()
 	{
-		return "PlayerNumber: " + playerNumber + "ControllerID " + controllerID + "\tCharacterName: " + characterName + "\tHealth: " + currentHealth;
+		return "PlayerNumber: " + playerNumber + "ControllerID " + controllerID + "\tCharacterName: " + characterName + "\tHealth: " + currentHealth+"\tUltimate: "+currentUltimate;
 	}
 }

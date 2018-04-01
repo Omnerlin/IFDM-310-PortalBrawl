@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 	public int playerNumber; //Numbers have colors associated with them.
     [HideInInspector] public int controllerID;
 	public int maxHP; //load start in prefab
+	public float maxUltimate;
 	//public int currentHP;
 	private bool hasInitialized = false; //This flag is here because Update was being called before Start. This allows health to be initialized.
 
@@ -23,8 +24,9 @@ public class Player : MonoBehaviour {
 
 	//The player's color is at the index of the playerNumber
 	public static Color[] playerColors = {Color.blue, Color.magenta, Color.green, Color.yellow, Color.black};
+	public static Color[] ultimateColors = {new Color(135,0,225,225), new Color(157,358,174,225)}; //Charged, charging 
 
-	public PlayerStatDisplay myDisplay; //This may get bigger.
+	public PlayerStatDisplay myDisplay;
 
     [Tooltip("// Interval speed at which the player will become invisible/visible while hurt")]
     public float hurtFlashInterval = 0.1f;
@@ -53,8 +55,11 @@ public class Player : MonoBehaviour {
 			Debug.Log ("Player " + playerNumber +" loading data of character " + myData.characterName);
 			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
 			myRenderer.sprite = Resources.Load<Sprite> (myData.characterName);
-			if (myData.currentHealth == -1)
-				setMaxHP();
+			if (myData.currentHealth == -1) 
+			{
+				setMaxHP ();
+				setMaxUltimate ();
+			}
 		}
 		myData.playerNumber = playerNumber;
 
@@ -70,9 +75,12 @@ public class Player : MonoBehaviour {
             hurtPlayer(0);
         }
 
+		//Allows the stats to be initialized before assigning and displaying them.
 		if (!hasInitialized)
 			return;
-		
+
+		rechargeUltimate ();
+
 		updateStatDisplay ();
 		if (myData.currentHealth <= 0) 
 		{
@@ -90,7 +98,8 @@ public class Player : MonoBehaviour {
 	public void updateStatDisplay()
 	{
 		myDisplay.getText().text = myData.toString ();
-		myDisplay.getHealthBar().GetComponent<healthBar>().updateBar (myData.currentHealth, maxHP);
+		myDisplay.getHealthBar().GetComponent<StatBar>().updateBar (myData.currentHealth, maxHP);
+		myDisplay.getUltimateBar ().GetComponent<StatBar> ().updateBar (myData.currentUltimate, maxUltimate);
 	}
 
 	public string getCharacterName() { return myData.characterName; }
@@ -173,12 +182,42 @@ public class Player : MonoBehaviour {
 	public void setMaxHP()
 	{
 		myData.currentHealth = maxHP;
-	}
+}
 
 	public void die()
 	{
 		Destroy(gameObject);
 	}
+
+	//Ultimate, notes made by Anna
+	//Ultimate: Can be set to max, can be used, recharged over time, and be checked to see if it is fully charged.
+	//Call ultimateIsCharged() to check if the Ultimate can be used.
+	//Call useUltimate() to set the charge to 0 and begin the recharge process again.
+
+	public void setMaxUltimate(){ myData.currentUltimate = maxUltimate; } 
+
+	public void useUltimate() { 
+		myData.currentUltimate = 0;
+		myDisplay.getUltimateBar ().GetComponent<Image> ().color = ultimateColors [1]; //Color it uncharged
+	}
+
+	public void rechargeUltimate()
+	{
+		if (ultimateIsCharged())
+			return;
+		else if (myData.currentUltimate + Time.deltaTime >= maxUltimate) //If one more step will charge it
+		{
+			myDisplay.getUltimateBar ().GetComponent<Image> ().color = ultimateColors [1]; //Color it uncharged
+			myData.currentUltimate += Time.deltaTime;
+		}
+		else  //(myData.currentUltimate < maxUltimate) 
+		{
+			myData.currentUltimate += Time.deltaTime;
+		}
+	}
+
+	public bool ultimateIsCharged() { return myData.currentUltimate == maxUltimate; }
+
 
     IEnumerator PlayerFlash()
     {

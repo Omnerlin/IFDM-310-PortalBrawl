@@ -10,7 +10,9 @@ public class PlayerStatDisplay : MonoBehaviour {
 
 	public Text text;
 	public GameObject healthBar;
+	public GameObject ultimateBar;
 
 	public Text getText () {return (Text) text;}
 	public GameObject getHealthBar () {return healthBar;}
+	public GameObject getUltimateBar () {return ultimateBar;}
 }
