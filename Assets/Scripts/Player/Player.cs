@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 
 	//The player's color is at the index of the playerNumber
 	public static Color[] playerColors = {Color.blue, Color.magenta, Color.green, Color.yellow, Color.black};
-	public static Color[] ultimateColors = {new Color(135,0,225,225), new Color(157,358,174,225)}; //Charged, charging 
+	public static Color[] ultimateColors = {new Color(135,0,225,225), new Color(157,358,174,225)}; //Purple for charged, pale purple for charging
 
 	public PlayerStatDisplay myDisplay;
 
@@ -109,8 +109,13 @@ public class Player : MonoBehaviour {
 	public void setDisplay(GameObject display) 
 	{
 		myDisplay = display.GetComponent<PlayerStatDisplay> ();
-		if (myDisplay == null)
-			Debug.LogWarning("Display passed did not have a PlayerStatDisplay script component.");
+		if (myDisplay == null) 
+		{
+			Debug.LogWarning ("Display passed did not have a PlayerStatDisplay script component.");
+			return;
+		}
+		myDisplay.getUltimateBar ().SetActive (true);
+		myDisplay.getHealthBar ().SetActive (true);
 	}
 
 	public int getPlayerNumber(){ return playerNumber; }
@@ -187,6 +192,16 @@ public class Player : MonoBehaviour {
 	public void die()
 	{
 		Destroy(gameObject);
+	}
+
+	public bool isAlive()
+	{
+		return myData.currentHealth > 0;
+	}
+
+	public void revivePlayer(int health)
+	{
+		//update a local variable that charges up, and decreases when someone stops charging it?
 	}
 
 	//Ultimate, notes made by Anna

@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: 0a9781f852c39254dadd1ea286abe025
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/TestSceneNew.unity
-    guid: 68c95d9b66fb9ac44a1c18c19310b70c
+    path: Assets/Scenes/TestSceneNewAnnaTemp.unity
+    guid: 32bd242789bc1d64fb6038516895b695

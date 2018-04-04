@@ -46,4 +46,17 @@ public partial class ZerandiPlayerController : PlayerControl
             return this;
         }
     }
+
+	public class FaintState : ZerandiState
+	{
+		public FaintState(ZerandiPlayerController cont) : base(cont) { }
+
+		public override void OnEnter() { }//Change animation
+		public override void OnExit() { }//Change animation
+
+		public override PlayerState Update()
+		{
+			return this; //Sorry, endless loop. You can't do anything while youre down. 
+		}
+	}
 }
