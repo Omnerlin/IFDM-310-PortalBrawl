@@ -10,7 +10,7 @@ public class StatBar : MonoBehaviour {
 	//could also display currentHealth in a text component on the bar.
 	public void updateBar (int currentStat, int maxStat)
 	{
-		fullBar.transform.localScale = new Vector3 ((currentStat / maxStat), 1, 1);
+		updateBar((float)currentStat,(float)maxStat);
 	}
 
 	public void updateBar (float currentStat, float maxStat)

@@ -47,6 +47,7 @@ public class PlayerManager : MonoBehaviour
                 // Run through the list of character names and instaniate the prefab that matches
                 // Doing this since we only have 4 characters. Otherwise we could do something more generic 
                 GameObject playerObject = null;
+				Debug.Log ("Instanciating " + info.characterName + " prefab from PlayerManager");
                 switch(info.characterName)
                 {
                     case "Anix":

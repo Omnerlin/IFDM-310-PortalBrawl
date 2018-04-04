@@ -174,6 +174,8 @@ public class Player : MonoBehaviour {
             StopAllCoroutines();
             StartCoroutine(PlayerFlash());
         }
+
+		Debug.Log (myData.characterName + " took " + damage + " damage! "+myData.currentHealth+" health remaining! (Don't die)");
 	}
 
 	//Adds heal to myData.currentHeath. Cannot go above maxHP.
@@ -191,7 +193,7 @@ public class Player : MonoBehaviour {
 
 	public void die()
 	{
-		Destroy(gameObject);
+		Destroy(this.gameObject);
 	}
 
 	public bool isAlive()
