@@ -172,6 +172,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToPlayer: 5
+--- !u!1 &106389335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 106389336}
+  - component: {fileID: 106389337}
+  m_Layer: 0
+  m_Name: CameraControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &106389336
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106389335}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1221742590}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &106389337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106389335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9a01d0a82462845a7ea96c1cec7dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDiminishRate: 20
 --- !u!1 &152148151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,7 +1927,7 @@ MonoBehaviour:
   - {fileID: 1975769332}
   - {fileID: 1118935684}
   - {fileID: 1294681327}
-  playerPrefab: {fileID: 1895619478501496, guid: ce67e90c3e25b6f4abc936966d227533,
+  playerPrefab: {fileID: 1296628274114408, guid: 2585be0a0418f8446948f0ba15dea064,
     type: 2}
 --- !u!1001 &1050011862
 Prefab:
@@ -2112,6 +2153,7 @@ GameObject:
   - component: {fileID: 1076367994}
   - component: {fileID: 1076367997}
   - component: {fileID: 1076367996}
+  - component: {fileID: 1076367995}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -2132,6 +2174,20 @@ Transform:
   m_Father: {fileID: 1729891852}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1076367995
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076367993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 68b0627ea3d796448b29ab0938f2c240, type: 2}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 63.8
 --- !u!114 &1076367996
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2539,6 +2595,7 @@ Transform:
   - {fileID: 786366339}
   - {fileID: 436528432}
   - {fileID: 949366750}
+  - {fileID: 106389336}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
