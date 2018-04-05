@@ -29,6 +29,7 @@ public partial class RevdiocPlayerController : PlayerControl
             // If the player hits the rightbumper, return the attack state
             if(pControl.player.GetButtonDown("RightBumper"))
             {
+                Debug.Log("ya pressed it");
                 return new AttackState(pControl);
             }
             pControl.UpdateReticleRotation();

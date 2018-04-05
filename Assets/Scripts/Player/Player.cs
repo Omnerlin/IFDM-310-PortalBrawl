@@ -99,7 +99,7 @@ public class Player : MonoBehaviour {
 	{
 		myDisplay.getText().text = myData.toString ();
 		myDisplay.getHealthBar().GetComponent<StatBar>().updateBar (myData.currentHealth, maxHP);
-		myDisplay.getUltimateBar ().GetComponent<StatBar> ().updateBar (myData.currentUltimate, maxUltimate);
+		// myDisplay.getUltimateBar ().GetComponent<StatBar> ().updateBar (myData.currentUltimate, maxUltimate);
 	}
 
 	public string getCharacterName() { return myData.characterName; }

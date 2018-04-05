@@ -1218,7 +1218,10 @@ MonoBehaviour:
       _descriptiveName: Player4
       _startPlaying: 0
       _defaultJoystickMaps: []
-      _defaultMouseMaps: []
+      _defaultMouseMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
       _defaultKeyboardMaps:
       - _enabled: 1
         _categoryId: 0
@@ -1795,7 +1798,7 @@ MonoBehaviour:
       customControllerUid: 0
       actionElementMaps:
       - _actionCategoryId: 0
-        _actionId: 4
+        _actionId: 9
         _elementType: 1
         _elementIdentifierId: 3
         _axisRange: 0

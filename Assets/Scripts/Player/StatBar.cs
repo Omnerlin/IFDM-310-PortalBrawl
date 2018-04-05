@@ -15,6 +15,12 @@ public class StatBar : MonoBehaviour {
 
 	public void updateBar (float currentStat, float maxStat)
 	{
+        if(maxStat <= 0)
+        {
+            Debug.LogError("maxStat on statbar is less than or equal to zero. you probably don't want this");
+            return;
+        }
+
 		fullBar.transform.localScale = new Vector3 ((currentStat / maxStat), 1, 1);
 	}
 }
