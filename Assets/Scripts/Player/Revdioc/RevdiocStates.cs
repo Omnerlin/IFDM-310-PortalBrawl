@@ -22,6 +22,10 @@ public partial class RevdiocPlayerController : PlayerControl
 
         public override PlayerState Update()
         {
+			if (pControl.playerInfo.isDead ()) 
+			{
+				return new DeadState (pControl);
+			}
             // If the player hits the rightbumper, return the attack state
             if(pControl.player.GetButtonDown("RightBumper"))
             {
@@ -87,4 +91,27 @@ public partial class RevdiocPlayerController : PlayerControl
             return this;
         }
     }
+
+	public class DeadState : RevdiocState
+	{
+		public DeadState(RevdiocPlayerController cont) : base(cont) { }
+
+		public override void OnEnter() 
+		{
+			//Trigger Death animation
+			pControl.GetComponent<Animator>().SetTrigger("Die");
+		}
+
+		public override void OnExit() 
+		{ 
+			//Revive? animation, poof?
+		}
+
+		public override PlayerState Update()
+		{
+			//TODO: If revived, return walkstate.
+			//else
+			return this; //Sorry, endless loop. You can't do anything while you're down. 
+		}
+	}
 }

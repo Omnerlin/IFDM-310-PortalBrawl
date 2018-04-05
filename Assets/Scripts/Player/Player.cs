@@ -72,7 +72,7 @@ public class Player : MonoBehaviour {
 	{
         if(Input.GetKeyDown(KeyCode.H))
         {
-            hurtPlayer(0);
+            hurtPlayer(5);
         }
 
 		//Allows the stats to be initialized before assigning and displaying them.
@@ -82,10 +82,10 @@ public class Player : MonoBehaviour {
 		rechargeUltimate ();
 
 		updateStatDisplay ();
-		if (myData.currentHealth <= 0) 
+		if (myData.currentHealth == 0) 
 		{
 			Debug.Log ("Player " + playerNumber + " playing " + myData.characterName + "has died.");
-			myData.currentHealth = 0;
+			//myData.currentHealth = 0;
 			die();
 		}
 	}
@@ -191,19 +191,20 @@ public class Player : MonoBehaviour {
 		myData.currentHealth = maxHP;
 }
 
-	public void die()
+	public void die() //TODO: delete this?
 	{
-		Destroy(this.gameObject);
+		//State classes cause this to happen.
+		//Destroy(this.gameObject); 
 	}
 
-	public bool isAlive()
+	public bool isDead()
 	{
-		return myData.currentHealth > 0;
+		return myData.currentHealth <= 0;
 	}
 
-	public void revivePlayer(int health)
+	public void revivePlayer(int revive)
 	{
-		//update a local variable that charges up, and decreases when someone stops charging it?
+	 	//update a local variable that charges up, and decreases when someone stops charging it?
 	}
 
 	//Ultimate, notes made by Anna
