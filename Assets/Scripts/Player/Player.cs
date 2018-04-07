@@ -171,6 +171,7 @@ public class Player : MonoBehaviour {
         {
 			myData.currentHealth = 0;
             StopAllCoroutines();
+            GetComponent<PlayerControl>().characterBody.GetComponent<SpriteRenderer>().enabled = true;
         }
         else
         {
