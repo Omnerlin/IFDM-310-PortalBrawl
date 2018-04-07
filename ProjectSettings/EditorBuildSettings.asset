@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelection.unity
     guid: 53eed0d33d7a069438868ab2a0cce34d
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
+    path: Assets/Scenes/OldScenes/TestScene.unity
     guid: 0a9781f852c39254dadd1ea286abe025
   - enabled: 0
     path: 
@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestSceneNewAnnaTemp.unity
     guid: 32bd242789bc1d64fb6038516895b695
+  - enabled: 1
+    path: Assets/Scenes/TestSceneNewAlexTemp.unity
+    guid: ffd180ed199659c40ad09bfdc39b3eef
