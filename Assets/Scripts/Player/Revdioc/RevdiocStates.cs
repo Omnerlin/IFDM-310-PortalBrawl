@@ -103,6 +103,7 @@ public partial class RevdiocPlayerController : PlayerControl
             pControl.deathVisuals.SetActive(true);
             pControl.hammer.SetActive(false);
             pControl.rb2d.isKinematic = true;
+            pControl.rb2d.velocity = Vector2.zero;
 		}
 
 		public override void OnExit() 

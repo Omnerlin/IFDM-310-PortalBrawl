@@ -167,8 +167,11 @@ public class Player : MonoBehaviour {
 	public void hurtPlayer(int damage)
 	{
 		myData.currentHealth -= damage;
-		if (myData.currentHealth < 0)
+		if (myData.currentHealth <= 0)
+        {
 			myData.currentHealth = 0;
+            StopAllCoroutines();
+        }
         else
         {
             StopAllCoroutines();
