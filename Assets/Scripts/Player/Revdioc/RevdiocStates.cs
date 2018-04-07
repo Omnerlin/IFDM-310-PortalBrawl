@@ -29,7 +29,6 @@ public partial class RevdiocPlayerController : PlayerControl
             // If the player hits the rightbumper, return the attack state
             if(pControl.player.GetButtonDown("RightBumper"))
             {
-                Debug.Log("ya pressed it");
                 return new AttackState(pControl);
             }
             pControl.UpdateReticleRotation();
@@ -100,18 +99,31 @@ public partial class RevdiocPlayerController : PlayerControl
 		public override void OnEnter() 
 		{
 			//Trigger Death animation
-			pControl.GetComponent<Animator>().SetTrigger("Die");
+			pControl.animator.SetTrigger("Die");
+            pControl.deathVisuals.SetActive(true);
+            pControl.hammer.SetActive(false);
+            pControl.rb2d.isKinematic = true;
 		}
 
 		public override void OnExit() 
-		{ 
-			//Revive? animation, poof?
-		}
+		{
+            //Revive? animation, poof?
+            pControl.deathVisuals.SetActive(false);
+            pControl.hammer.SetActive(true);
+            pControl.rb2d.isKinematic = false;
+        }
 
-		public override PlayerState Update()
+        public override PlayerState Update()
 		{
 			//TODO: If revived, return walkstate.
-			//else
+			
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                pControl.GetComponent<Player>().setMaxHP();
+                pControl.animator.SetTrigger("Revive");
+                return new WalkState(pControl);
+            }
+
 			return this; //Sorry, endless loop. You can't do anything while you're down. 
 		}
 	}

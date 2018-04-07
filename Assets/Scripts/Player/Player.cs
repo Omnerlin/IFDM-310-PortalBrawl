@@ -53,8 +53,8 @@ public class Player : MonoBehaviour {
 		if (!String.IsNullOrEmpty(myData.characterName)) //If they have a character assigned
 		{
 			Debug.Log ("Player " + playerNumber +" loading data of character " + myData.characterName);
-			SpriteRenderer myRenderer = GetComponent<SpriteRenderer> ();
-			myRenderer.sprite = Resources.Load<Sprite> (myData.characterName);
+			//SpriteRenderer myRenderer = GetComponent<PlayerControl>().<SpriteRenderer> ();
+			//myRenderer.sprite = Resources.Load<Sprite> (myData.characterName);
 			if (myData.currentHealth == -1) 
 			{
 				setMaxHP ();
@@ -189,7 +189,7 @@ public class Player : MonoBehaviour {
 	public void setMaxHP()
 	{
 		myData.currentHealth = maxHP;
-}
+    }
 
 	public void die() //TODO: delete this?
 	{
@@ -242,7 +242,8 @@ public class Player : MonoBehaviour {
         bool visible = false;
         float hurtTimer = hurtInvincibilityDuration;
         float timeSinceLastFlash = 0;
-        GetComponent<SpriteRenderer>().enabled = visible;
+        SpriteRenderer renderer = GetComponent<PlayerControl>().characterBody.GetComponent<SpriteRenderer>();
+        renderer.enabled = visible;
 
         while (hurtTimer > 0)
         {
@@ -253,14 +254,14 @@ public class Player : MonoBehaviour {
             if(timeSinceLastFlash >= hurtFlashInterval)
             {
                 visible = !visible;
-                GetComponent<SpriteRenderer>().enabled = visible;
+                renderer.enabled = visible;
                 timeSinceLastFlash = 0;
             }
 
             yield return null;
         }
 
-        GetComponent<SpriteRenderer>().enabled = true;
+        renderer.enabled = true;
     }
 
 }

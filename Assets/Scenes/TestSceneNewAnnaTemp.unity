@@ -1918,7 +1918,7 @@ MonoBehaviour:
   anixPrefab: {fileID: 1296628274114408, guid: 2585be0a0418f8446948f0ba15dea064, type: 2}
   dennisPrefab: {fileID: 1895619478501496, guid: ce67e90c3e25b6f4abc936966d227533,
     type: 2}
-  revdiocPrefab: {fileID: 1812097893898530, guid: 86d858a1dc7233540aceb8d7d6fb8da6,
+  revdiocPrefab: {fileID: 1604273714345938, guid: 0863eb72b3f23f147bdb8abdfd6a0cbc,
     type: 2}
   zerandiPrefab: {fileID: 1960806383544998, guid: 621a2d5650c4e6040994c6b38a26dded,
     type: 2}

@@ -18,8 +18,12 @@ public class PlayerControl : MonoBehaviour
     // Number of the player's controller (Used to check for separate input)
     public int controllerNumber { get; set; }
 
+    public GameObject characterBody;
+    public GameObject deathVisuals;
+
     protected Rigidbody2D rb2d;
 
+    protected Animator animator;
 
     private void Awake()
     {
@@ -37,8 +41,6 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Animator animator = GetComponent<Animator>();
-
         animator.SetFloat("MoveX", rb2d.velocity.x);
         animator.SetFloat("MoveY", rb2d.velocity.y);
 

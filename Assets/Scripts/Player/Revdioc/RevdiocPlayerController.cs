@@ -30,6 +30,8 @@ public partial class RevdiocPlayerController : PlayerControl {
 
     private void Awake()
     {
+        animator = characterBody.GetComponent<Animator>();
+
         sMachine = new StateMachine<RevdiocState>(new WalkState(this));
 
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
@@ -83,8 +85,8 @@ public partial class RevdiocPlayerController : PlayerControl {
             // Set up a deadzone for controllers
             if (Mathf.Abs(axis.magnitude) <= 0.3)
             {
-                axis = new Vector2(GetComponent<Animator>().GetFloat("MoveX"),
-                GetComponent<Animator>().GetFloat("MoveY"));
+                axis = new Vector2(animator.GetFloat("MoveX"),
+                animator.GetFloat("MoveY"));
                 if (axis.magnitude > 1) { axis = axis.normalized; }
                 isAiming = false;
 
@@ -119,13 +121,13 @@ public partial class RevdiocPlayerController : PlayerControl {
 
         if (aimAngle < -110 || aimAngle > 110)
         {
-            GetComponent<Animator>().SetFloat("AimDirection", 1);
-            GetComponent<Animator>().SetFloat("DirectionX", 1);
+            animator.SetFloat("AimDirection", 1);
+            animator.SetFloat("DirectionX", 1);
         }
         else if (aimAngle > -70 && aimAngle < 70)
         {
-            GetComponent<Animator>().SetFloat("AimDirection", -1);
-            GetComponent<Animator>().SetFloat("DirectionX", -1);
+            animator.SetFloat("AimDirection", -1);
+            animator.SetFloat("DirectionX", -1);
         }
 
 
@@ -139,7 +141,7 @@ public partial class RevdiocPlayerController : PlayerControl {
         //    hammer.GetComponent<SortingGroup>().sortingOrder = 0;
         //}
 
-        GetComponent<Animator>().SetBool("isAiming", isAiming);
+        animator.SetBool("isAiming", isAiming);
         previousRotation = aimAngle;
     }
 }
