@@ -21,6 +21,10 @@ public partial class DennisPlayerController : PlayerControl
 
         public override PlayerState Update()
         {
+            if(pControl.GetComponent<Player>().isDead())
+            {
+                return new DeathState(pControl);
+            }
 
             pControl.UpdateAttack();
             pControl.UpdateReticleRotation();
@@ -30,17 +34,34 @@ public partial class DennisPlayerController : PlayerControl
         }
     }
 
-    public class StunState : DennisState
+    public class DeathState : DennisState
     {
-        public StunState(DennisPlayerController cont) : base(cont) { }
+        public DeathState(DennisPlayerController cont) : base(cont) { }
 
-        public override void OnEnter() { }
-        public override void OnExit() { }
+        public override void OnEnter()
+        {
+            pControl.animator.SetTrigger("Die");
+            pControl.deathVisuals.SetActive(true);
+            pControl.rb2d.velocity = Vector2.zero;
+            pControl.rb2d.isKinematic = true;
+            pControl.aimReticle.SetActive(false);
+        }
+        public override void OnExit()
+        {
+            pControl.rb2d.isKinematic = false;
+            pControl.deathVisuals.SetActive(false);
+            pControl.animator.SetTrigger("Revive");
+            pControl.aimReticle.SetActive(true);
+        }
 
         public override PlayerState Update()
         {
-            pControl.UpdateAttack();
-            pControl.UpdateReticleRotation();
+            // Revive for debugging
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                pControl.GetComponent<Player>().setMaxHP();
+                return new WalkState(pControl);
+            }
 
             return this;
         }

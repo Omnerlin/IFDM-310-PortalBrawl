@@ -23,6 +23,11 @@ public partial class AnixPlayerController : PlayerControl
         public override PlayerState Update()
         {
             // If the player hits the rightbumper, return the attack state
+            if(pControl.GetComponent<Player>().isDead())
+            {
+                return new DeathState(pControl);
+            }
+
             if (pControl.player.GetButtonDown("RightBumper"))
             {
                 return new AttackState(pControl);
@@ -89,6 +94,39 @@ public partial class AnixPlayerController : PlayerControl
 
             pControl.UpdatePlayerMovement();
             pControl.UpdateReticleRotation();
+            return this;
+        }
+    }
+
+    public class DeathState : AnixState
+    {
+
+        public DeathState(AnixPlayerController cont) : base(cont) { }
+
+        public override void OnEnter()
+        {
+            pControl.animator.SetTrigger("Die");
+            pControl.deathVisuals.SetActive(true);
+            pControl.rb2d.velocity = Vector2.zero;
+            pControl.rb2d.isKinematic = true;
+            pControl.staff.SetActive(false);
+        }
+        public override void OnExit()
+        {
+            pControl.rb2d.isKinematic = false;
+            pControl.deathVisuals.SetActive(false);
+            pControl.animator.SetTrigger("Revive");
+            pControl.staff.SetActive(true);
+        }
+
+        public override PlayerState Update()
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                pControl.GetComponent<Player>().setMaxHP();
+                return new WalkState(pControl);
+            }
+
             return this;
         }
     }
