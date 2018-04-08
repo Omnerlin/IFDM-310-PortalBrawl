@@ -20,8 +20,14 @@ public partial class ZerandiPlayerController : PlayerControl
         public override void OnEnter() { }
         public override void OnExit() { }
 
+        
+
         public override PlayerState Update()
         {
+            if(pControl.GetComponent<Player>().isDead())
+            {
+                return new DeathState(pControl);
+            }
 
             pControl.UpdateAttack();
             pControl.UpdateReticleOrientation();
@@ -43,6 +49,37 @@ public partial class ZerandiPlayerController : PlayerControl
             pControl.UpdateAttack();
             pControl.UpdateReticleOrientation();
 
+            return this;
+        }
+    }
+
+    public class DeathState : ZerandiState
+    {
+        public DeathState(ZerandiPlayerController cont) : base(cont) { }
+
+        public override void OnEnter()
+        {
+            pControl.animator.SetTrigger("Die");
+            pControl.deathVisuals.SetActive(true);
+            pControl.rb2d.isKinematic = true;
+            pControl.rb2d.velocity = Vector2.zero;
+        }
+
+        public override void OnExit()
+        {
+            pControl.animator.SetTrigger("Revive");
+            pControl.deathVisuals.SetActive(false);
+            pControl.rb2d.isKinematic = false;
+            pControl.rb2d.velocity = Vector2.zero;
+        }
+
+        public override PlayerState Update()
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                pControl.GetComponent<Player>().setMaxHP();
+                return new WalkState(pControl);
+            }
             return this;
         }
     }

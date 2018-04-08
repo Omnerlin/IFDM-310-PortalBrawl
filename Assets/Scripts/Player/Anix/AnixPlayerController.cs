@@ -35,7 +35,7 @@ public partial class AnixPlayerController : PlayerControl
     private void Awake()
     {
         sMachine = new StateMachine<AnixState>(new WalkState(this));
-
+        animator = characterBody.GetComponent<Animator>();
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
 
@@ -83,8 +83,8 @@ public partial class AnixPlayerController : PlayerControl
             // Set up a deadzone for controllers
             if (Mathf.Abs(axis.magnitude) <= 0.3)
             {
-                axis = new Vector2(GetComponent<Animator>().GetFloat("MoveX"),
-                GetComponent<Animator>().GetFloat("MoveY"));
+                axis = new Vector2(animator.GetFloat("MoveX"),
+                animator.GetFloat("MoveY"));
                 if (axis.magnitude > 1) { axis = axis.normalized; }
                 isAiming = false;
 
@@ -119,27 +119,16 @@ public partial class AnixPlayerController : PlayerControl
 
         if (aimAngle < -110 || aimAngle > 110)
         {
-            GetComponent<Animator>().SetFloat("AimDirection", 1);
-            GetComponent<Animator>().SetFloat("DirectionX", 1);
+            animator.SetFloat("AimDirection", 1);
+            animator.SetFloat("DirectionX", 1);
         }
         else if (aimAngle > -70 && aimAngle < 70)
         {
-            GetComponent<Animator>().SetFloat("AimDirection", -1);
-            GetComponent<Animator>().SetFloat("DirectionX", -1);
+           animator.SetFloat("AimDirection", -1);
+           animator.SetFloat("DirectionX", -1);
         }
 
-
-        // Decide whether or not the gun should render behind the player based on the angle 
-        //if (aimAngle < -15 && aimAngle > -165)
-        //{
-        //    hammer.GetComponent<SortingGroup>().sortingOrder = -1;
-        //}
-        //else
-        //{
-        //    hammer.GetComponent<SortingGroup>().sortingOrder = 0;
-        //}
-
-        GetComponent<Animator>().SetBool("isAiming", isAiming);
+        animator.SetBool("isAiming", isAiming);
         previousRotation = aimAngle;
     }
 }
