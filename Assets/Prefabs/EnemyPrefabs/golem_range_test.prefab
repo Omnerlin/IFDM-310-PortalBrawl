@@ -53,11 +53,11 @@ GameObject:
   - component: {fileID: 212685722076408190}
   - component: {fileID: 61119582623449896}
   - component: {fileID: 50167113230399012}
-  - component: {fileID: 114913395947211634}
   - component: {fileID: 114243645517850226}
   - component: {fileID: 95941456581244122}
   - component: {fileID: 210637851990332790}
   - component: {fileID: 114284011255989748}
+  - component: {fileID: 114467675758436010}
   m_Layer: 9
   m_Name: golem_range_test
   m_TagString: Enemy
@@ -195,6 +195,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToPlayer: 1
+--- !u!114 &114467675758436010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797960698756072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7835eced356d35d44a3340e085bbc774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveForce: 0
+  maxMoveSpeed: 30
+  theGun: {fileID: 114525609619721338}
 --- !u!114 &114525609619721338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,20 +225,6 @@ MonoBehaviour:
   bulletSpeed: 30
   timeBetweenShots: 1
   firePoint: {fileID: 4204743364606568}
---- !u!114 &114913395947211634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1797960698756072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88c6078cea3473a4ba8e013876a96a45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveForce: 4000
-  maxMoveSpeed: 5
-  theGun: {fileID: 114525609619721338}
 --- !u!210 &210637851990332790
 SortingGroup:
   m_ObjectHideFlags: 1
