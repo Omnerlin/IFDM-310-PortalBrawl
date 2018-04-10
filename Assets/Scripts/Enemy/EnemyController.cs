@@ -9,19 +9,22 @@ public class EnemyController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     private Transform target;
+    private GameObject[] players;
+    private GameObject player;
 
     private Animator animator;
 
 
 	// Use this for initialization
 	void Start () {
+        players = GameObject.FindGameObjectsWithTag("Player");
+        player = players[Random.Range(0, players.Length)];
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(player)
         {
 
@@ -36,6 +39,10 @@ public class EnemyController : MonoBehaviour {
             {
                 rb2d.velocity = rb2d.velocity.normalized * maxMoveSpeed;
             }
+        }
+        else
+        {
+            player = players[Random.Range(0, players.Length)];
         }
 
         if(rb2d.velocity.x == 0)

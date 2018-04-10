@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour {
 
     private int totalOptions;
 
+    public AudioSource[] sounds = new AudioSource[2];
+
     private void Awake()
     {
         player = ReInput.players.GetPlayer(4);
@@ -43,6 +45,7 @@ public class MainMenu : MonoBehaviour {
                 Vector2 postion = transform.position;
                 postion.y += yOffset;
                 transform.position = postion;
+                sounds[0].Play();
             }
         }
         if (player.GetButtonDown("DPadDown"))
@@ -54,12 +57,14 @@ public class MainMenu : MonoBehaviour {
                 Vector2 postion = transform.position;
                 postion.y -= yOffset;
                 transform.position = postion;
+                sounds[0].Play();
             }
         }
 
         if (player.GetButton("Start"))
         {
             menuButtons[index].onClick.Invoke();
+            sounds[1].Play();
         }
     }
 }

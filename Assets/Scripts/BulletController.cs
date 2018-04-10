@@ -9,6 +9,8 @@ public class BulletController : MonoBehaviour
     public float lifeTime;
     public int damageForEnemy;
 
+    public bool isEnemyShot;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,16 +25,33 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag.Equals("Enemy"))
+        if (isEnemyShot)
         {
-            other.gameObject.GetComponent<EnemyHp>().HurtEnemy(damageForEnemy);
+            if (other.gameObject.tag.Equals("Player"))
+            {
+                other.gameObject.GetComponent<PlayerHP>().HurtPlayer(damageForEnemy);
+            }
+            else if (other.gameObject.tag.Equals("Enemy"))
+            {
+                // Ignore contact with the player since they shot it (Will need to change this later)
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
+                return;
+            }
         }
-        else if (other.gameObject.tag.Equals("Player"))
+        else
         {
-            // Ignore contact with the player since they shot it (Will need to change this later)
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
-            return;
+            if (other.gameObject.tag.Equals("Enemy"))
+            {
+                other.gameObject.GetComponent<EnemyHp>().HurtEnemy(damageForEnemy);
+            }
+            else if (other.gameObject.tag.Equals("Player"))
+            {
+                // Ignore contact with the player since they shot it (Will need to change this later)
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
+                return;
+            }
         }
+
         Destroy(gameObject);
     }
 }
