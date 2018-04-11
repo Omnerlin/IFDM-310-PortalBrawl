@@ -8,7 +8,8 @@ using UnityEngine.UI;
 //and that Player object can then reference whatever stat/health bars are here.
 public class PlayerStatDisplay : MonoBehaviour {
 
-	public Text text;
+    public Text text;
+
 	public GameObject healthBar;
 	public GameObject ultimateBar;
 

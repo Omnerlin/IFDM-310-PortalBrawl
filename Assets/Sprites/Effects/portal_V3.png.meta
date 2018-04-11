@@ -26,6 +26,28 @@ TextureImporter:
     21300038: portal_test_3_19
     21300040: portal_test_3_20
     21300042: portal_test_3_21
+    21300044: portal_V3_0
+    21300046: portal_V3_1
+    21300048: portal_V3_2
+    21300050: portal_V3_3
+    21300052: portal_V3_4
+    21300054: portal_V3_5
+    21300056: portal_V3_6
+    21300058: portal_V3_7
+    21300060: portal_V3_8
+    21300062: portal_V3_9
+    21300064: portal_V3_10
+    21300066: portal_V3_11
+    21300068: portal_V3_12
+    21300070: portal_V3_13
+    21300072: portal_V3_14
+    21300074: portal_V3_15
+    21300076: portal_V3_16
+    21300078: portal_V3_17
+    21300080: portal_V3_18
+    21300082: portal_V3_19
+    21300084: portal_V3_20
+    21300086: portal_V3_21
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -112,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: portal_test_3_0
+      name: portal_V3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -120,13 +142,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_1
+      name: portal_V3_1
       rect:
         serializedVersion: 2
         x: 64
@@ -134,13 +156,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_2
+      name: portal_V3_2
       rect:
         serializedVersion: 2
         x: 128
@@ -148,13 +170,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_3
+      name: portal_V3_3
       rect:
         serializedVersion: 2
         x: 192
@@ -162,13 +184,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_4
+      name: portal_V3_4
       rect:
         serializedVersion: 2
         x: 256
@@ -176,13 +198,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_5
+      name: portal_V3_5
       rect:
         serializedVersion: 2
         x: 320
@@ -190,13 +212,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_6
+      name: portal_V3_6
       rect:
         serializedVersion: 2
         x: 0
@@ -204,13 +226,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_7
+      name: portal_V3_7
       rect:
         serializedVersion: 2
         x: 64
@@ -218,13 +240,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_8
+      name: portal_V3_8
       rect:
         serializedVersion: 2
         x: 128
@@ -232,13 +254,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_9
+      name: portal_V3_9
       rect:
         serializedVersion: 2
         x: 192
@@ -246,13 +268,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_10
+      name: portal_V3_10
       rect:
         serializedVersion: 2
         x: 256
@@ -260,13 +282,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_11
+      name: portal_V3_11
       rect:
         serializedVersion: 2
         x: 320
@@ -274,13 +296,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_12
+      name: portal_V3_12
       rect:
         serializedVersion: 2
         x: 0
@@ -288,13 +310,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_13
+      name: portal_V3_13
       rect:
         serializedVersion: 2
         x: 64
@@ -302,13 +324,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_14
+      name: portal_V3_14
       rect:
         serializedVersion: 2
         x: 128
@@ -316,13 +338,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_15
+      name: portal_V3_15
       rect:
         serializedVersion: 2
         x: 192
@@ -330,13 +352,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_16
+      name: portal_V3_16
       rect:
         serializedVersion: 2
         x: 256
@@ -344,13 +366,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_17
+      name: portal_V3_17
       rect:
         serializedVersion: 2
         x: 320
@@ -358,13 +380,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_18
+      name: portal_V3_18
       rect:
         serializedVersion: 2
         x: 0
@@ -372,13 +394,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_19
+      name: portal_V3_19
       rect:
         serializedVersion: 2
         x: 64
@@ -386,13 +408,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_20
+      name: portal_V3_20
       rect:
         serializedVersion: 2
         x: 128
@@ -400,13 +422,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: portal_test_3_21
+      name: portal_V3_21
       rect:
         serializedVersion: 2
         x: 192
@@ -414,7 +436,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

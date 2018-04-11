@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour {
         public float rate;
     }
 
+    public GameObject portalPrefab;
     public Wave[] waves;
     private int nextWave = 0;
     public float timeBetweenWaves;
@@ -110,12 +111,18 @@ public class EnemySpawner : MonoBehaviour {
 
     void SpawnEnemy(GameObject _Enemy)
     {
+        // Changing this a bit to spawn portals instead, which spawn the enemy that was going to be spawned
+        // by this, if that makes sense.
+
         GameObject _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         if(spawnPoints.Length == 0)
         {
             Debug.LogError("No spawn points found");
         }
-        Instantiate(_Enemy, _sp.transform.position, _sp.transform.rotation);
+
+        Instantiate(portalPrefab, _sp.transform.position, _sp.transform.rotation);
+        portalPrefab.GetComponent<PortalSpawn>().monsterToSpawn = _Enemy;
+        //Instantiate(_Enemy, _sp.transform.position, _sp.transform.rotation);
         Debug.Log("Spawning Enemy: " + _Enemy);
     }
 }
