@@ -79,8 +79,6 @@ public class EnemyRangeController : MonoBehaviour {
         {
             animator.SetFloat("MoveDirectionX", -1);
         }
-
-
     }
 
     // Update is called once per frame

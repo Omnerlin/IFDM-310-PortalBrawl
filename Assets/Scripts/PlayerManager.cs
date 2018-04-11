@@ -16,6 +16,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject revdiocPrefab;
     public GameObject zerandiPrefab;
 
+    public GameObject portraitPrefab;
+    public GameObject playerPortraitGroup;
+
 	public GameObject[] playerDisplays = new GameObject[4]; //Indexed by PLAYER number, NOT Rewired-ID
 
     //private List<int> assignedControllers = new List<int>();
@@ -71,9 +74,18 @@ public class PlayerManager : MonoBehaviour
                     return;
                 }
 
-				//Assign the playerNumber and the text display object to the player for its use.
+                //gameObject yaboi = 
+                //playerObject.GetComponent<Player>().characterNameImage
+                GameObject portrait = Instantiate(portraitPrefab, playerPortraitGroup.transform);
+                //portrait.transform.localScale = new Vector3(1, 1, 1);
+
+                // Assign the character portrait image and name
+                portrait.transform.Find("Portrait").GetComponent<Image>().sprite = playerObject.GetComponent<Player>().characterPortraitImage;
+                portrait.transform.Find("Name").GetComponent<Image>().sprite = playerObject.GetComponent<Player>().characterNameImage;
+
+                //Assign the playerNumber and the text display object to the player for its use.
                 playerObject.GetComponent<Player>().playerNumber = info.playerNumber;
-				playerObject.GetComponent<Player> ().setDisplay( playerDisplays [info.playerNumber] );
+				playerObject.GetComponent<Player> ().setDisplay( portrait );
                 playerObject.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(info.controllerID);
 
                 // Add the player to the group of objects to be tracked by the camera

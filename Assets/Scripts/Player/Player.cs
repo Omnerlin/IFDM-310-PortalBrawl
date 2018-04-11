@@ -12,7 +12,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public Transform startPosition;
+    // public Transform startPosition;
+    public Sprite characterPortraitImage;
+    public Sprite characterNameImage;
+
 	public int playerNumber; //Numbers have colors associated with them.
     [HideInInspector] public int controllerID;
 	public int maxHP; //load start in prefab

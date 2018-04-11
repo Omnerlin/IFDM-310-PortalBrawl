@@ -347,7 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63639969e2f70643a83edf2b9a69e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 0}
+  characterPortraitImage: {fileID: 21300000, guid: 2d7bd6ce16b5c8c41971afdb95cc7c01,
+    type: 3}
+  characterNameImage: {fileID: 21300000, guid: 61ccb09defb59b64d82e0187c026858b, type: 3}
   playerNumber: 0
   controllerID: 0
   maxHP: 15

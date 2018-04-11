@@ -394,6 +394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {fileID: 0}
+  characterPortraitImage: {fileID: 21300000, guid: fe6205ae03931354483e56fcfcc72738,
+    type: 3}
+  characterNameImage: {fileID: 21300000, guid: c237f96f2f6c5f746a8cac94aa9471d9, type: 3}
   playerNumber: 0
   controllerID: 0
   maxHP: 90
