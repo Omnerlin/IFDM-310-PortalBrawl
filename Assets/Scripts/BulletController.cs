@@ -52,6 +52,19 @@ public class BulletController : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        Debug.Log("Hit somethign");
+
+        // Trigger the explode animation and stop the movement
+        GetComponent<Animator>().SetTrigger("Explode");
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        speed = 0;
+        GetComponent<Collider2D>().enabled = false;
+
+    }
+
+    // Making this function so that the animator can reference it
+    public void DestroyBullet()
+    {
+        Destroy(this.gameObject);
     }
 }
