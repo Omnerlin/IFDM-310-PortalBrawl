@@ -52,8 +52,6 @@ public class BulletController : MonoBehaviour
             }
         }
 
-        Debug.Log("Hit somethign");
-
         // Trigger the explode animation and stop the movement
         GetComponent<Animator>().SetTrigger("Explode");
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;

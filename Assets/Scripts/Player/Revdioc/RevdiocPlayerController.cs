@@ -8,6 +8,9 @@ public partial class RevdiocPlayerController : PlayerControl {
     // Reticle that will rotate to show aiming direction
     public GameObject hammer;
 
+    // Object holding visual components of hammer
+    public GameObject hammerVisuals;
+
     // HitBox gameobject to use for telling whether or not we've hit an enemy
     public GameObject hammerHitBox;
 

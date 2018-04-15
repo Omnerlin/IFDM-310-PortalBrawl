@@ -60,6 +60,7 @@ public partial class RevdiocPlayerController : PlayerControl
             hammerHitBox.transform.parent = null;
             hammerHitBox.SetActive(true);
 
+            pControl.hammerVisuals.GetComponent<Animator>().SetTrigger("Swing");
             CameraControl.Instance.AddCameraShake(4);
         }
 
