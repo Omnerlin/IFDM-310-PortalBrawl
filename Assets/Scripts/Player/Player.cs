@@ -36,7 +36,7 @@ public class Player : MonoBehaviour {
 
     [Tooltip("How long the player will be invincible after taking damage")]
     public float hurtInvincibilityDuration = 1f;
-
+    private bool invincible = false;
 
 	public Color getColor()
 	{
@@ -56,8 +56,6 @@ public class Player : MonoBehaviour {
 		if (!String.IsNullOrEmpty(myData.characterName)) //If they have a character assigned
 		{
 			Debug.Log ("Player " + playerNumber +" loading data of character " + myData.characterName);
-			//SpriteRenderer myRenderer = GetComponent<PlayerControl>().<SpriteRenderer> ();
-			//myRenderer.sprite = Resources.Load<Sprite> (myData.characterName);
 			if (myData.currentHealth == -1) 
 			{
 				setMaxHP ();
@@ -73,11 +71,6 @@ public class Player : MonoBehaviour {
 
 	void Update()
 	{
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            hurtPlayer(5);
-        }
-
 		//Allows the stats to be initialized before assigning and displaying them.
 		if (!hasInitialized)
 			return;
@@ -88,7 +81,6 @@ public class Player : MonoBehaviour {
 		if (myData.currentHealth == 0) 
 		{
 			Debug.Log ("Player " + playerNumber + " playing " + myData.characterName + "has died.");
-			//myData.currentHealth = 0;
 			die();
 		}
 	}
@@ -102,7 +94,6 @@ public class Player : MonoBehaviour {
 	{
 		myDisplay.getText().text = myData.toString ();
 		myDisplay.getHealthBar().GetComponent<StatBar>().updateBar (myData.currentHealth, maxHP);
-		// myDisplay.getUltimateBar ().GetComponent<StatBar> ().updateBar (myData.currentUltimate, maxUltimate);
 	}
 
 	public string getCharacterName() { return myData.characterName; }
@@ -145,9 +136,6 @@ public class Player : MonoBehaviour {
             Debug.LogWarning("Global Control Instance doesn't exist: did not save character data");
             return;
         }
-
-		//myData.currentHealth = currentHP;
-
 		GlobalControl.instance.SaveData(playerNumber, myData);
 	}
 
@@ -169,10 +157,18 @@ public class Player : MonoBehaviour {
 	//Dying is in Update.
 	public void hurtPlayer(int damage)
 	{
+
+        // Don't hurt the player if they are invincible or already dead
+        if(invincible || myData.currentHealth <= 0)
+        {
+            return;
+        }
+
 		myData.currentHealth -= damage;
 		if (myData.currentHealth <= 0)
         {
 			myData.currentHealth = 0;
+            invincible = false;
             StopAllCoroutines();
             GetComponent<PlayerControl>().characterBody.GetComponent<SpriteRenderer>().enabled = true;
         }
@@ -243,7 +239,7 @@ public class Player : MonoBehaviour {
 
 	public bool ultimateIsCharged() { return myData.currentUltimate == maxUltimate; }
 
-
+    // Start flashing the player sprite renderer, and make the player invincible
     IEnumerator PlayerFlash()
     {
         bool visible = false;
@@ -252,6 +248,7 @@ public class Player : MonoBehaviour {
         SpriteRenderer renderer = GetComponent<PlayerControl>().characterBody.GetComponent<SpriteRenderer>();
         renderer.enabled = visible;
 
+        invincible = true;
         while (hurtTimer > 0)
         {
             hurtTimer -= Time.deltaTime;
@@ -268,6 +265,7 @@ public class Player : MonoBehaviour {
             yield return null;
         }
 
+        invincible = false;
         renderer.enabled = true;
     }
 
