@@ -43,11 +43,11 @@ public partial class AnixPlayerController : PlayerControl
     {
         public AttackState(AnixPlayerController cont) : base(cont)
         {
-            hammerHitBox = pControl.staffHitbox;
+            staffHitbox = pControl.staffHitbox;
             timeActive = pControl.hitboxTimeActive; filter = pControl.hitboxFilter; cooldown = pControl.attackCooldown;
         }
 
-        private GameObject hammerHitBox;
+        private GameObject staffHitbox;
         private float timeActive; // in seconds
         private float cooldown;
         private Collider2D[] hitColliders = new Collider2D[20];
@@ -58,11 +58,11 @@ public partial class AnixPlayerController : PlayerControl
         {
             // Remove the hitbox from revdioc's transform.... we don't actually want it there. It was just there for organizational purposes.
             // Enable the hitbox, and check collision with it.
-            hammerHitBox.transform.position = pControl.staff.transform.position;
-            hammerHitBox.transform.rotation = pControl.staff.transform.rotation;
+            staffHitbox.transform.position = pControl.staff.transform.position;
+            staffHitbox.transform.rotation = pControl.staff.transform.rotation;
 
-            hammerHitBox.transform.parent = null;
-            hammerHitBox.SetActive(true);
+            staffHitbox.transform.parent = null;
+            staffHitbox.SetActive(true);
 
             pControl.staffVisuals.GetComponent<Animator>().SetTrigger("Swing");
 
@@ -71,15 +71,29 @@ public partial class AnixPlayerController : PlayerControl
 
         public override void OnExit()
         {
+            staffHitbox.SetActive(false);
         }
 
         public override PlayerState Update()
         {
             timeActive -= Time.deltaTime;
-            if (timeActive <= 0) { cooldown -= Time.deltaTime; hammerHitBox.SetActive(false); } // Return walk state if we can attack again
+            if (timeActive <= 0) { cooldown -= Time.deltaTime; staffHitbox.SetActive(false); } // Return walk state if we can attack again
             if (cooldown <= 0) { return new WalkState(pControl); }
 
-            Physics2D.OverlapCollider(hammerHitBox.GetComponent<Collider2D>(), filter, hitColliders);
+            if (pControl.GetComponent<Player>().isDead())
+            {
+                return new DeathState(pControl);
+            }
+
+            CheckHitCollisions();
+            pControl.UpdatePlayerMovement();
+            pControl.UpdateReticleRotation();
+            return this;
+        }
+
+        public void CheckHitCollisions()
+        {
+            Physics2D.OverlapCollider(staffHitbox.GetComponent<Collider2D>(), filter, hitColliders);
             foreach (Collider2D col in hitColliders)
             {
                 if (col != null && col.tag == "Enemy" && !hitEnemies.Contains(col.gameObject))
@@ -91,10 +105,6 @@ public partial class AnixPlayerController : PlayerControl
                     hitEnemies.Add(col.gameObject);
                 }
             }
-
-            pControl.UpdatePlayerMovement();
-            pControl.UpdateReticleRotation();
-            return this;
         }
     }
 
@@ -109,14 +119,14 @@ public partial class AnixPlayerController : PlayerControl
             pControl.deathVisuals.SetActive(true);
             pControl.rb2d.velocity = Vector2.zero;
             pControl.rb2d.isKinematic = true;
-            pControl.staff.SetActive(false);
+            pControl.staffVisuals.GetComponentInChildren<SpriteRenderer>().enabled = false;
         }
         public override void OnExit()
         {
             pControl.rb2d.isKinematic = false;
             pControl.deathVisuals.SetActive(false);
             pControl.animator.SetTrigger("Revive");
-            pControl.staff.SetActive(true);
+            pControl.staffVisuals.GetComponentInChildren<SpriteRenderer>().enabled = true;
         }
 
         public override PlayerState Update()

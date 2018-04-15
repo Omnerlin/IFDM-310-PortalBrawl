@@ -24,7 +24,7 @@ public partial class RevdiocPlayerController : PlayerControl
         {
 			if (pControl.playerInfo.isDead ()) 
 			{
-				return new DeadState (pControl);
+                return new DeathState (pControl);
 			}
             // If the player hits the rightbumper, return the attack state
             if(pControl.player.GetButtonDown("RightBumper"))
@@ -52,11 +52,10 @@ public partial class RevdiocPlayerController : PlayerControl
 
         public override void OnEnter()
         {
-            // Remove the hitbox from revdioc's transform.... we don't actually want it there. It was just there for organizational purposes.
-            // Enable the hitbox, and check collision with it.
             hammerHitBox.transform.position = pControl.hammer.transform.position;
             hammerHitBox.transform.rotation = pControl.hammer.transform.rotation;
 
+            // Remove the hitbox from revdioc's transform.... we don't actually want it there. It was just there for organizational purposes.
             hammerHitBox.transform.parent = null;
             hammerHitBox.SetActive(true);
 
@@ -66,6 +65,7 @@ public partial class RevdiocPlayerController : PlayerControl
 
         public override void OnExit()
         {
+            hammerHitBox.SetActive(false);
         }
 
         public override PlayerState Update()
@@ -74,10 +74,23 @@ public partial class RevdiocPlayerController : PlayerControl
             if(timeActive <= 0) { cooldown -= Time.deltaTime; hammerHitBox.SetActive(false);} // Return walk state if we can attack again
             if (cooldown <= 0) { return new WalkState(pControl); }
 
-            Physics2D.OverlapCollider(hammerHitBox.GetComponent<Collider2D>(), filter,  hitColliders);
+            if(pControl.GetComponent<Player>().isDead())
+            {
+                return new DeathState(pControl);
+            }
+
+            CheckHitCollisions();
+            pControl.UpdatePlayerMovement();
+            pControl.UpdateReticleRotation();
+            return this;
+        }
+
+        public void CheckHitCollisions()
+        {
+            Physics2D.OverlapCollider(hammerHitBox.GetComponent<Collider2D>(), filter, hitColliders);
             foreach (Collider2D col in hitColliders)
             {
-                if(col != null && col.tag == "Enemy" && !hitEnemies.Contains(col.gameObject))
+                if (col != null && col.tag == "Enemy" && !hitEnemies.Contains(col.gameObject))
                 {
                     col.gameObject.GetComponent<EnemyHp>().HurtEnemy(1);
                     Vector3 heading = col.transform.position - pControl.transform.position;
@@ -86,33 +99,30 @@ public partial class RevdiocPlayerController : PlayerControl
                     hitEnemies.Add(col.gameObject);
                 }
             }
-
-            pControl.UpdatePlayerMovement();
-            pControl.UpdateReticleRotation();
-            return this;
         }
     }
 
-	public class DeadState : RevdiocState
+	public class DeathState : RevdiocState
 	{
-		public DeadState(RevdiocPlayerController cont) : base(cont) { }
+		public DeathState(RevdiocPlayerController cont) : base(cont) { }
 
 		public override void OnEnter() 
 		{
 			//Trigger Death animation
 			pControl.animator.SetTrigger("Die");
             pControl.deathVisuals.SetActive(true);
-            pControl.hammer.SetActive(false);
             pControl.rb2d.isKinematic = true;
             pControl.rb2d.velocity = Vector2.zero;
-		}
+            pControl.hammerVisuals.GetComponentInChildren<SpriteRenderer>().enabled = false;
 
-		public override void OnExit() 
+        }
+
+        public override void OnExit() 
 		{
             //Revive? animation, poof?
             pControl.deathVisuals.SetActive(false);
-            pControl.hammer.SetActive(true);
             pControl.rb2d.isKinematic = false;
+            pControl.hammerVisuals.GetComponentInChildren<SpriteRenderer>().enabled = true;
         }
 
         public override PlayerState Update()
