@@ -152,6 +152,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 1423105977789258, guid: 0fe7b2e5bb38fcf48ad9d6a684cb028f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fe7b2e5bb38fcf48ad9d6a684cb028f, type: 2}
   m_IsPrefabParent: 0
@@ -527,7 +531,7 @@ GameObject:
   - component: {fileID: 219231293}
   - component: {fileID: 219231295}
   - component: {fileID: 219231296}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rock_design
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1019,7 @@ GameObject:
   - component: {fileID: 705248794}
   - component: {fileID: 705248796}
   - component: {fileID: 705248797}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: rocksLarge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1144,10 +1148,7 @@ MonoBehaviour:
   m_PositionMode: 0
   m_RotationMode: 0
   m_UpdateMethod: 2
-  m_Targets:
-  - target: {fileID: 1584969144}
-    weight: 1
-    radius: 0
+  m_Targets: []
 --- !u!4 &734950016
 Transform:
   m_ObjectHideFlags: 0
@@ -1169,7 +1170,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 752927991}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GolemRock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2233,7 +2234,7 @@ MonoBehaviour:
   - {fileID: 1975769332}
   - {fileID: 1118935684}
   - {fileID: 1294681327}
-  playerPrefab: {fileID: 1604273714345938, guid: 0863eb72b3f23f147bdb8abdfd6a0cbc,
+  playerPrefab: {fileID: 1124295562521938, guid: fc6ecbb3bd139c24dba18512332345a4,
     type: 2}
 --- !u!1001 &994195872
 Prefab:
@@ -2406,7 +2407,7 @@ GameObject:
   - component: {fileID: 1066442059}
   - component: {fileID: 1066442061}
   - component: {fileID: 1066442062}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2610,7 +2611,7 @@ GameObject:
   - component: {fileID: 1077936567}
   - component: {fileID: 1077936566}
   - component: {fileID: 1077936565}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: rocksLarge (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6667,7 +6668,7 @@ GameObject:
   - component: {fileID: 1487849334}
   - component: {fileID: 1487849336}
   - component: {fileID: 1487849337}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: golemrock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6918,7 +6919,7 @@ GameObject:
   - component: {fileID: 1524507394}
   - component: {fileID: 1524507396}
   - component: {fileID: 1524507395}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: golemrock shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26859,7 +26860,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1584969144}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RockTotem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26948,7 +26949,7 @@ GameObject:
   - component: {fileID: 1750567933}
   - component: {fileID: 1750567932}
   - component: {fileID: 1750567931}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: big_crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27063,7 +27064,7 @@ GameObject:
   - component: {fileID: 1831768227}
   - component: {fileID: 1831768226}
   - component: {fileID: 1831768225}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: small_crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

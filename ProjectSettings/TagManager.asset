@@ -18,16 +18,16 @@ TagManager:
   - RenderTexture
   - Enemy
   - 
+  - PlayerWalkbox
+  - PlayerHurtbox
   - 
+  - EnemyWalkbox
+  - EnemyHurtbox
   - 
+  - PlayerBullet
+  - EnemyBullet
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Environment
   - 
   - 
   - 

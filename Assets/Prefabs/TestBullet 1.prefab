@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50581696412612656}
   - component: {fileID: 70208616023339868}
   - component: {fileID: 95149533912117782}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: TestBullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4990455483060868}
   - component: {fileID: 212902326107751144}
   - component: {fileID: 95060787002014802}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}

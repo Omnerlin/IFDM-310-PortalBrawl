@@ -27,6 +27,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1178464051622512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4206790726092088}
+  - component: {fileID: 61666817681607608}
+  m_Layer: 11
+  m_Name: Walkbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1349659778790080
 GameObject:
   m_ObjectHideFlags: 1
@@ -72,6 +88,22 @@ GameObject:
   - component: {fileID: 210105545828057172}
   m_Layer: 0
   m_Name: TombstoneShadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1555164779018122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4852653027587446}
+  - component: {fileID: 61875279274900162}
+  m_Layer: 12
+  m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +183,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4197389757721732}
-  - component: {fileID: 61813142584877356}
   - component: {fileID: 50966035844752032}
   - component: {fileID: 210947895071984284}
   - component: {fileID: 114017683194177092}
@@ -212,14 +243,29 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838086608255332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.284067, y: -6.579973, z: -0.021349125}
+  m_LocalPosition: {x: -4.6883435, y: -6.0527725, z: -0.021349125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4401317526964794}
   - {fileID: 4030218274454844}
   - {fileID: 4452208715206226}
+  - {fileID: 4206790726092088}
+  - {fileID: 4852653027587446}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4206790726092088
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178464051622512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4197389757721732}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4275312128867516
 Transform:
@@ -318,6 +364,19 @@ Transform:
   m_Father: {fileID: 4452208715206226}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -11.128}
+--- !u!4 &4852653027587446
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1555164779018122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4197389757721732}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50966035844752032
 Rigidbody2D:
   serializedVersion: 4
@@ -353,12 +412,12 @@ CircleCollider2D:
   m_Offset: {x: -1.5, y: 0}
   serializedVersion: 2
   m_Radius: 1.29
---- !u!61 &61813142584877356
+--- !u!61 &61666817681607608
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838086608255332}
+  m_GameObject: {fileID: 1178464051622512}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -377,6 +436,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.8355448, y: 0.5605602}
+  m_EdgeRadius: 0
+--- !u!61 &61875279274900162
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1555164779018122}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.04676175, y: 0.8684311}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8530345, y: 1.6413031}
   m_EdgeRadius: 0
 --- !u!95 &95068047703318310
 Animator:
