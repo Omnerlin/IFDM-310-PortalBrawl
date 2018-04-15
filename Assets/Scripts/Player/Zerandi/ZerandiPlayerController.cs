@@ -71,7 +71,6 @@ public partial class ZerandiPlayerController : PlayerControl
             aimAngle = Mathf.Atan2((aimReticle.transform.position.y - mousePos.y), (aimReticle.transform.position.x - mousePos.x)) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(aimAngle, Vector3.forward);
             aimReticle.transform.rotation = q;
-
         }
         else
         {

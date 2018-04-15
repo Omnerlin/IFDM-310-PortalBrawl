@@ -65,10 +65,8 @@ public partial class RevdiocPlayerController : PlayerControl {
         // If using keyboard, get the mouse position for aiming, otherwise use controller axis
         if (player.controllers.hasKeyboard)
         {
-            if(player.GetButtonDown("RightBumper"))
-            {
-                Debug.Log("pressed the bumper");
-            }
+            Debug.Log(Camera.main.WorldToViewportPoint(gameObject.transform.position));
+
 
             isAiming = true;
 
