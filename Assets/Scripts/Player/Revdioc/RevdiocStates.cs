@@ -130,6 +130,8 @@ public partial class RevdiocPlayerController : PlayerControl
             pControl.animator.SetTrigger("Revive");
 
             pControl.GetComponent<PlayerInteractionManager>().interactionCollider.enabled = true;
+            // Let's give them invulnerability when they are rezed
+            pControl.GetComponent<Player>().hurtPlayer(0);
         }
 
         public override PlayerState Update()

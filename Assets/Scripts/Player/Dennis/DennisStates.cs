@@ -58,7 +58,8 @@ public partial class DennisPlayerController : PlayerControl
             pControl.aimReticle.SetActive(true);
 
             pControl.GetComponent<PlayerInteractionManager>().interactionCollider.enabled = true;
-
+            // Let's give them invulnerability when they are rezed
+            pControl.GetComponent<Player>().hurtPlayer(0);
         }
 
         public override PlayerState Update()

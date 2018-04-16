@@ -75,7 +75,8 @@ public partial class ZerandiPlayerController : PlayerControl
             pControl.rb2d.isKinematic = false;
             pControl.rb2d.velocity = Vector2.zero;
             pControl.GetComponent<PlayerInteractionManager>().interactionCollider.enabled = true;
-
+            // Let's give them invulnerability when they are rezed
+            pControl.GetComponent<Player>().hurtPlayer(0);
         }
 
         public override PlayerState Update()
