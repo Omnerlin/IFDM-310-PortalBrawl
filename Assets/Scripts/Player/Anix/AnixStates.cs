@@ -32,6 +32,7 @@ public partial class AnixPlayerController : PlayerControl
             {
                 return new AttackState(pControl);
             }
+            pControl.Interact();
             pControl.UpdateReticleRotation();
             pControl.UpdatePlayerMovement();
 
@@ -120,6 +121,9 @@ public partial class AnixPlayerController : PlayerControl
             pControl.rb2d.velocity = Vector2.zero;
             pControl.rb2d.isKinematic = true;
             pControl.staffVisuals.GetComponentInChildren<SpriteRenderer>().enabled = false;
+
+            pControl.GetComponent<PlayerInteractionManager>().interactionCollider.enabled = false;
+
         }
         public override void OnExit()
         {
@@ -127,13 +131,21 @@ public partial class AnixPlayerController : PlayerControl
             pControl.deathVisuals.SetActive(false);
             pControl.animator.SetTrigger("Revive");
             pControl.staffVisuals.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
+            pControl.GetComponent<PlayerInteractionManager>().interactionCollider.enabled = true;
+
         }
 
         public override PlayerState Update()
         {
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 pControl.GetComponent<Player>().setMaxHP();
+                return new WalkState(pControl);
+            }
+
+            if (!pControl.GetComponent<Player>().isDead())
+            {
                 return new WalkState(pControl);
             }
 

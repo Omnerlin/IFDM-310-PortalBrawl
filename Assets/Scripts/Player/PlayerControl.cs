@@ -92,4 +92,18 @@ public class PlayerControl : MonoBehaviour
             rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Sign(rb2d.velocity.y) * maxMoveSpeed);
         }
     }
+
+    protected void Interact()
+    {
+        
+        if(!player.isPlaying)
+        {
+            return;
+        }
+
+        if(player.GetButtonDown("SquareButton"))
+        {
+            GetComponent<PlayerInteractionManager>().Interact();
+        }
+    }
 }

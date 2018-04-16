@@ -26,6 +26,7 @@ public partial class DennisPlayerController : PlayerControl
                 return new DeathState(pControl);
             }
 
+            pControl.Interact();
             pControl.UpdateAttack();
             pControl.UpdateReticleRotation();
             pControl.UpdatePlayerMovement();
@@ -45,6 +46,9 @@ public partial class DennisPlayerController : PlayerControl
             pControl.rb2d.velocity = Vector2.zero;
             pControl.rb2d.isKinematic = true;
             pControl.aimReticle.SetActive(false);
+
+            pControl.GetComponent<PlayerInteractionManager>().interactionCollider.enabled = false;
+
         }
         public override void OnExit()
         {
@@ -52,14 +56,21 @@ public partial class DennisPlayerController : PlayerControl
             pControl.deathVisuals.SetActive(false);
             pControl.animator.SetTrigger("Revive");
             pControl.aimReticle.SetActive(true);
+
+            pControl.GetComponent<PlayerInteractionManager>().interactionCollider.enabled = true;
+
         }
 
         public override PlayerState Update()
         {
-            // Revive for debugging
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 pControl.GetComponent<Player>().setMaxHP();
+                return new WalkState(pControl);
+            }
+
+            if (!pControl.GetComponent<Player>().isDead())
+            {
                 return new WalkState(pControl);
             }
 

@@ -31,6 +31,8 @@ public partial class RevdiocPlayerController : PlayerControl
             {
                 return new AttackState(pControl);
             }
+
+            pControl.Interact();
             pControl.UpdateReticleRotation();
             pControl.UpdatePlayerMovement();
 
@@ -115,6 +117,8 @@ public partial class RevdiocPlayerController : PlayerControl
             pControl.rb2d.velocity = Vector2.zero;
             pControl.hammerVisuals.GetComponentInChildren<SpriteRenderer>().enabled = false;
 
+            pControl.GetComponent<PlayerInteractionManager>().interactionCollider.enabled = false;
+
         }
 
         public override void OnExit() 
@@ -123,20 +127,25 @@ public partial class RevdiocPlayerController : PlayerControl
             pControl.deathVisuals.SetActive(false);
             pControl.rb2d.isKinematic = false;
             pControl.hammerVisuals.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            pControl.animator.SetTrigger("Revive");
+
+            pControl.GetComponent<PlayerInteractionManager>().interactionCollider.enabled = true;
         }
 
         public override PlayerState Update()
 		{
-			//TODO: If revived, return walkstate.
-			
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 pControl.GetComponent<Player>().setMaxHP();
-                pControl.animator.SetTrigger("Revive");
                 return new WalkState(pControl);
             }
 
-			return this; //Sorry, endless loop. You can't do anything while you're down. 
+            if (!pControl.GetComponent<Player>().isDead())
+            {
+                return new WalkState(pControl);
+            }
+
+            return this; //Sorry, endless loop. You can't do anything while you're down. 
 		}
 	}
 }

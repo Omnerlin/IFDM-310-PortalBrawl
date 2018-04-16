@@ -126,8 +126,15 @@ public class PlayerManager : MonoBehaviour
         PlayerControl pControl = pFab.GetComponent<PlayerControl>();
         pControl.player = ReInput.players.GetPlayer(playerID);
         pControl.player.isPlaying = true;
-		//playerObject.GetComponent<Player> ().myDisplay = playerDisplays [info.playerNumber];
 
+        if (pControl.player.controllers.hasKeyboard)
+        {
+            Debug.Log("Keyboard");
+        }
+        else
+        {
+            Debug.Log(pControl.player.controllers.GetController(Rewired.ControllerType.Joystick, playerID).name);
+        }
         // Add the player to the group of objects to be tracked by the camera
         // while keeping the other targets
         CinemachineTargetGroup groupComp = cameraFollowGroup.GetComponent<CinemachineTargetGroup>();
