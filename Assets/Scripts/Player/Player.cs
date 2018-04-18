@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+
 /* *
  * This class holds all the info for a player character and is responsible for the loading and saving of said data.
  * When this class is created, it must be given a playerNumber that equals the corrisponding character's Rewired.Player ID.
@@ -28,6 +29,9 @@ public class Player : MonoBehaviour {
 	//The player's color is at the index of the playerNumber
 	public static Color[] playerColors = {Color.blue, Color.magenta, Color.green, Color.yellow, Color.black};
 	public static Color[] ultimateColors = {new Color(135,0,225,225), new Color(157,358,174,225)}; //Purple for charged, pale purple for charging
+
+    public AudioClip[] hurtclips = new AudioClip[6];
+    private AudioSource hurtSource;
 
 	public PlayerStatDisplay myDisplay;
 
@@ -67,6 +71,7 @@ public class Player : MonoBehaviour {
 		myDisplay.getText().color = playerColors[playerNumber];
 
 		hasInitialized = true;
+        hurtSource = gameObject.GetComponent<AudioSource>();
 	}
 
 	void Update()
@@ -165,6 +170,9 @@ public class Player : MonoBehaviour {
         }
 
 		myData.currentHealth -= damage;
+        hurtSource.clip = hurtclips[UnityEngine.Random.Range(0, hurtclips.Length)];
+        hurtSource.Play();
+
 		if (myData.currentHealth <= 0)
         {
 			myData.currentHealth = 0;

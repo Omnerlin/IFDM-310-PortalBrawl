@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 210571079676718712}
   - component: {fileID: 114252571311261846}
   - component: {fileID: 114461495463970464}
+  - component: {fileID: 82249608344170182}
   m_Layer: 0
   m_Name: DennisHeir
   m_TagString: Player
@@ -449,6 +450,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9287586, y: 1.7480364}
   m_EdgeRadius: 0
+--- !u!82 &82249608344170182
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124295562521938}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95807434453742516
 Animator:
   serializedVersion: 3
@@ -484,6 +565,13 @@ MonoBehaviour:
   controllerID: 0
   maxHP: 90
   maxUltimate: 0
+  hurtclips:
+  - {fileID: 8300000, guid: 49a581ed869892547a78f1ce0b9124d8, type: 3}
+  - {fileID: 8300000, guid: 79e346eeafda6c84e8fce5ceaa7f62d0, type: 3}
+  - {fileID: 8300000, guid: 81132d523ffedf84aab2dfee633a6ba8, type: 3}
+  - {fileID: 8300000, guid: cbc9dd8913318914299b224a49af2461, type: 3}
+  - {fileID: 8300000, guid: e381b8c89a259074bb872368a064c8e8, type: 3}
+  - {fileID: 8300000, guid: 3ed7828ed1f8e4a4f8199f78a85d62a6, type: 3}
   myDisplay: {fileID: 0}
   hurtFlashInterval: 0.1
   hurtInvincibilityDuration: 1
