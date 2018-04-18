@@ -31,11 +31,44 @@ public partial class RevdiocPlayerController : PlayerControl
             {
                 return new AttackState(pControl);
             }
+
+			//Player can revive someone else
+			if(pControl.player.GetButtonDown("TriangleButton"))
+			{
+				attemptToRevive ();
+			}
+
             pControl.UpdateReticleRotation();
             pControl.UpdatePlayerMovement();
 
             return this;
         }
+
+		public void attemptToRevive()
+		{
+			Debug.Log ("Attempting to revive...");
+			ContactFilter2D filter = new ContactFilter2D ();
+			filter.NoFilter ();
+			GameObject walkbox = pControl.gameObject.GetComponent<Transform>().Find("Walkbox").gameObject;
+			if(walkbox == null) 
+			{
+				Debug.LogWarning("Was not able to find "+pControl.name+"'s walkbox");
+				return;
+			}
+
+			Collider2D[] collideWithMe = new Collider2D[20];
+			//If the player's collider is overlapping with another player's collider who is dead
+			Physics2D.OverlapCollider(walkbox.GetComponent<BoxCollider2D> (), filter, collideWithMe);
+			foreach (Collider2D col in collideWithMe)
+			{
+				if (col != null && col.gameObject.name == "ReviveBox") 
+				{
+					Player otherPlayer = col.gameObject.transform.parent.transform.parent.GetComponent<Player> (); //...It's two layers deep. >.<
+					pControl.GetComponent<Player> ().reviveOtherPlayer (otherPlayer);
+				}
+				//(We don't need another state for this because it's a rather quick thing.)
+			}
+		}
     }
 
     public class AttackState : RevdiocState
@@ -135,6 +168,10 @@ public partial class RevdiocPlayerController : PlayerControl
                 pControl.animator.SetTrigger("Revive");
                 return new WalkState(pControl);
             }
+			if (!pControl.GetComponent<Player> ().isDead ()) //Someone gave them health by reviving them or otherwise healing them
+			{ 
+				return new WalkState(pControl);
+			}
 
 			return this; //Sorry, endless loop. You can't do anything while you're down. 
 		}

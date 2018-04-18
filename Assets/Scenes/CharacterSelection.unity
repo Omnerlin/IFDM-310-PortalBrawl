@@ -858,7 +858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTransitionCanvasPrefab: {fileID: 1416777117688130, guid: b0370c8c7d100ba41bccaee85b0fbb18,
     type: 2}
-  sceneToLoad: TestSceneNewAlexTemp
+  sceneToLoad: TestSceneNewAnnaTemp
   hasBeenPressed: 0
 --- !u!61 &669360593
 BoxCollider2D:
@@ -1791,6 +1791,17 @@ MonoBehaviour:
         _invert: 0
         _axisContribution: 0
         _keyboardKeyCode: 27
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 6
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 118
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0

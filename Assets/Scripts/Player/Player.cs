@@ -205,9 +205,11 @@ public class Player : MonoBehaviour {
 		return myData.currentHealth <= 0;
 	}
 
-	public void revivePlayer(int revive)
+	//This heals the other player an amount equal to half your HP. 
+	public void reviveOtherPlayer(Player other)
 	{
-	 	//update a local variable that charges up, and decreases when someone stops charging it?
+		other.healPlayer (myData.currentHealth / 2); //A player revives another by giving it health from themselves.
+		myData.currentHealth = myData.currentHealth/2 +1; //+1 Because integer devision is unfair, and we're nice people.
 	}
 
 	//Ultimate, notes made by Anna

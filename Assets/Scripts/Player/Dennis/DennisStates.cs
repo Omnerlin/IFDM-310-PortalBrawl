@@ -62,6 +62,10 @@ public partial class DennisPlayerController : PlayerControl
                 pControl.GetComponent<Player>().setMaxHP();
                 return new WalkState(pControl);
             }
+			if (!pControl.GetComponent<Player> ().isDead ()) //Someone gave them health by reviving them or otherwise healing them
+			{ 
+				return new WalkState(pControl);
+			}
 
             return this;
         }
