@@ -80,7 +80,7 @@ public class Player : MonoBehaviour {
 		updateStatDisplay ();
 		if (myData.currentHealth == 0) 
 		{
-			Debug.Log ("Player " + playerNumber + " playing " + myData.characterName + "has died.");
+			//Debug.Log ("Player " + playerNumber + " playing " + myData.characterName + "has died.");
 			die();
 		}
 	}
@@ -208,6 +208,8 @@ public class Player : MonoBehaviour {
 	//This heals the other player an amount equal to half your HP. 
 	public void reviveOtherPlayer(Player other)
 	{
+		if (myData.currentHealth < 2) //You can't revive someone on one health.
+			return; 
 		other.healPlayer (myData.currentHealth / 2); //A player revives another by giving it health from themselves.
 		myData.currentHealth = myData.currentHealth/2 +1; //+1 Because integer devision is unfair, and we're nice people.
 	}

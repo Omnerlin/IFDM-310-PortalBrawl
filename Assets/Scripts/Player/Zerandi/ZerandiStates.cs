@@ -12,7 +12,7 @@ public partial class ZerandiPlayerController : PlayerControl
         public ZerandiPlayerController pControl; public ZerandiState(ZerandiPlayerController cont) { pControl = cont; }
     }
 
-    // Class that will be execute when dennis can roam freely
+    // Class that will be execute when Zerandi can roam freely
     public class WalkState : ZerandiState
     {
         public WalkState(ZerandiPlayerController cont) : base(cont) { }
@@ -28,6 +28,12 @@ public partial class ZerandiPlayerController : PlayerControl
             {
                 return new DeathState(pControl);
             }
+
+			if(pControl.player.GetButtonDown("TriangleButton"))
+			{
+				//(We don't need another state for this because it's a rather quick thing.)
+				pControl.attemptToRevive ();
+			}
 
             pControl.UpdateAttack();
             pControl.UpdateReticleOrientation();

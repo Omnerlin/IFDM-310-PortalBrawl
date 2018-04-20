@@ -26,6 +26,12 @@ public partial class DennisPlayerController : PlayerControl
                 return new DeathState(pControl);
             }
 
+			if(pControl.player.GetButtonDown("TriangleButton"))
+			{
+				//(We don't need another state for this because it's a rather quick thing.)
+				pControl.attemptToRevive ();
+			}
+
             pControl.UpdateAttack();
             pControl.UpdateReticleRotation();
             pControl.UpdatePlayerMovement();

@@ -416,7 +416,7 @@ Transform:
   m_LocalScale: {x: 0.32569033, y: 0.32569033, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &217219366
 BoxCollider2D:
@@ -614,7 +614,7 @@ Transform:
   m_LocalScale: {x: 0.22548462, y: 0.22548462, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &530266849
 BoxCollider2D:
@@ -747,7 +747,7 @@ RectTransform:
   - {fileID: 1611184271}
   - {fileID: 52683017}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -838,7 +838,7 @@ RectTransform:
   m_LocalScale: {x: 20, y: 5, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -988,7 +988,7 @@ Transform:
   - {fileID: 2072799326}
   - {fileID: 879916778}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879916777
 GameObject:
@@ -1892,8 +1892,54 @@ Transform:
   - {fileID: 402599130}
   - {fileID: 281877704}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1346362376
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4780748494272662, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -8.922619
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780748494272662, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -10.28352
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780748494272662, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.021349125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780748494272662, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780748494272662, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780748494272662, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780748494272662, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780748494272662, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335723560808978, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+      propertyPath: m_Name
+      value: Walkbox
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fc6ecbb3bd139c24dba18512332345a4, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1451570775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,7 +2162,7 @@ Transform:
   m_LocalScale: {x: 0.33649543, y: 0.33649543, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1601611802
 BoxCollider2D:
@@ -2291,7 +2337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1786094870
 Prefab:
@@ -2408,7 +2454,7 @@ Transform:
   m_LocalScale: {x: 1.0644815, y: 1.0644815, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1927080590
 BoxCollider2D:

@@ -149,4 +149,31 @@ public partial class DennisPlayerController : PlayerControl {
         animator.SetBool("isAiming", isAiming);
         previousRotation = aimAngle;
     }
+
+	public void attemptToRevive()
+	{
+		//Get walkbox collider for this character
+		ContactFilter2D filter = new ContactFilter2D ();
+		filter.NoFilter ();
+		GameObject walkbox = gameObject.GetComponent<Transform>().Find("Walkbox").gameObject;
+		if(walkbox == null) 
+		{
+			Debug.LogWarning("Was not able to find "+name+"'s walkbox");
+			return;
+		}
+
+
+		Collider2D[] collideWithMe = new Collider2D[20];
+		//If the player's collider is overlapping with another player's collider who is dead
+		Physics2D.OverlapCollider(walkbox.GetComponent<BoxCollider2D> (), filter, collideWithMe);
+		foreach (Collider2D col in collideWithMe)
+		{
+			if (col != null && col.gameObject.name == "ReviveBox") 
+			{
+				Player otherPlayer = col.gameObject.transform.parent.transform.parent.GetComponent<Player> (); 
+				GetComponent<Player> ().reviveOtherPlayer (otherPlayer);
+			}
+
+		}
+	}
 }
