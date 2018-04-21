@@ -15,7 +15,17 @@ public class CursorManager : MonoBehaviour {
 	private List<Rewired.Player> assignedPlayers = new List<Rewired.Player>();
 	public GameObject cursorPrefab;
 
-	private void Awake()
+    //Audio Stuff
+    private AudioSource sound;
+    public AudioClip clipSound;
+
+    private void Start()
+    {
+        sound = gameObject.GetComponent<AudioSource>();
+        sound.clip = clipSound;
+    }
+
+    private void Awake()
 	{
 		// This will be a singleton
 		if(instance != null)
@@ -37,7 +47,8 @@ public class CursorManager : MonoBehaviour {
 			// Assign the player
 			if(!players[i].isPlaying && players[i].GetButtonDown("Start"))
 			{
-				AddPlayer(i);                
+				AddPlayer(i);
+                sound.Play();
 			}
 		}
 		//TODO: Enable 'continue' once everyone who has joined has selected a character.
