@@ -9,17 +9,24 @@ public class PortalSpawn : MonoBehaviour {
 
     [HideInInspector] public GameObject monsterToSpawn;
 
+    public AudioClip[] portalSounds;
+    private AudioSource soundSource;
+
     private void Awake()
     {
         if(!monsterToSpawn)
         {
             Destroy(this.gameObject);
+            return;
         }
+        soundSource = gameObject.GetComponent<AudioSource>();
     }
 
     public void spawnEnemy()
     {
         Instantiate(monsterToSpawn, this.transform.position, this.transform.rotation);
+        soundSource.clip = portalSounds[1];
+        soundSource.Play();
         GetComponent<Animator>().SetTrigger("Close");
     }
 

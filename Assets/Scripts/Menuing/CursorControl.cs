@@ -43,6 +43,10 @@ public class CursorControl : MonoBehaviour {
     // Color that we're going to use for the player
     public Color playerColor;
 
+    //Audio stuff.
+    private AudioSource sound;
+    public AudioClip clipSound;
+
     // Variables for accessing the data that we want to save for this player.
     public int playerNumber
     {
@@ -83,6 +87,7 @@ public class CursorControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+        
 		myTransform = GetComponent<Transform>();
 		myCollider = GetComponent<Collider2D>();
 
@@ -93,7 +98,9 @@ public class CursorControl : MonoBehaviour {
 			camera.pixelWidth, camera.pixelHeight));
 
 		cameraRect = new Rect (bottomLeft.x, bottomLeft.y, topRight.x - bottomLeft.x, topRight.y - bottomLeft.y);
-	}
+        sound = gameObject.GetComponent<AudioSource>();
+        sound.clip = clipSound;
+    }
 
     // Update is called once per frame
     void Update()
@@ -113,6 +120,7 @@ public class CursorControl : MonoBehaviour {
             int numColliding = myCollider.OverlapCollider(contactFilter, results);
             if (numColliding > 0)
             {
+                sound.Play();
                 GameObject selected = (results[0]).gameObject;
                 Debug.Log("Player " + info.playerNumber + " tried selecting " + selected.name + "!");
                 //Run a script on the button that says you've selected it so it changes its display
@@ -157,6 +165,7 @@ public class CursorControl : MonoBehaviour {
 
 		if (rewiredPlayer.GetButtonDown ("Back")) 
 		{
+            sound.Play();
 			GameObject oldSelection = GameObject.Find(characterName);
 			Debug.Log ("Player " + playerNumber + " deselected " + oldSelection.name + ".");
 			oldSelection.GetComponent<characterButtonScript>().deselect();

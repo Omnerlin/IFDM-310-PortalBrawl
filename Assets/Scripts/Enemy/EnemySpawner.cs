@@ -23,6 +23,7 @@ public class EnemySpawner : MonoBehaviour {
     public waveState state = waveState.COUNTING;
     private float searchCountdown = 1f;
 
+
     public GameObject[] spawnPoints;
 
 	// Use this for initialization
@@ -33,8 +34,7 @@ public class EnemySpawner : MonoBehaviour {
             Debug.LogError("No spawn points found");
         }
         waveCountdown = timeBetweenWaves;
-		
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()

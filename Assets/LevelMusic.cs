@@ -24,7 +24,7 @@ public class LevelMusic : MonoBehaviour {
             return;
         }
         double time = AudioSettings.dspTime;
-        if(time + 1.0F > timeNextMusic)
+        if(time + 1.0F > timeNextMusic && music.Length > 1)
         {
             music[1].PlayScheduled(timeNextMusic);
             running = false;
