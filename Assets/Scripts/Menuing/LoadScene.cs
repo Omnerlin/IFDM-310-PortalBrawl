@@ -12,6 +12,12 @@ public class LoadScene : MonoBehaviour {
 
 	public string sceneToLoad;
 	public bool hasBeenPressed = false;
+	public SpriteRenderer myRenderer;
+
+	void Start () 
+	{
+		myRenderer = GetComponent<SpriteRenderer> ();
+	}
 
 	public void loadScene()
 	{
@@ -29,5 +35,16 @@ public class LoadScene : MonoBehaviour {
             SceneTransitionManager.Instance.TransitionToScene(sceneToLoad, SceneTransitionManager.AnimationType.forward);
 			hasBeenPressed = true;
 		}
+	}
+
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		myRenderer.enabled = true;
+	}
+
+	//When the cursor leaves your area
+	void OnTriggerExit2D (Collider2D other)
+	{
+		myRenderer.enabled = false;
 	}
 }
