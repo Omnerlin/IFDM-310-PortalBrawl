@@ -28,6 +28,8 @@ public partial class RevdiocPlayerController : PlayerControl {
     private Camera mainCamera;
     private Camera pixelCam;
 
+    public AudioSource[] sources;
+
     // Used in UpdateReticleRotation
     private float previousRotation;
 
@@ -35,7 +37,7 @@ public partial class RevdiocPlayerController : PlayerControl {
     {
         animator = characterBody.GetComponent<Animator>();
 
-        sMachine = new StateMachine<RevdiocState>(new WalkState(this));
+        sMachine = new StateMachine<RevdiocState>(new WalkState(this, sources));
 
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;

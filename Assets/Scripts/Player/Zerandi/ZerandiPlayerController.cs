@@ -18,6 +18,8 @@ public partial class ZerandiPlayerController : PlayerControl
     private Camera mainCamera;
     private Camera pixelCam;
 
+    public AudioSource[] sources;
+
     // Used in UpdateReticleRotation
     private float previousRotation;
 
@@ -26,7 +28,7 @@ public partial class ZerandiPlayerController : PlayerControl
         animator = characterBody.GetComponent<Animator>();
         
 
-        sMachine = new StateMachine<ZerandiState>(new WalkState(this));
+        sMachine = new StateMachine<ZerandiState>(new WalkState(this, sources));
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
     }
@@ -42,6 +44,7 @@ public partial class ZerandiPlayerController : PlayerControl
         if (player.GetButton("RightBumper"))
         {
             theGun.isFiring = true;
+            sources[0].Play();
         }
         else
         {

@@ -7,14 +7,20 @@ public partial class RevdiocPlayerController : PlayerControl
     // Extended class of PlayerState that has a reference to the DennisPlayerController
     public abstract class RevdiocState : PlayerState
     {
-        public RevdiocPlayerController pControl; public RevdiocState(RevdiocPlayerController cont) { pControl = cont; }
+        public RevdiocPlayerController pControl;
+        public AudioSource[] soundSources;
+        public RevdiocState(RevdiocPlayerController cont, AudioSource[] sources)
+        {
+            pControl = cont;
+            soundSources = sources;
+        }
     }
 
     // Class that will be execute when dennis can roam freely
     public class WalkState : RevdiocState
     {
 
-        public WalkState(RevdiocPlayerController cont) : base(cont) { }
+        public WalkState(RevdiocPlayerController cont, AudioSource[] sources) : base(cont, sources) { }
 
 
         public override void OnEnter() { }
@@ -24,15 +30,16 @@ public partial class RevdiocPlayerController : PlayerControl
         {
 			if (pControl.playerInfo.isDead ()) 
 			{
-                return new DeathState (pControl);
+                return new DeathState (pControl, soundSources);
 			}
             // If the player hits the rightbumper, return the attack state
             if(pControl.player.GetButtonDown("RightBumper"))
             {
-                return new AttackState(pControl);
+                soundSources[0].Play();
+                return new AttackState(pControl, soundSources);
             }
             pControl.UpdateReticleRotation();
-            pControl.UpdatePlayerMovement();
+            pControl.UpdatePlayerMovement(soundSources);
 
             return this;
         }
@@ -40,7 +47,7 @@ public partial class RevdiocPlayerController : PlayerControl
 
     public class AttackState : RevdiocState
     {
-        public AttackState(RevdiocPlayerController cont) : base(cont) { hammerHitBox = pControl.hammerHitBox;
+        public AttackState(RevdiocPlayerController cont, AudioSource[] sources) : base(cont, sources) { hammerHitBox = pControl.hammerHitBox;
             timeActive = pControl.hitboxTimeActive; filter = pControl.hitboxFilter; cooldown = pControl.attackCooldown; }
 
         private GameObject hammerHitBox;
@@ -72,11 +79,11 @@ public partial class RevdiocPlayerController : PlayerControl
         {
             timeActive -= Time.deltaTime;
             if(timeActive <= 0) { cooldown -= Time.deltaTime; hammerHitBox.SetActive(false);} // Return walk state if we can attack again
-            if (cooldown <= 0) { return new WalkState(pControl); }
+            if (cooldown <= 0) { return new WalkState(pControl, soundSources); }
 
             if(pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl);
+                return new DeathState(pControl, soundSources);
             }
 
             CheckHitCollisions();
@@ -104,7 +111,7 @@ public partial class RevdiocPlayerController : PlayerControl
 
 	public class DeathState : RevdiocState
 	{
-		public DeathState(RevdiocPlayerController cont) : base(cont) { }
+		public DeathState(RevdiocPlayerController cont, AudioSource[] sources) : base(cont, sources) { }
 
 		public override void OnEnter() 
 		{
@@ -123,6 +130,7 @@ public partial class RevdiocPlayerController : PlayerControl
             pControl.deathVisuals.SetActive(false);
             pControl.rb2d.isKinematic = false;
             pControl.hammerVisuals.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            soundSources[2].Play();
         }
 
         public override PlayerState Update()
@@ -133,7 +141,8 @@ public partial class RevdiocPlayerController : PlayerControl
             {
                 pControl.GetComponent<Player>().setMaxHP();
                 pControl.animator.SetTrigger("Revive");
-                return new WalkState(pControl);
+                soundSources[2].Play();
+                return new WalkState(pControl, soundSources);
             }
 
 			return this; //Sorry, endless loop. You can't do anything while you're down. 

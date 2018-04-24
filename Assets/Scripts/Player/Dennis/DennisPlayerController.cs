@@ -20,12 +20,14 @@ public partial class DennisPlayerController : PlayerControl {
     private Camera mainCamera;
     private Camera pixelCam;
 
+    public AudioSource[] sources;
+
     // Used in UpdateReticleRotation
     private float previousRotation;
 
     private void Awake()
     {
-        sMachine = new StateMachine<DennisState>(new WalkState(this));
+        sMachine = new StateMachine<DennisState>(new WalkState(this, sources));
         animator = characterBody.GetComponent<Animator>();
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
@@ -41,6 +43,7 @@ public partial class DennisPlayerController : PlayerControl {
         if(player.GetButton("RightBumper"))
         {
             theGun.isFiring = true;
+            sources[0].PlayOneShot(sources[0].clip);
         }
         else
         {

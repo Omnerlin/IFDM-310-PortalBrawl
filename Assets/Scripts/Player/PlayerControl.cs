@@ -27,6 +27,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
+        
         // Just set the player to the zero index
         player = Rewired.ReInput.players.GetPlayer(0);
     }
@@ -64,6 +65,36 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    protected void UpdatePlayerMovement(AudioSource[] sources)
+    {
+        // Return if the player isn't, well, playing
+        if (!player.isPlaying)
+        {
+            return;
+        }
+        
+        // Update the player's movespeed based on input axis (-1 to 1) and normalize it (for diagonal movement)
+        Vector2 moveInput = new Vector2(player.GetAxis("Move Horizontal"), player.GetAxis("Move Vertical"));
+        if (moveInput.magnitude > 1)
+        {
+            moveInput = moveInput.normalized;
+            
+        }
+
+        // Immediately set the player's velocity based on the normalized input
+        rb2d.velocity = new Vector2(maxMoveSpeed * moveInput.x, maxMoveSpeed * moveInput.y);
+        sources[1].PlayScheduled(0.1);
+
+        // These if statements aren't really necessary at this point (Since we're using normalized input)
+        if (Mathf.Abs(rb2d.velocity.x) > maxMoveSpeed)
+        {
+            rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxMoveSpeed, rb2d.velocity.y);
+        }
+        if (Mathf.Abs(rb2d.velocity.y) > maxMoveSpeed)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Sign(rb2d.velocity.y) * maxMoveSpeed);
+        }
+    }
     protected void UpdatePlayerMovement()
     {
         // Return if the player isn't, well, playing
@@ -71,7 +102,6 @@ public class PlayerControl : MonoBehaviour
         {
             return;
         }
-
         // Update the player's movespeed based on input axis (-1 to 1) and normalize it (for diagonal movement)
         Vector2 moveInput = new Vector2(player.GetAxis("Move Horizontal"), player.GetAxis("Move Vertical"));
         if (moveInput.magnitude > 1)

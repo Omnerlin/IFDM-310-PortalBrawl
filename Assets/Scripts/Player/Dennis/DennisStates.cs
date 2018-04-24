@@ -8,13 +8,19 @@ public partial class DennisPlayerController : PlayerControl
     // Extended class of PlayerState that has a reference to the DennisPlayerController
     public abstract class DennisState : PlayerState 
 	{
-        public DennisPlayerController pControl; public DennisState(DennisPlayerController cont) {pControl = cont;}
+        public DennisPlayerController pControl;
+        public AudioSource[] soundSounds;
+        public DennisState(DennisPlayerController cont, AudioSource[] sources)
+        {
+            pControl = cont;
+            soundSounds = sources;
+        }
     }
 
     // Class that will be execute when dennis can roam freely
     public class WalkState : DennisState
     {
-        public WalkState(DennisPlayerController cont) : base(cont){}
+        public WalkState(DennisPlayerController cont, AudioSource[] sources) : base(cont, sources){}
 
         public override void OnEnter(){}
         public override void OnExit(){}
@@ -23,12 +29,12 @@ public partial class DennisPlayerController : PlayerControl
         {
             if(pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl);
+                return new DeathState(pControl, soundSounds);
             }
 
             pControl.UpdateAttack();
             pControl.UpdateReticleRotation();
-            pControl.UpdatePlayerMovement();
+            pControl.UpdatePlayerMovement(soundSounds);
             
             return this;
         }
@@ -36,7 +42,7 @@ public partial class DennisPlayerController : PlayerControl
 
     public class DeathState : DennisState
     {
-        public DeathState(DennisPlayerController cont) : base(cont) { }
+        public DeathState(DennisPlayerController cont, AudioSource[] sources) : base(cont, sources) { }
 
         public override void OnEnter()
         {
@@ -51,6 +57,7 @@ public partial class DennisPlayerController : PlayerControl
             pControl.rb2d.isKinematic = false;
             pControl.deathVisuals.SetActive(false);
             pControl.animator.SetTrigger("Revive");
+            soundSounds[2].Play();
             pControl.aimReticle.SetActive(true);
         }
 
@@ -60,7 +67,8 @@ public partial class DennisPlayerController : PlayerControl
             if(Input.GetKeyDown(KeyCode.R))
             {
                 pControl.GetComponent<Player>().setMaxHP();
-                return new WalkState(pControl);
+                soundSounds[2].Play();
+                return new WalkState(pControl, soundSounds);
             }
 
             return this;

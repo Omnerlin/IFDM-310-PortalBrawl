@@ -7,14 +7,20 @@ public partial class AnixPlayerController : PlayerControl
     // Extended class of PlayerState that has a reference to the DennisPlayerController
     public abstract class AnixState : PlayerState
     {
-        public AnixPlayerController pControl; public AnixState(AnixPlayerController cont) { pControl = cont; }
+        public AnixPlayerController pControl;
+        public AudioSource[] soundSources;
+        public AnixState(AnixPlayerController cont, AudioSource[] sources)
+        {
+            pControl = cont;
+            soundSources = sources;
+        }
     }
 
     // Class that will be execute when dennis can roam freely
     public class WalkState : AnixState
     {
 
-        public WalkState(AnixPlayerController cont) : base(cont) { }
+        public WalkState(AnixPlayerController cont, AudioSource[] sources) : base(cont, sources) { }
 
 
         public override void OnEnter() { }
@@ -25,15 +31,15 @@ public partial class AnixPlayerController : PlayerControl
             // If the player hits the rightbumper, return the attack state
             if(pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl);
+                return new DeathState(pControl, soundSources);
             }
 
             if (pControl.player.GetButtonDown("RightBumper"))
             {
-                return new AttackState(pControl);
+                return new AttackState(pControl, soundSources);
             }
             pControl.UpdateReticleRotation();
-            pControl.UpdatePlayerMovement();
+            pControl.UpdatePlayerMovement(soundSources);
 
             return this;
         }
@@ -41,10 +47,11 @@ public partial class AnixPlayerController : PlayerControl
 
     public class AttackState : AnixState
     {
-        public AttackState(AnixPlayerController cont) : base(cont)
+        public AttackState(AnixPlayerController cont, AudioSource[] sources) : base(cont, sources)
         {
             staffHitbox = pControl.staffHitbox;
             timeActive = pControl.hitboxTimeActive; filter = pControl.hitboxFilter; cooldown = pControl.attackCooldown;
+            sources[0].Play();
         }
 
         private GameObject staffHitbox;
@@ -78,15 +85,15 @@ public partial class AnixPlayerController : PlayerControl
         {
             timeActive -= Time.deltaTime;
             if (timeActive <= 0) { cooldown -= Time.deltaTime; staffHitbox.SetActive(false); } // Return walk state if we can attack again
-            if (cooldown <= 0) { return new WalkState(pControl); }
+            if (cooldown <= 0) { return new WalkState(pControl, soundSources); }
 
             if (pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl);
+                return new DeathState(pControl, soundSources);
             }
 
             CheckHitCollisions();
-            pControl.UpdatePlayerMovement();
+            pControl.UpdatePlayerMovement(soundSources);
             pControl.UpdateReticleRotation();
             return this;
         }
@@ -111,7 +118,7 @@ public partial class AnixPlayerController : PlayerControl
     public class DeathState : AnixState
     {
 
-        public DeathState(AnixPlayerController cont) : base(cont) { }
+        public DeathState(AnixPlayerController cont, AudioSource[] sources) : base(cont, sources) { }
 
         public override void OnEnter()
         {
@@ -126,6 +133,7 @@ public partial class AnixPlayerController : PlayerControl
             pControl.rb2d.isKinematic = false;
             pControl.deathVisuals.SetActive(false);
             pControl.animator.SetTrigger("Revive");
+            soundSources[2].Play();
             pControl.staffVisuals.GetComponentInChildren<SpriteRenderer>().enabled = true;
         }
 
@@ -134,7 +142,9 @@ public partial class AnixPlayerController : PlayerControl
             if(Input.GetKeyDown(KeyCode.R))
             {
                 pControl.GetComponent<Player>().setMaxHP();
-                return new WalkState(pControl);
+                soundSources[2].Play();
+                return new WalkState(pControl, soundSources);
+                
             }
 
             return this;

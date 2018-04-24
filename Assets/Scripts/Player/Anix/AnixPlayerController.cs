@@ -29,12 +29,13 @@ public partial class AnixPlayerController : PlayerControl
     private Camera mainCamera;
     private Camera pixelCam;
 
+    public AudioSource[] sources;
     // Used in UpdateReticleRotation
     private float previousRotation;
 
     private void Awake()
     {
-        sMachine = new StateMachine<AnixState>(new WalkState(this));
+        sMachine = new StateMachine<AnixState>(new WalkState(this, sources));
         animator = characterBody.GetComponent<Animator>();
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
