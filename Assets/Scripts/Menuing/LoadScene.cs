@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class LoadScene : MonoBehaviour {
 
@@ -29,6 +30,23 @@ public class LoadScene : MonoBehaviour {
             if(!SceneTransitionManager.Instance)
             {
                 Instantiate(sceneTransitionCanvasPrefab);
+            }
+
+            // If we're trying to load the main menu, that means that we want to clear all of our saved data.
+            // We also want to reset the controllers so that we can still hit start in character select
+            if(sceneToLoad == "MainMenu")
+            {
+                GameObject obj = GameObject.Find("GlobalGameMaster");
+                if(obj)
+                {
+                    Destroy(obj.transform.root.gameObject);
+                }
+
+                foreach(Rewired.Player player in ReInput.players.GetPlayers(false))
+                {
+                    player.isPlaying = false;
+                }
+                
             }
 
 

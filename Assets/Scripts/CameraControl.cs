@@ -44,6 +44,7 @@ public class CameraControl : MonoBehaviour {
             cameraShake = 0;
         }
 
+        if(cineCam)
         cineCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = cameraShake;
     }
 

@@ -26,16 +26,18 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Trying to load players");
         // This will be a singleton
         if(instance != null)
         {
             Destroy(this);
+            return;
         }
         else
         {
             instance = this;
         }
+
+        Debug.Log("Trying to load players");
 
         // Instaniate characters based on their character name
         if(!GlobalControl.instance)
@@ -43,15 +45,16 @@ public class PlayerManager : MonoBehaviour
             return;
         }
 
-        foreach(PlayerInfo info in GlobalControl.instance.savedPlayerData)
+        for (int i = 0; i < GlobalControl.instance.savedPlayerData.Length; i++)
         {
-            if (info != null && !string.IsNullOrEmpty(info.characterName))
+            if (GlobalControl.instance.savedPlayerData[i] != null && !string.IsNullOrEmpty(GlobalControl.instance.savedPlayerData[i].characterName))
             {
                 // Run through the list of character names and instaniate the prefab that matches
                 // Doing this since we only have 4 characters. Otherwise we could do something more generic 
+                Debug.Log("Iteration " + i);
                 GameObject playerObject = null;
-				Debug.Log ("Instanciating " + info.characterName + " prefab from PlayerManager");
-                switch(info.characterName)
+				Debug.Log ("Instanciating " + GlobalControl.instance.savedPlayerData[i].characterName + " prefab from PlayerManager");
+                switch(GlobalControl.instance.savedPlayerData[i].characterName)
                 {
                     case "Anix":
                         playerObject = Instantiate(anixPrefab);
@@ -84,9 +87,9 @@ public class PlayerManager : MonoBehaviour
                 portrait.transform.Find("Name").GetComponent<Image>().sprite = playerObject.GetComponent<Player>().characterNameImage;
 
                 //Assign the playerNumber and the text display object to the player for its use.
-                playerObject.GetComponent<Player>().playerNumber = info.playerNumber;
+                playerObject.GetComponent<Player>().playerNumber = GlobalControl.instance.savedPlayerData[i].playerNumber;
 				playerObject.GetComponent<Player> ().setDisplay( portrait );
-                playerObject.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(info.controllerID);
+                playerObject.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(GlobalControl.instance.savedPlayerData[i].controllerID);
 
                 // Add the player to the group of objects to be tracked by the camera
                 // while keeping the other targets
@@ -104,8 +107,12 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-		//TODO: Delete this. Characters should only be spawned from the Start.
+        //TODO: Delete this. Characters should only be spawned from the Start.
         // We need to test if any players want to join the game
+
+        if (ReInput.players == null)
+            return;
+
         IList <Rewired.Player> players = ReInput.players.GetPlayers(false);
         for(int i = 0; i < players.Count; i++)
         {

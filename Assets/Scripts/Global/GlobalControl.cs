@@ -20,10 +20,10 @@ public class GlobalControl : MonoBehaviour {
 	{
 		if (instance == null) 
 		{
-			DontDestroyOnLoad(gameObject);
+			DontDestroyOnLoad(this.transform.root.gameObject);
 			instance = this;
 		} 
-		else if (instance != this)	Destroy(gameObject);
+		else if (instance != this)	Destroy(transform.root.gameObject);
 	}
 		
 
@@ -39,7 +39,7 @@ public class GlobalControl : MonoBehaviour {
 	{
 		Debug.Log ("Loaded: "+ toString());
 
-		if (savedPlayerData [playerNumber] == null) //If this player has not been initialized before, initialize it.
+		if (savedPlayerData [playerNumber] == null) // If this player has not been initialized before, initialize it.
 			savedPlayerData [playerNumber] = new PlayerInfo ();
 		return savedPlayerData[playerNumber];
 	}
@@ -68,6 +68,19 @@ public class GlobalControl : MonoBehaviour {
         {
             Application.Quit();
         }
+    }
+
+    public bool AllPlayersDead()
+    {
+        for(int i = 0; i < savedPlayerData.Length; i++)
+        {
+            if (savedPlayerData[i] != null && savedPlayerData[i].currentHealth <= 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

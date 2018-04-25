@@ -476,6 +476,24 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 1
+    - _id: 14
+      _name: DPadLeft
+      _type: 1
+      _descriptiveName: DPadLeft
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
+    - _id: 15
+      _name: DPadRight
+      _type: 1
+      _descriptiveName: DPadRight
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 1
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -497,7 +515,7 @@ MonoBehaviour:
       - categoryId: 0
         actionIds: 
       - categoryId: 1
-        actionIds: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d000000
+        actionIds: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000
       - categoryId: 2
         actionIds: 
     inputBehaviors:
@@ -850,6 +868,28 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 14
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 276
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 15
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 275
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     mouseMaps:
     - id: 0
       categoryId: 0
@@ -894,7 +934,7 @@ MonoBehaviour:
     customControllerMaps: []
     customControllers: []
     playerIdCounter: 7
-    actionIdCounter: 14
+    actionIdCounter: 16
     actionCategoryIdCounter: 3
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
@@ -1202,6 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   yOffset: 1.8
+  navigationType: 0
   menuButtons:
   - {fileID: 1628001138}
   - {fileID: 1351752736}
@@ -1926,6 +1967,7 @@ MonoBehaviour:
   sceneTransitionCanvasPrefab: {fileID: 0}
   sceneToLoad: CharacterSelection
   hasBeenPressed: 0
+  myRenderer: {fileID: 0}
 --- !u!1 &1656691879
 GameObject:
   m_ObjectHideFlags: 0

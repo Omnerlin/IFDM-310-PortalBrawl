@@ -9,6 +9,10 @@ public class MainMenu : MonoBehaviour {
     public int index = 0;
     public float yOffset;
 
+    public enum NavigationType { TopToBottom, LeftToRight };
+
+    public NavigationType navigationType;
+
     public Rewired.Player player { get; set;}
 
     public List<Button> menuButtons;
@@ -36,7 +40,7 @@ public class MainMenu : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (player.GetButtonDown("DPadUp"))
+        if (player.GetButtonDown(navigationType == NavigationType.TopToBottom ? "DPadUp" : "DPadLeft"))
         {
             if (index > 0)
             {
@@ -48,7 +52,7 @@ public class MainMenu : MonoBehaviour {
                 sounds[0].Play();
             }
         }
-        if (player.GetButtonDown("DPadDown"))
+        if (player.GetButtonDown(navigationType == NavigationType.TopToBottom ? "DPadDown" : "DPadRight"))
         {
             if ((index < totalOptions))
             {
@@ -61,7 +65,7 @@ public class MainMenu : MonoBehaviour {
             }
         }
 
-        if (player.GetButton("Start"))
+        if (player.GetButtonDown("Start"))
         {
             menuButtons[index].onClick.Invoke();
             sounds[1].Play();

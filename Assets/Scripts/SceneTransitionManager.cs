@@ -89,6 +89,7 @@ public class SceneTransitionManager : MonoBehaviour {
             case AnimationType.backward: // Still needs to be implemented
                 break;
             default:
+                if(swipeImage)
                 swipeImage.enabled = false;
                 break;
         }
