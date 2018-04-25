@@ -43,7 +43,7 @@ public partial class DennisPlayerController : PlayerControl {
         if(player.GetButton("RightBumper"))
         {
             theGun.isFiring = true;
-            sources[0].PlayOneShot(sources[0].clip);
+            sources[0].Play();
         }
         else
         {

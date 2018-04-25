@@ -10,6 +10,12 @@ public class BulletController : MonoBehaviour
     public int damageForEnemy;
 
     public bool isEnemyShot;
+    public bool isDennis;
+
+    public AudioClip[] bulletImpactSounds;
+    public AudioSource bulletSource;
+
+   
 
     // Update is called once per frame
     void Update()
@@ -43,6 +49,16 @@ public class BulletController : MonoBehaviour
             if (other.gameObject.tag.Equals("Enemy"))
             {
                 other.gameObject.GetComponent<EnemyHp>().HurtEnemy(damageForEnemy);
+                //if (isDennis)
+                //{
+                //    bulletSource.clip = bulletImpactSounds[0];
+                //    bulletSource.Play();
+                //}
+                //else
+                //{
+                //    bulletSource.clip = bulletImpactSounds[1];
+                //    bulletSource.Play();
+                //}
             }
             else if (other.gameObject.tag.Equals("Player"))
             {

@@ -337,8 +337,11 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   maxMoveSpeed: 50
   moveForce: 0
+  characterBody: {fileID: 0}
+  deathVisuals: {fileID: 0}
   theGun: {fileID: 114586990406687152}
   aimReticle: {fileID: 1443636021360748}
+  sources: []
 --- !u!114 &114102527131235966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,11 +353,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63639969e2f70643a83edf2b9a69e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 0}
+  characterPortraitImage: {fileID: 0}
+  characterNameImage: {fileID: 0}
   playerNumber: 0
   controllerID: 0
   maxHP: 90
   maxUltimate: 0
+  hurtclips:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  hurtSource: {fileID: 0}
   myDisplay: {fileID: 0}
   hurtFlashInterval: 0.1
   hurtInvincibilityDuration: 1
@@ -370,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFiring: 0
-  bullet: {fileID: 114235545059977038, guid: 92273da5264c6b1408fe26fe6587a577, type: 2}
+  bullet: {fileID: 114902900802121346, guid: 914e0ad44a9013f43b99eb93a11375dc, type: 2}
   bulletSpeed: 30
   timeBetweenShots: 0.25
   firePoint: {fileID: 4502942444340500}
