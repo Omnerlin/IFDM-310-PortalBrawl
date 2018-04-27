@@ -9,13 +9,19 @@ public partial class ZerandiPlayerController : PlayerControl
     // Extended class of PlayerState that has a reference to the DennisPlayerController
     public abstract class ZerandiState : PlayerState
     {
-        public ZerandiPlayerController pControl; public ZerandiState(ZerandiPlayerController cont) { pControl = cont; }
+        public ZerandiPlayerController pControl;
+        public AudioSource reviveSound;
+        public ZerandiState(ZerandiPlayerController cont,AudioSource sound)
+        {
+            pControl = cont;
+            reviveSound = sound;
+        }
     }
 
     // Class that will be execute when Zerandi can roam freely
     public class WalkState : ZerandiState
     {
-        public WalkState(ZerandiPlayerController cont) : base(cont) { }
+        public WalkState(ZerandiPlayerController cont, AudioSource sound) : base(cont, sound) { }
 
         public override void OnEnter() { }
         public override void OnExit() { }
@@ -26,12 +32,12 @@ public partial class ZerandiPlayerController : PlayerControl
         {
             if(pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl);
+                return new DeathState(pControl, reviveSound);
             }
 
 			if(pControl.player.GetButtonDown("TriangleButton"))
 			{
-				//(We don't need another state for this because it's a rather quick thing.)
+                //(We don't need another state for this because it's a rather quick thing.)
 				pControl.attemptToRevive ();
 			}
 
@@ -45,7 +51,7 @@ public partial class ZerandiPlayerController : PlayerControl
 
     public class StunState : ZerandiState
     {
-        public StunState(ZerandiPlayerController cont) : base(cont) { }
+        public StunState(ZerandiPlayerController cont, AudioSource sound) : base(cont, sound) { }
 
         public override void OnEnter() { }
         public override void OnExit() { }
@@ -61,7 +67,7 @@ public partial class ZerandiPlayerController : PlayerControl
 
     public class DeathState : ZerandiState
     {
-        public DeathState(ZerandiPlayerController cont) : base(cont) { }
+        public DeathState(ZerandiPlayerController cont, AudioSource sound) : base(cont, sound) { }
 
         public override void OnEnter()
         {
@@ -77,6 +83,7 @@ public partial class ZerandiPlayerController : PlayerControl
             pControl.deathVisuals.SetActive(false);
             pControl.rb2d.isKinematic = false;
             pControl.rb2d.velocity = Vector2.zero;
+            reviveSound.Play();
         }
 
         public override PlayerState Update()
@@ -84,11 +91,11 @@ public partial class ZerandiPlayerController : PlayerControl
             if(Input.GetKeyDown(KeyCode.R))
             {
                 pControl.GetComponent<Player>().setMaxHP();
-                return new WalkState(pControl);
+                return new WalkState(pControl, reviveSound);
             }
 			if (!pControl.GetComponent<Player> ().isDead ()) //Someone gave them health by reviving them or otherwise healing them
 			{ 
-				return new WalkState(pControl);
+				return new WalkState(pControl, reviveSound);
 			}
             return this;
         }

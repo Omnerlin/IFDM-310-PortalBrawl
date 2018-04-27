@@ -22,6 +22,9 @@ public partial class RevdiocPlayerController : PlayerControl {
     public float hitboxTimeActive = 0.2f;
     public ContactFilter2D hitboxFilter;
 
+    //Weapon/Revive Sounds
+    public AudioSource[] playerSounds;
+
     // A statemachine made for revdiocStates
     private StateMachine<RevdiocState> sMachine;
 
@@ -35,7 +38,7 @@ public partial class RevdiocPlayerController : PlayerControl {
     {
         animator = characterBody.GetComponent<Animator>();
 
-        sMachine = new StateMachine<RevdiocState>(new WalkState(this));
+        sMachine = new StateMachine<RevdiocState>(new WalkState(this, playerSounds));
 
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;

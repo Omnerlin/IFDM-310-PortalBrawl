@@ -7,14 +7,19 @@ public partial class AnixPlayerController : PlayerControl
     // Extended class of PlayerState that has a reference to the DennisPlayerController
     public abstract class AnixState : PlayerState
     {
-        public AnixPlayerController pControl; public AnixState(AnixPlayerController cont) { pControl = cont; }
+        public AnixPlayerController pControl;
+        public AudioSource[] playerSounds;
+        public AnixState(AnixPlayerController cont,AudioSource[] sounds) {
+            pControl = cont;
+            playerSounds = sounds;
+        }
     }
 
     // Class that will be execute when Anix can roam freely
     public class WalkState : AnixState
     {
 
-        public WalkState(AnixPlayerController cont) : base(cont) { }
+        public WalkState(AnixPlayerController cont,AudioSource[] sounds) : base(cont,sounds) { }
 
 
         public override void OnEnter() { }
@@ -25,12 +30,13 @@ public partial class AnixPlayerController : PlayerControl
             // If the player hits the rightbumper, return the attack state
             if(pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl);
+                return new DeathState(pControl,playerSounds);
             }
 
             if (pControl.player.GetButtonDown("RightBumper"))
             {
-                return new AttackState(pControl);
+                playerSounds[0].Play();
+                return new AttackState(pControl,playerSounds);
             }
 
 			//Player can revive someone else
@@ -48,7 +54,7 @@ public partial class AnixPlayerController : PlayerControl
 
     public class AttackState : AnixState
     {
-        public AttackState(AnixPlayerController cont) : base(cont)
+        public AttackState(AnixPlayerController cont,AudioSource[] sounds) : base(cont,sounds)
         {
             staffHitbox = pControl.staffHitbox;
             timeActive = pControl.hitboxTimeActive; filter = pControl.hitboxFilter; cooldown = pControl.attackCooldown;
@@ -85,11 +91,11 @@ public partial class AnixPlayerController : PlayerControl
         {
             timeActive -= Time.deltaTime;
             if (timeActive <= 0) { cooldown -= Time.deltaTime; staffHitbox.SetActive(false); } // Return walk state if we can attack again
-            if (cooldown <= 0) { return new WalkState(pControl); }
+            if (cooldown <= 0) { return new WalkState(pControl,playerSounds); }
 
             if (pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl);
+                return new DeathState(pControl,playerSounds);
             }
 
             CheckHitCollisions();
@@ -118,7 +124,7 @@ public partial class AnixPlayerController : PlayerControl
     public class DeathState : AnixState
     {
 
-        public DeathState(AnixPlayerController cont) : base(cont) { }
+        public DeathState(AnixPlayerController cont,AudioSource[] sounds) : base(cont,sounds) { }
 
         public override void OnEnter()
         {
@@ -134,6 +140,7 @@ public partial class AnixPlayerController : PlayerControl
             pControl.deathVisuals.SetActive(false);
             pControl.animator.SetTrigger("Revive");
             pControl.staffVisuals.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            playerSounds[1].Play();
         }
 
         public override PlayerState Update()
@@ -141,11 +148,11 @@ public partial class AnixPlayerController : PlayerControl
             if(Input.GetKeyDown(KeyCode.R))
             {
                 pControl.GetComponent<Player>().setMaxHP();
-                return new WalkState(pControl);
+                return new WalkState(pControl,playerSounds);
             }
 			if (!pControl.GetComponent<Player> ().isDead ()) //Someone gave them health by reviving them or otherwise healing them
 			{ 
-				return new WalkState(pControl);
+				return new WalkState(pControl,playerSounds);
 			}
             return this;
         }
