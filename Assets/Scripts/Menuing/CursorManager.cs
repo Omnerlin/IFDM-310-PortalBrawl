@@ -14,6 +14,9 @@ public class CursorManager : MonoBehaviour {
 
 	private List<Rewired.Player> assignedPlayers = new List<Rewired.Player>();
 	public GameObject cursorPrefab;
+	//Sprites to choose from! Gives these to the cursors it instanciates.
+	public Sprite[] radicleSprites = new Sprite [4];
+	public GameObject[] selectionDisplay = new GameObject [4];
 
     //Audio Stuff
     private AudioSource sound;
@@ -68,9 +71,12 @@ public class CursorManager : MonoBehaviour {
         pControl.controllerID = playerID;
         pControl.playerNumber = assignedPlayers.Count - 1;
         pControl.playerColor = Player.playerColors[pControl.playerNumber];
+		pControl.setSprite (radicleSprites [pControl.playerNumber]); //Set the radicle's sprite to the appropriate one, based on the list you have.
+		pControl.setSelectionDisplay(selectionDisplay[pControl.playerNumber]);
+
 
 		pControl.rewiredPlayer.isPlaying = true;
-        pControl.GetComponent<SpriteRenderer>().color = pControl.playerColor;
+        //pControl.GetComponent<SpriteRenderer>().color = pControl.playerColor;
 
         Debug.Log("created cursor control for player " + pControl.playerNumber + " with controlID " + pControl.controllerID);
     }

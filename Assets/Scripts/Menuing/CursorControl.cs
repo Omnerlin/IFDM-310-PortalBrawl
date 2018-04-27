@@ -43,6 +43,8 @@ public class CursorControl : MonoBehaviour {
     // Color that we're going to use for the player
     public Color playerColor;
 
+	private SpriteRenderer selectedCharPortraitRenderer; //This gets set to the sprite of the character you have selected.
+
     //Audio stuff.
     private AudioSource sound;
     public AudioClip clipSound;
@@ -72,6 +74,22 @@ public class CursorControl : MonoBehaviour {
         set { info.characterName = value; }
     }
 
+	public void setSprite(Sprite radicle)
+	{
+		GetComponent<SpriteRenderer> ().sprite = radicle;
+	}
+		
+	public void setSelectionDisplay(GameObject display)
+	{
+		display.SetActive (true);
+		GameObject temp = display.transform.Find ("Portrait").gameObject;
+		if (temp == null || temp.GetComponent<SpriteRenderer> () == null)
+			Debug.LogWarning ("Sprite Portrait or Sprite Renderer on Portrait not found in CursorControl.");
+		else 
+		{
+			selectedCharPortraitRenderer = temp.GetComponent<SpriteRenderer> ();
+		}
+	}
 
     public void SaveData()
     {
@@ -87,7 +105,6 @@ public class CursorControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-        
 		myTransform = GetComponent<Transform>();
 		myCollider = GetComponent<Collider2D>();
 
@@ -154,11 +171,13 @@ public class CursorControl : MonoBehaviour {
                     Debug.Log("Assigning " + selected.name + " to Player " + playerNumber + ".");
 					characterName = selected.name;
 					selected.GetComponent<characterButtonScript>().select(myCollider);
+					selectedCharPortraitRenderer.sprite = selected.GetComponent<characterButtonScript> ().getTokenSprite ();
                 }
                 //If it wasn't a character button, it must be the LoadScene button
                 else if (selected.GetComponent<LoadScene>() != null)
                 {
                     selected.GetComponent<LoadScene>().loadScene();
+
                 }
             }
         }
@@ -170,6 +189,7 @@ public class CursorControl : MonoBehaviour {
 			Debug.Log ("Player " + playerNumber + " deselected " + oldSelection.name + ".");
 			oldSelection.GetComponent<characterButtonScript>().deselect();
 			characterName = "";
+			selectedCharPortraitRenderer.sprite = null;
 		}
 
     }
