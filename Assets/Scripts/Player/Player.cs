@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
     public Sprite characterPortraitImage;
     public Sprite characterNameImage;
 
-	public int playerNumber; //Numbers have colors associated with them.
+    public int playerNumber; //Numbers have colors associated with them.
     [HideInInspector] public int controllerID;
 	public int maxHP; //load start in prefab
 	public float maxUltimate;
