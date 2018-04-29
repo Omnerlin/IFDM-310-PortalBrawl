@@ -28,6 +28,8 @@ public partial class RevdiocPlayerController : PlayerControl {
     // A statemachine made for revdiocStates
     private StateMachine<RevdiocState> sMachine;
 
+    public PlayerStats myStats;
+
     private Camera mainCamera;
     private Camera pixelCam;
 
@@ -38,10 +40,11 @@ public partial class RevdiocPlayerController : PlayerControl {
     {
         animator = characterBody.GetComponent<Animator>();
 
-        sMachine = new StateMachine<RevdiocState>(new WalkState(this, playerSounds));
+        sMachine = new StateMachine<RevdiocState>(new WalkState(this, playerSounds,myStats));
 
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
+        myStats = gameObject.GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame

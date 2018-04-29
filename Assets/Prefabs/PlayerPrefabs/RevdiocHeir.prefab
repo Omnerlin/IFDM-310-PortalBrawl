@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 61952617506222096}
   m_Layer: 12
   m_Name: Hurtbox
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 210326581584506528}
   - component: {fileID: 114234347071934964}
   - component: {fileID: 114347640969589178}
+  - component: {fileID: 114920574340822780}
   - component: {fileID: 82263531186110096}
   - component: {fileID: 82420609094173098}
   - component: {fileID: 82587863132812080}
@@ -808,6 +809,7 @@ MonoBehaviour:
   myDisplay: {fileID: 0}
   hurtFlashInterval: 0.1
   hurtInvincibilityDuration: 1
+  myStats: {fileID: 114920574340822780}
 --- !u!114 &114347640969589178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -847,6 +849,21 @@ MonoBehaviour:
   playerSounds:
   - {fileID: 82420609094173098}
   - {fileID: 82587863132812080}
+  myStats: {fileID: 114920574340822780}
+--- !u!114 &114920574340822780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604273714345938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681e386bb2c94bb49b15c06682db955b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseAtt: 1
+  baseDef: 0
+  timeForEffect: 5
 --- !u!210 &210218651604749124
 SortingGroup:
   m_ObjectHideFlags: 1

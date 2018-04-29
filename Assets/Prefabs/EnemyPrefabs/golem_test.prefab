@@ -219,6 +219,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hP: 10
   currentHP: 10
+  itemsToDrop:
+  - {fileID: 114521244354966734, guid: 95e24b66c613db94198e1a917d017f21, type: 2}
+  - {fileID: 114751760142719312, guid: 73a248d66e1e6d54cb4e13af84bc4d9f, type: 2}
+  - {fileID: 114151536222195264, guid: f7d0cafa5d95ade48bdef15e4e1c3d22, type: 2}
   flashMaterial: {fileID: 2100000, guid: 8c75a75d673273f40a1b79f79b1ff625, type: 2}
   flashTime: 0.25
 --- !u!114 &114656429979891218

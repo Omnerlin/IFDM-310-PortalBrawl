@@ -183,6 +183,7 @@ MonoBehaviour:
   bulletSpeed: 30
   timeBetweenShots: 1
   firePoint: {fileID: 4861964124735472}
+  damage: 1
 --- !u!114 &114634533572576262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hP: 10
   currentHP: 10
+  itemsToDrop: []
   flashMaterial: {fileID: 2100000, guid: 8c75a75d673273f40a1b79f79b1ff625, type: 2}
   flashTime: 0.25
 --- !u!210 &210505491666463922

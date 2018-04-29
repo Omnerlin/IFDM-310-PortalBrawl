@@ -9,9 +9,11 @@ public partial class AnixPlayerController : PlayerControl
     {
         public AnixPlayerController pControl;
         public AudioSource[] playerSounds;
-        public AnixState(AnixPlayerController cont,AudioSource[] sounds) {
+        public PlayerStats myStats;
+        public AnixState(AnixPlayerController cont,AudioSource[] sounds,PlayerStats stats) {
             pControl = cont;
             playerSounds = sounds;
+            myStats = stats;
         }
     }
 
@@ -19,7 +21,7 @@ public partial class AnixPlayerController : PlayerControl
     public class WalkState : AnixState
     {
 
-        public WalkState(AnixPlayerController cont,AudioSource[] sounds) : base(cont,sounds) { }
+        public WalkState(AnixPlayerController cont,AudioSource[] sounds, PlayerStats stats) : base(cont,sounds,stats) { }
 
 
         public override void OnEnter() { }
@@ -30,13 +32,13 @@ public partial class AnixPlayerController : PlayerControl
             // If the player hits the rightbumper, return the attack state
             if(pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl,playerSounds);
+                return new DeathState(pControl,playerSounds,myStats);
             }
 
             if (pControl.player.GetButtonDown("RightBumper"))
             {
                 playerSounds[0].Play();
-                return new AttackState(pControl,playerSounds);
+                return new AttackState(pControl,playerSounds,myStats);
             }
 
 			//Player can revive someone else
@@ -54,7 +56,7 @@ public partial class AnixPlayerController : PlayerControl
 
     public class AttackState : AnixState
     {
-        public AttackState(AnixPlayerController cont,AudioSource[] sounds) : base(cont,sounds)
+        public AttackState(AnixPlayerController cont,AudioSource[] sounds, PlayerStats stats) : base(cont,sounds,stats)
         {
             staffHitbox = pControl.staffHitbox;
             timeActive = pControl.hitboxTimeActive; filter = pControl.hitboxFilter; cooldown = pControl.attackCooldown;
@@ -91,11 +93,11 @@ public partial class AnixPlayerController : PlayerControl
         {
             timeActive -= Time.deltaTime;
             if (timeActive <= 0) { cooldown -= Time.deltaTime; staffHitbox.SetActive(false); } // Return walk state if we can attack again
-            if (cooldown <= 0) { return new WalkState(pControl,playerSounds); }
+            if (cooldown <= 0) { return new WalkState(pControl,playerSounds,myStats); }
 
             if (pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl,playerSounds);
+                return new DeathState(pControl,playerSounds,myStats);
             }
 
             CheckHitCollisions();
@@ -111,7 +113,7 @@ public partial class AnixPlayerController : PlayerControl
             {
                 if (col != null && col.tag == "Enemy" && !hitEnemies.Contains(col.gameObject))
                 {
-                    col.gameObject.GetComponent<EnemyHp>().HurtEnemy(1);
+                    col.gameObject.GetComponent<EnemyHp>().HurtEnemy(myStats.getAttStat());
                     Vector3 heading = col.transform.position - pControl.transform.position;
                     Vector3 direction = heading / heading.sqrMagnitude;
                     col.gameObject.GetComponent<Rigidbody2D>().AddForce(pControl.hitForce * direction);
@@ -124,7 +126,7 @@ public partial class AnixPlayerController : PlayerControl
     public class DeathState : AnixState
     {
 
-        public DeathState(AnixPlayerController cont,AudioSource[] sounds) : base(cont,sounds) { }
+        public DeathState(AnixPlayerController cont,AudioSource[] sounds, PlayerStats stats) : base(cont,sounds,stats) { }
 
         public override void OnEnter()
         {
@@ -148,11 +150,11 @@ public partial class AnixPlayerController : PlayerControl
             if(Input.GetKeyDown(KeyCode.R))
             {
                 pControl.GetComponent<Player>().setMaxHP();
-                return new WalkState(pControl,playerSounds);
+                return new WalkState(pControl,playerSounds,myStats);
             }
 			if (!pControl.GetComponent<Player> ().isDead ()) //Someone gave them health by reviving them or otherwise healing them
 			{ 
-				return new WalkState(pControl,playerSounds);
+				return new WalkState(pControl,playerSounds,myStats);
 			}
             return this;
         }

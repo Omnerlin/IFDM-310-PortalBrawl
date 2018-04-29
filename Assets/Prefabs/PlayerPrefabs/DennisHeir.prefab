@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 82249608344170182}
   - component: {fileID: 82532499282245990}
   - component: {fileID: 82529538456818758}
+  - component: {fileID: 114865553919296640}
   m_Layer: 0
   m_Name: DennisHeir
   m_TagString: Player
@@ -175,7 +176,7 @@ GameObject:
   - component: {fileID: 61511888684462904}
   m_Layer: 12
   m_Name: Hurtbox
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -676,7 +677,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ccf39cb58bda6264a9983dfef9a8a2d7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 62f62e9aec58d424893b5bd31122e434, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -793,6 +794,7 @@ MonoBehaviour:
   myDisplay: {fileID: 0}
   hurtFlashInterval: 0.1
   hurtInvincibilityDuration: 1
+  myStats: {fileID: 114865553919296640}
 --- !u!114 &114461495463970464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -811,9 +813,24 @@ MonoBehaviour:
   deathVisuals: {fileID: 1312073482429410}
   theGun: {fileID: 114991845246539072}
   aimReticle: {fileID: 1690648537640222}
+  myStats: {fileID: 114865553919296640}
   playerSounds:
   - {fileID: 82532499282245990}
   - {fileID: 82529538456818758}
+--- !u!114 &114865553919296640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124295562521938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681e386bb2c94bb49b15c06682db955b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseAtt: 1
+  baseDef: 0
+  timeForEffect: 5
 --- !u!114 &114991845246539072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -830,6 +847,7 @@ MonoBehaviour:
   bulletSpeed: 30
   timeBetweenShots: 0.25
   firePoint: {fileID: 4420265620705932}
+  damage: 0
 --- !u!210 &210232941320883042
 SortingGroup:
   m_ObjectHideFlags: 1

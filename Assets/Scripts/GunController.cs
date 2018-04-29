@@ -9,6 +9,7 @@ public class GunController : MonoBehaviour {
     public float timeBetweenShots;
     private float shotCounter;
     public Transform firePoint;
+    public int damage;
 	// Use this for initialization
 	void Start () {
 		
@@ -22,7 +23,9 @@ public class GunController : MonoBehaviour {
             if(shotCounter <= 0)
             {
                 shotCounter = timeBetweenShots;
+                
                 BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+                newBullet.setDamage(damage);
                 newBullet.speed = bulletSpeed;
             }
         } else
@@ -31,4 +34,9 @@ public class GunController : MonoBehaviour {
         }
 		
 	}
+
+    public void setDamage(int damage)
+    {
+        this.damage = damage;
+    }
 }

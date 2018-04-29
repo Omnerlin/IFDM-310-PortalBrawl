@@ -37,6 +37,7 @@ public class BulletController : MonoBehaviour
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
                 return;
             }
+            DestroyBullet();
         }
         else
         {
@@ -58,6 +59,11 @@ public class BulletController : MonoBehaviour
         speed = 0;
         GetComponent<Collider2D>().enabled = false;
 
+    }
+
+    public void setDamage(int damage)
+    {
+        damageForEnemy = damage;
     }
 
     // Making this function so that the animator can reference it
