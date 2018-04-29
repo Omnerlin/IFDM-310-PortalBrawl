@@ -43,28 +43,14 @@ public partial class ZerandiPlayerController : PlayerControl
         }
     }
 
-    public class StunState : ZerandiState
-    {
-        public StunState(ZerandiPlayerController cont) : base(cont) { }
-
-        public override void OnEnter() { }
-        public override void OnExit() { }
-
-        public override PlayerState Update()
-        {
-            pControl.UpdateAttack();
-            pControl.UpdateReticleOrientation();
-
-            return this;
-        }
-    }
-
     public class DeathState : ZerandiState
     {
         public DeathState(ZerandiPlayerController cont) : base(cont) { }
 
         public override void OnEnter()
         {
+            PlayerManager.instance.CheckForGameOver();
+
             pControl.animator.SetTrigger("Die");
             pControl.deathVisuals.SetActive(true);
             pControl.rb2d.isKinematic = true;

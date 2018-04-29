@@ -26,6 +26,7 @@ public partial class RevdiocPlayerController : PlayerControl
 			{
                 return new DeathState (pControl);
 			}
+
             // If the player hits the rightbumper, return the attack state
             if(pControl.player.GetButtonDown("RightBumper"))
             {
@@ -116,6 +117,8 @@ public partial class RevdiocPlayerController : PlayerControl
 
 		public override void OnEnter() 
 		{
+            PlayerManager.instance.CheckForGameOver();
+
 			//Trigger Death animation
 			pControl.animator.SetTrigger("Die");
             pControl.deathVisuals.SetActive(true);

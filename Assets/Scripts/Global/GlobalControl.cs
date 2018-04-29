@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 /**
  * This class serves as a storage location for all of the class Player's data.
@@ -20,15 +23,32 @@ public class GlobalControl : MonoBehaviour {
 	{
 		if (instance == null) 
 		{
-			DontDestroyOnLoad(this.transform.root.gameObject);
+			DontDestroyOnLoad(this.gameObject);
 			instance = this;
 		} 
-		else if (instance != this)	Destroy(transform.root.gameObject);
-	}
-		
+		else if (instance != this)	Destroy(this.gameObject);
 
-	//Call this method to save your data as a player
-	public void SaveData(int playerNumber, PlayerInfo data)
+        SceneManager.sceneLoaded += OnSceneLoaded;
+	}
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "CharacterSelect")
+        {
+            ClearData();
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "MainMenu" || scene.name == "CharacterSelect")
+        {
+            ClearData();
+        }
+    }
+
+    //Call this method to save your data as a player
+    public void SaveData(int playerNumber, PlayerInfo data)
 	{
 		instance.savedPlayerData[playerNumber] = data;
 		Debug.Log ("Saved: "+toString());
@@ -70,17 +90,19 @@ public class GlobalControl : MonoBehaviour {
         }
     }
 
-    public bool AllPlayersDead()
+    // Clear out the data just in case we go back to the main menu
+    private void ClearData()
     {
-        for(int i = 0; i < savedPlayerData.Length; i++)
+        foreach (PlayerInfo info in savedPlayerData)
         {
-            if (savedPlayerData[i] != null && savedPlayerData[i].currentHealth <= 0)
-            {
-                return true;
-            }
+            if(info != null)
+            info.characterName = "";
         }
+    }
 
-        return false;
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
 }

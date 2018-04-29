@@ -8,7 +8,7 @@ using Cinemachine;
 public class PlayerManager : MonoBehaviour
 {
 
-    public static PlayerManager instance;
+    public static PlayerManager instance = null;
     public GameObject cameraFollowGroup;
 
     public GameObject anixPrefab;
@@ -21,20 +21,28 @@ public class PlayerManager : MonoBehaviour
 
 	public GameObject[] playerDisplays = new GameObject[4]; //Indexed by PLAYER number, NOT Rewired-ID
 
-    //private List<int> assignedControllers = new List<int>();
     public GameObject playerPrefab;
+
+    // Game win and loss screens. Putting them in playerManager for now, since I'm using it
+    // to tell whether or not they should be displayed in the first place. Meh.
+    public GameObject gameOverScreen;
+    public GameObject gameWinScreen;
+    public Image fadeScreen;
+    public float fadeTime = 1.5f;
+
+
+    private List<GameObject> activePlayers = new List<GameObject>();
 
     private void Awake()
     {
         // This will be a singleton
-        if(instance != null)
+        if(instance == null)
         {
-            Destroy(this);
-            return;
+            instance = this;
         }
         else
         {
-            instance = this;
+            Destroy(this);
         }
 
         Debug.Log("Trying to load players");
@@ -77,10 +85,7 @@ public class PlayerManager : MonoBehaviour
                     return;
                 }
 
-                //gameObject yaboi = 
-                //playerObject.GetComponent<Player>().characterNameImage
                 GameObject portrait = Instantiate(portraitPrefab, playerPortraitGroup.transform);
-                //portrait.transform.localScale = new Vector3(1, 1, 1);
 
                 // Assign the character portrait image and name
                 portrait.transform.Find("Portrait").GetComponent<Image>().sprite = playerObject.GetComponent<Player>().characterPortraitImage;
@@ -90,6 +95,9 @@ public class PlayerManager : MonoBehaviour
                 playerObject.GetComponent<Player>().playerNumber = GlobalControl.instance.savedPlayerData[i].playerNumber;
 				playerObject.GetComponent<Player> ().setDisplay( portrait );
                 playerObject.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(GlobalControl.instance.savedPlayerData[i].controllerID);
+
+                // We want to be able to keep track of the players that are spawned during this run so that we can do things like check if they are dead.
+                activePlayers.Add(playerObject);
 
                 // Add the player to the group of objects to be tracked by the camera
                 // while keeping the other targets
@@ -147,4 +155,83 @@ public class PlayerManager : MonoBehaviour
         groupComp.m_Targets = group.ToArray();
     }
 
+    // Checks if all players have been killed to death
+    public void CheckForGameOver()
+    {
+        bool killedToDeath = true;
+        for (int i = 0; i < activePlayers.Count; i++)
+        {
+            if (activePlayers[i] != null && !activePlayers[i].GetComponent<Player>().isDead())
+            {
+                killedToDeath = false;
+                break;
+            }
+        }
+
+        if(killedToDeath)
+        {
+            // OI, it's game over time. Enable the correct menu. Choose whether or not to reload.
+            //Debug.Log("OI, the characters are dead");
+
+            StopAllCoroutines();
+            StartCoroutine(FadeGameEnd(killedToDeath));
+        }
+    }
+
+    void SetPlayerControlsEnabled(bool enabled)
+    {
+        foreach (GameObject go in activePlayers)
+        {
+            go.GetComponent<PlayerControl>().player.isPlaying = false;
+        }
+    }
+
+    public void HealAllPlayersToFull()
+    {
+
+    }
+
+    IEnumerator FadeGameEnd(bool gameLoss)
+    {
+        float timer = 0;
+
+        fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, 0);
+        fadeScreen.gameObject.SetActive(true);
+
+
+        while (timer < fadeTime)
+        {
+            timer += Time.deltaTime;
+            fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, timer / fadeTime);
+            yield return null;
+        }
+
+        timer = fadeTime;
+        fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, 1);
+
+        if(gameLoss)
+        {
+            gameOverScreen.SetActive(true);
+        }
+        else
+        {
+            gameWinScreen.SetActive(true);
+        }
+
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, timer / fadeTime);
+            yield return null;
+        }
+
+        fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, 0);
+        fadeScreen.gameObject.SetActive(false);
+
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Destrying the playermanager for some reason");
+    }
 }

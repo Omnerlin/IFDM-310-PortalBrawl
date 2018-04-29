@@ -22,6 +22,7 @@ public partial class AnixPlayerController : PlayerControl
 
         public override PlayerState Update()
         {
+
             // If the player hits the rightbumper, return the attack state
             if(pControl.GetComponent<Player>().isDead())
             {
@@ -41,6 +42,7 @@ public partial class AnixPlayerController : PlayerControl
 
             pControl.UpdateReticleRotation();
             pControl.UpdatePlayerMovement();
+
 
             return this;
         }
@@ -119,9 +121,13 @@ public partial class AnixPlayerController : PlayerControl
     {
 
         public DeathState(AnixPlayerController cont) : base(cont) { }
+        
 
         public override void OnEnter()
         {
+            PlayerManager.instance.CheckForGameOver();
+
+
             pControl.animator.SetTrigger("Die");
             pControl.deathVisuals.SetActive(true);
             pControl.rb2d.velocity = Vector2.zero;

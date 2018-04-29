@@ -36,7 +36,6 @@ public class PlayerControl : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         playerInfo = gameObject.GetComponent<Player>();
-        //playerInfo.setPlayerNumber(player.id);
     }
 
     private void FixedUpdate()

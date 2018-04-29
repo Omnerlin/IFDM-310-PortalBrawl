@@ -36,11 +36,12 @@ public class LoadScene : MonoBehaviour {
             // We also want to reset the controllers so that we can still hit start in character select
             if(sceneToLoad == "MainMenu")
             {
-                GameObject obj = GameObject.Find("GlobalGameMaster");
-                if(obj)
-                {
-                    Destroy(obj.transform.root.gameObject);
-                }
+                //GameObject obj = GameObject.Find("GlobalGameMaster");
+
+                //if(obj)
+                //{
+                //    Destroy(obj);
+                //}
 
                 foreach(Rewired.Player player in ReInput.players.GetPlayers(false))
                 {

@@ -26,11 +26,12 @@ public partial class DennisPlayerController : PlayerControl
                 return new DeathState(pControl);
             }
 
-			if(pControl.player.GetButtonDown("TriangleButton"))
-			{
-				//(We don't need another state for this because it's a rather quick thing.)
-				pControl.attemptToRevive ();
-			}
+
+            if (pControl.player.GetButtonDown("TriangleButton"))
+            {
+                //(We don't need another state for this because it's a rather quick thing.)
+                pControl.attemptToRevive();
+            }
 
             pControl.UpdateAttack();
             pControl.UpdateReticleRotation();
@@ -46,11 +47,14 @@ public partial class DennisPlayerController : PlayerControl
 
         public override void OnEnter()
         {
+            PlayerManager.instance.CheckForGameOver();
+
             pControl.animator.SetTrigger("Die");
             pControl.deathVisuals.SetActive(true);
             pControl.rb2d.velocity = Vector2.zero;
             pControl.rb2d.isKinematic = true;
             pControl.aimReticle.SetActive(false);
+
         }
         public override void OnExit()
         {
