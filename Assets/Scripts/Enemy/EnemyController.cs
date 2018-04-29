@@ -19,6 +19,12 @@ public class EnemyController : MonoBehaviour {
 	void Start () {
         players = GameObject.FindGameObjectsWithTag("Player");
         player = players[Random.Range(0, players.Length)];
+
+        if(player)
+        {
+            Debug.Log(player.transform.root.name);
+        }
+
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }

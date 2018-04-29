@@ -188,7 +188,18 @@ public class PlayerManager : MonoBehaviour
 
     public void HealAllPlayersToFull()
     {
+        foreach (GameObject go in activePlayers)
+        {
+            go.GetComponent<Player>().setMaxHP();
+        }
+    }
 
+    public void SetAllPlayersInactive()
+    {
+        foreach (GameObject go in activePlayers)
+        {
+            go.SetActive(false);
+        }
     }
 
     IEnumerator FadeGameEnd(bool gameLoss)
