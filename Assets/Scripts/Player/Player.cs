@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
 	public static Color[] ultimateColors = {new Color(135,0,225,225), new Color(157,358,174,225)}; //Purple for charged, pale purple for charging
 
     public AudioClip[] hurtclips = new AudioClip[6];
-    private AudioSource hurtSource;
+    public AudioSource hurtSource;
 
 	public PlayerStatDisplay myDisplay;
 
@@ -71,7 +71,6 @@ public class Player : MonoBehaviour {
 		myDisplay.getText().color = playerColors[playerNumber];
 
 		hasInitialized = true;
-        hurtSource = gameObject.GetComponent<AudioSource>();
 	}
 
 	void Update()

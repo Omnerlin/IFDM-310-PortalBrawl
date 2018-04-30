@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    public enum waveState { SPAWNING, WAITING, COUNTING };
+    public enum waveState { SPAWNING, WAITING, COUNTING, DONE };
 
     [System.Serializable]
     public class Wave
@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour {
     public float waveCountdown;
     public waveState state = waveState.COUNTING;
     private float searchCountdown = 1f;
-
+    public bool loop = false;
 
     public GameObject[] spawnPoints;
 
@@ -39,12 +39,26 @@ public class EnemySpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if(state == waveState.DONE)
+        {
+            return;
+        }
         if(state == waveState.WAITING)
         {
             if (!enemyIsAlive())
             {
-                //Begin new round
-                waveCompleted();
+                // Test to see if there are any waves left if we killed all the enemies.
+                if (nextWave + 1 >= waves.Length && !loop)
+                {
+                    Debug.Log("hey there, I'm done spawning now");
+                    PlayerManager.instance.GameWin();
+                    state = waveState.DONE;
+                }
+                else
+                {
+                    //Begin new round
+                    waveCompleted();
+                }
                 return;
             }
             else
@@ -106,6 +120,7 @@ public class EnemySpawner : MonoBehaviour {
             yield return new WaitForSeconds(1f/_wave.rate);
         }
         state = waveState.WAITING;
+
         yield break;
     }
 
@@ -113,7 +128,6 @@ public class EnemySpawner : MonoBehaviour {
     {
         // Changing this a bit to spawn portals instead, which spawn the enemy that was going to be spawned
         // by this, if that makes sense.
-
         GameObject _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         if(spawnPoints.Length == 0)
         {

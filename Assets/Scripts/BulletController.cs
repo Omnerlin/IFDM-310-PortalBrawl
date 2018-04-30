@@ -29,7 +29,7 @@ public class BulletController : MonoBehaviour
         {
             if (other.gameObject.tag.Equals("Player"))
             {
-                other.gameObject.GetComponent<PlayerHP>().HurtPlayer(damageForEnemy);
+                other.gameObject.GetComponent<Player>().hurtPlayer(damageForEnemy);
             }
             else if (other.gameObject.tag.Equals("Enemy"))
             {

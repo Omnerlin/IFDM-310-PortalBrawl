@@ -125,10 +125,10 @@ public class PlayerManager : MonoBehaviour
         for(int i = 0; i < players.Count; i++)
         {
             // Assign the player 
-            if(!players[i].isPlaying && players[i].GetButtonDown("Start"))
-            {
-                AddPlayer(i);                
-            }
+            //if(!players[i].isPlaying && players[i].GetButtonDown("Start"))
+            //{
+            //    AddPlayer(i);                
+            //}
         }
 			
     }
@@ -178,6 +178,12 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void GameWin()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeGameEnd(false));
+    }
+
     void SetPlayerControlsEnabled(bool enabled)
     {
         foreach (GameObject go in activePlayers)
@@ -206,10 +212,11 @@ public class PlayerManager : MonoBehaviour
     {
         float timer = 0;
 
+        // Set up initial conditions for coroutine, making sure that the fade image is completely transparent.
         fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, 0);
         fadeScreen.gameObject.SetActive(true);
 
-
+        // Fade in the black image until it is totally visible, then perform the appropriate actions based on the supplied boolean.
         while (timer < fadeTime)
         {
             timer += Time.deltaTime;
@@ -226,9 +233,11 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
+            SetAllPlayersInactive();
             gameWinScreen.SetActive(true);
         }
 
+        // Start fading the screen back out
         while (timer > 0)
         {
             timer -= Time.deltaTime;

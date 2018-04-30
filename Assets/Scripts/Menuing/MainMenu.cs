@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour {
     public int index = 0;
     public float yOffset;
+    public float xOffset;
 
     public enum NavigationType { TopToBottom, LeftToRight };
 
@@ -48,6 +49,7 @@ public class MainMenu : MonoBehaviour {
                 menuButtons[index].Select();
                 Vector2 postion = transform.position;
                 postion.y += yOffset;
+                postion.x -= xOffset;
                 transform.position = postion;
                 sounds[0].Play();
             }
@@ -60,6 +62,7 @@ public class MainMenu : MonoBehaviour {
                 menuButtons[index].Select();
                 Vector2 postion = transform.position;
                 postion.y -= yOffset;
+                postion.x += xOffset;
                 transform.position = postion;
                 sounds[0].Play();
             }
