@@ -30,7 +30,7 @@ TagManager:
   - 
   - Environment
   - 
-  - 
+  - Ground(DontCollideWithBullets)
   - 
   - 
   - 
