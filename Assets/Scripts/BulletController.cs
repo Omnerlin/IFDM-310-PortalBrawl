@@ -60,6 +60,11 @@ public class BulletController : MonoBehaviour
 
     }
 
+    public void setDamage(int damage)
+    {
+        damageForEnemy = damage;
+    }
+
     // Making this function so that the animator can reference it
     public void DestroyBullet()
     {

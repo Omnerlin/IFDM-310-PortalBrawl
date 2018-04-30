@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 82818077712258412}
   - component: {fileID: 82218374634289582}
   - component: {fileID: 82328311497056554}
+  - component: {fileID: 114131612121090998}
   m_Layer: 0
   m_Name: ZerandiHeir
   m_TagString: Player
@@ -193,7 +194,7 @@ GameObject:
   - component: {fileID: 61303529729938278}
   m_Layer: 12
   m_Name: Hurtbox
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -825,6 +826,7 @@ MonoBehaviour:
   myDisplay: {fileID: 0}
   hurtFlashInterval: 0.1
   hurtInvincibilityDuration: 1
+  myStats: {fileID: 114131612121090998}
 --- !u!114 &114090601283111132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -843,9 +845,24 @@ MonoBehaviour:
   deathVisuals: {fileID: 1292536729276150}
   theGun: {fileID: 114672725400793512}
   aimReticle: {fileID: 1958202349751544}
+  myStats: {fileID: 114131612121090998}
   playerSounds:
   - {fileID: 82218374634289582}
   - {fileID: 82328311497056554}
+--- !u!114 &114131612121090998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1934320050196914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681e386bb2c94bb49b15c06682db955b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseAtt: 1
+  baseDef: 0
+  timeForEffect: 10
 --- !u!114 &114672725400793512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -862,6 +879,8 @@ MonoBehaviour:
   bulletSpeed: 30
   timeBetweenShots: 0.25
   firePoint: {fileID: 4412425633146424}
+  damage: 0
+  gunSound: {fileID: 0}
 --- !u!210 &210041625945719710
 SortingGroup:
   m_ObjectHideFlags: 1

@@ -18,6 +18,9 @@ public partial class ZerandiPlayerController : PlayerControl
     private Camera mainCamera;
     private Camera pixelCam;
 
+    //Player Stats
+    public PlayerStats myStats;
+
     //Weapon/Revive Sounds
     public AudioSource[] playerSounds;
 
@@ -27,11 +30,10 @@ public partial class ZerandiPlayerController : PlayerControl
     private void Awake()
     {
         animator = characterBody.GetComponent<Animator>();
-        
-
         sMachine = new StateMachine<ZerandiState>(new WalkState(this,playerSounds[1]));
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
+        myStats = gameObject.GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -44,8 +46,10 @@ public partial class ZerandiPlayerController : PlayerControl
     {
         if (player.GetButton("RightBumper"))
         {
+            theGun.setDamage(myStats.getAttStat());
+            theGun.SetSound(playerSounds[0]);
             theGun.isFiring = true;
-            playerSounds[0].Play();
+
         }
         else
         {

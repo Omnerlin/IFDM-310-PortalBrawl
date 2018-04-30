@@ -9,6 +9,8 @@ public class GunController : MonoBehaviour {
     public float timeBetweenShots;
     private float shotCounter;
     public Transform firePoint;
+    public int damage;
+    public AudioSource gunSound;
 	// Use this for initialization
 	void Start () {
 		
@@ -22,7 +24,12 @@ public class GunController : MonoBehaviour {
             if(shotCounter <= 0)
             {
                 shotCounter = timeBetweenShots;
+                if (!gunSound.Equals(null))
+                {
+                    gunSound.Play();
+                }
                 BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+                newBullet.setDamage(damage);
                 newBullet.speed = bulletSpeed;
             }
         } else
@@ -31,4 +38,14 @@ public class GunController : MonoBehaviour {
         }
 		
 	}
+
+    public void SetSound(AudioSource sound)
+    {
+        gunSound = sound;
+    }
+
+    public void setDamage(int damage)
+    {
+        this.damage = damage;
+    }
 }

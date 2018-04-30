@@ -20,6 +20,9 @@ public partial class DennisPlayerController : PlayerControl {
     private Camera mainCamera;
     private Camera pixelCam;
 
+    //Player Stats
+    public PlayerStats myStats;
+
     //Weapon/Revive Sounds
     public AudioSource[] playerSounds;
 
@@ -32,6 +35,7 @@ public partial class DennisPlayerController : PlayerControl {
         animator = characterBody.GetComponent<Animator>();
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
+        myStats = gameObject.GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -43,8 +47,9 @@ public partial class DennisPlayerController : PlayerControl {
     {
         if(player.GetButton("RightBumper"))
         {
+            theGun.setDamage(myStats.getAttStat());
+            theGun.SetSound(playerSounds[0]);
             theGun.isFiring = true;
-            playerSounds[0].Play();
         }
         else
         {

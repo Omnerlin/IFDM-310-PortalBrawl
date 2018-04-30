@@ -9,10 +9,12 @@ public partial class RevdiocPlayerController : PlayerControl
     {
         public RevdiocPlayerController pControl;
         public AudioSource[] playerSound;
-        public RevdiocState(RevdiocPlayerController cont, AudioSource[] sound)
+        public PlayerStats myStats;
+        public RevdiocState(RevdiocPlayerController cont, AudioSource[] sound, PlayerStats stats)
         {
             pControl = cont;
             playerSound = sound;
+            myStats = stats;
         }
     }
 
@@ -20,7 +22,7 @@ public partial class RevdiocPlayerController : PlayerControl
     public class WalkState : RevdiocState
     {
 
-        public WalkState(RevdiocPlayerController cont, AudioSource[] sound) : base(cont,sound) { }
+        public WalkState(RevdiocPlayerController cont, AudioSource[] sound, PlayerStats stats) : base(cont,sound,stats) { }
 
 
         public override void OnEnter() { }
@@ -30,14 +32,14 @@ public partial class RevdiocPlayerController : PlayerControl
         {
 			if (pControl.playerInfo.isDead ()) 
 			{
-                return new DeathState (pControl,playerSound);
+                return new DeathState (pControl,playerSound,myStats);
 			}
 
             // If the player hits the rightbumper, return the attack state
             if(pControl.player.GetButtonDown("RightBumper"))
             {
                 playerSound[0].Play();
-                return new AttackState(pControl,playerSound);
+                return new AttackState(pControl,playerSound,myStats);
             }
 
 			//Player can revive someone else
@@ -56,7 +58,7 @@ public partial class RevdiocPlayerController : PlayerControl
 
     public class AttackState : RevdiocState
     {
-        public AttackState(RevdiocPlayerController cont, AudioSource[] sound) : base(cont,sound) { hammerHitBox = pControl.hammerHitBox;
+        public AttackState(RevdiocPlayerController cont, AudioSource[] sound, PlayerStats stats) : base(cont,sound,stats) { hammerHitBox = pControl.hammerHitBox;
             timeActive = pControl.hitboxTimeActive; filter = pControl.hitboxFilter; cooldown = pControl.attackCooldown; }
 
         private GameObject hammerHitBox;
@@ -88,11 +90,11 @@ public partial class RevdiocPlayerController : PlayerControl
         {
             timeActive -= Time.deltaTime;
             if(timeActive <= 0) { cooldown -= Time.deltaTime; hammerHitBox.SetActive(false);} // Return walk state if we can attack again
-            if (cooldown <= 0) { return new WalkState(pControl,playerSound); }
+            if (cooldown <= 0) { return new WalkState(pControl,playerSound,myStats); }
 
             if(pControl.GetComponent<Player>().isDead())
             {
-                return new DeathState(pControl,playerSound);
+                return new DeathState(pControl,playerSound,myStats);
             }
 
             CheckHitCollisions();
@@ -108,7 +110,7 @@ public partial class RevdiocPlayerController : PlayerControl
             {
                 if (col != null && col.tag == "Enemy" && !hitEnemies.Contains(col.gameObject))
                 {
-                    col.gameObject.GetComponent<EnemyHp>().HurtEnemy(1);
+                    col.gameObject.GetComponent<EnemyHp>().HurtEnemy(myStats.getAttStat());
                     Vector3 heading = col.transform.position - pControl.transform.position;
                     Vector3 direction = heading / heading.sqrMagnitude;
                     col.gameObject.GetComponent<Rigidbody2D>().AddForce(pControl.hitForce * direction);
@@ -120,7 +122,7 @@ public partial class RevdiocPlayerController : PlayerControl
 
 	public class DeathState : RevdiocState
 	{
-		public DeathState(RevdiocPlayerController cont,AudioSource[] sound) : base(cont, sound) { }
+		public DeathState(RevdiocPlayerController cont,AudioSource[] sound, PlayerStats stats) : base(cont, sound,stats) { }
 
 		public override void OnEnter() 
 		{
@@ -153,11 +155,11 @@ public partial class RevdiocPlayerController : PlayerControl
             {
                 pControl.GetComponent<Player>().setMaxHP();
                 pControl.animator.SetTrigger("Revive");
-                return new WalkState(pControl,playerSound);
+                return new WalkState(pControl,playerSound,myStats);
             }
 			if (!pControl.GetComponent<Player> ().isDead ()) //Someone gave them health by reviving them or otherwise healing them
 			{ 
-				return new WalkState(pControl,playerSound);
+				return new WalkState(pControl,playerSound,myStats);
 			}
 
 			return this; //Sorry, endless loop. You can't do anything while you're down. 

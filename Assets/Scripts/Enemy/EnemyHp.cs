@@ -6,10 +6,14 @@ public class EnemyHp : MonoBehaviour {
 
     public int hP;
     public int currentHP;
+    public Items[] itemsToDrop;
 
     [Tooltip("Material to switch to while enemy is hurt")]
     public Material flashMaterial;
     public float flashTime = 0.1f;
+
+    public float chanceToDropMystery;
+    
 
     private Material baseMat; // make sure we keep a reference to what base material the enemy uses
 
@@ -34,7 +38,20 @@ public class EnemyHp : MonoBehaviour {
 
         if (currentHP <= 0)
         {
-            Destroy(gameObject);
+            float randNum = Random.Range(0.0f,1.0f);
+            Debug.Log(randNum + "number");
+            if(randNum < chanceToDropMystery)
+            {
+                Instantiate(itemsToDrop[3], transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instantiate(itemsToDrop[Random.Range(0, itemsToDrop.Length - 1)], transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+            
+            
         }
         else
         {

@@ -23,6 +23,9 @@ public partial class AnixPlayerController : PlayerControl
     public float hitboxTimeActive = 0.2f;
     public ContactFilter2D hitboxFilter;
 
+    //PlayerStats
+    public PlayerStats myStats;
+
     //Weapon/Revive Sounds
     public AudioSource[] playerSounds;
 
@@ -37,10 +40,11 @@ public partial class AnixPlayerController : PlayerControl
 
     private void Awake()
     {
-        sMachine = new StateMachine<AnixState>(new WalkState(this,playerSounds));
+        sMachine = new StateMachine<AnixState>(new WalkState(this,playerSounds,myStats));
         animator = characterBody.GetComponent<Animator>();
         pixelCam = GameObject.FindGameObjectWithTag("PixelCam").GetComponent<Camera>();
         mainCamera = Camera.main;
+        myStats = gameObject.GetComponent<PlayerStats>();
 
     }
 

@@ -42,16 +42,26 @@ public class Player : MonoBehaviour {
     public float hurtInvincibilityDuration = 1f;
     private bool invincible = false;
 
+    //Player Stats
+    public PlayerStats myStats;
+
 	public Color getColor()
 	{
 		return playerColors [playerNumber];
 	}
+
 
 	// Use this for initialization
 	void Awake () 
 	{
 		
 	}
+
+    //getter for my data
+    public PlayerInfo getMyData()
+    {
+        return myData;
+    }
 
 	void Start()
 	{
@@ -71,6 +81,7 @@ public class Player : MonoBehaviour {
 		myDisplay.getText().color = playerColors[playerNumber];
 
 		hasInitialized = true;
+        myStats = gameObject.GetComponent<PlayerStats>();
 	}
 
 	void Update()
@@ -168,7 +179,14 @@ public class Player : MonoBehaviour {
             return;
         }
 
-		myData.currentHealth -= damage;
+        int damageToTake = damage - myStats.getDefStat();
+
+        if(damageToTake < 0)
+        {
+            damageToTake = 0;
+        }
+
+		myData.currentHealth -= damageToTake;
         hurtSource.clip = hurtclips[UnityEngine.Random.Range(0, hurtclips.Length)];
         hurtSource.Play();
 
@@ -185,7 +203,7 @@ public class Player : MonoBehaviour {
             StartCoroutine(PlayerFlash());
         }
 
-		Debug.Log (myData.characterName + " took " + damage + " damage! "+myData.currentHealth+" health remaining! (Don't die)");
+		Debug.Log (myData.characterName + " took " + damageToTake + " damage! "+myData.currentHealth+" health remaining! (Don't die)");
 	}
 
 	//Adds heal to myData.currentHeath. Cannot go above maxHP.
@@ -207,7 +225,7 @@ public class Player : MonoBehaviour {
 		//Destroy(this.gameObject); 
 	}
 
-	public bool isDead()
+    public bool isDead()
 	{
 		return myData.currentHealth <= 0;
 	}

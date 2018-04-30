@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 95949186223378342}
   - component: {fileID: 210505491666463922}
   - component: {fileID: 114634533572576262}
+  - component: {fileID: 114003882467647114}
   m_Layer: 9
   m_Name: golem_range_test
   m_TagString: Enemy
@@ -167,6 +168,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114003882467647114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261399859927974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28e92a405fe22c4aaa322d5549673b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageToPlayer: 2
 --- !u!114 &114545354553799412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,6 +196,8 @@ MonoBehaviour:
   bulletSpeed: 30
   timeBetweenShots: 1
   firePoint: {fileID: 4861964124735472}
+  damage: 1
+  gunSound: {fileID: 0}
 --- !u!114 &114634533572576262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,8 +225,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hP: 10
   currentHP: 10
+  itemsToDrop:
+  - {fileID: 114521244354966734, guid: 95e24b66c613db94198e1a917d017f21, type: 2}
+  - {fileID: 114751760142719312, guid: 73a248d66e1e6d54cb4e13af84bc4d9f, type: 2}
+  - {fileID: 114151536222195264, guid: f7d0cafa5d95ade48bdef15e4e1c3d22, type: 2}
+  - {fileID: 114336216644213378, guid: 9e9411f722cf3d34daee1b391e3c5315, type: 2}
   flashMaterial: {fileID: 2100000, guid: 8c75a75d673273f40a1b79f79b1ff625, type: 2}
   flashTime: 0.25
+  chanceToDropMystery: 0.05
 --- !u!210 &210505491666463922
 SortingGroup:
   m_ObjectHideFlags: 1

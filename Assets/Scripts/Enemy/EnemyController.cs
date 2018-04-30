@@ -19,19 +19,15 @@ public class EnemyController : MonoBehaviour {
 	void Start () {
         players = GameObject.FindGameObjectsWithTag("Player");
         player = players[Random.Range(0, players.Length)];
-
-        if(player)
-        {
-            Debug.Log(player.transform.root.name);
-        }
-
+        //if(player)
+        Debug.Log(player.transform.root.name + "player is");
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
-        if(player)
+        if(player && player.GetComponent<Player>().getMyData().currentHealth > 0)
         {
 
             target = player.GetComponent<Transform>();

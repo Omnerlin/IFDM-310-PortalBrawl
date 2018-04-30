@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 61875279274900162}
   m_Layer: 12
   m_Name: Hurtbox
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 82373231872028896}
   - component: {fileID: 82795005221196712}
   - component: {fileID: 82190816514900798}
+  - component: {fileID: 114121910861420942}
   m_Layer: 0
   m_Name: AnixHeir
   m_TagString: Player
@@ -821,6 +822,7 @@ MonoBehaviour:
   myDisplay: {fileID: 0}
   hurtFlashInterval: 0.05
   hurtInvincibilityDuration: 1
+  myStats: {fileID: 114121910861420942}
 --- !u!114 &114104453040644414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -857,9 +859,24 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  myStats: {fileID: 114121910861420942}
   playerSounds:
   - {fileID: 82795005221196712}
   - {fileID: 82190816514900798}
+--- !u!114 &114121910861420942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1838086608255332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681e386bb2c94bb49b15c06682db955b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseAtt: 1
+  baseDef: 0
+  timeForEffect: 10
 --- !u!114 &114460633658977900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -876,6 +893,8 @@ MonoBehaviour:
   bulletSpeed: 10
   timeBetweenShots: 0.25
   firePoint: {fileID: 0}
+  damage: 0
+  gunSound: {fileID: 0}
 --- !u!210 &210105545828057172
 SortingGroup:
   m_ObjectHideFlags: 1

@@ -29,7 +29,7 @@ public class EnemyRangeController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) <= 3 && theGun)
+        if (Vector2.Distance(transform.position, player.transform.position) <= 3 && player.GetComponent<Player>().getMyData().currentHealth > 0)
         {
             Vector3 heading = transform.position - target.position;
             Vector3 direction = heading / heading.magnitude;
@@ -39,7 +39,7 @@ public class EnemyRangeController : MonoBehaviour {
             rb2d.AddForce((moveForce * Time.deltaTime) * direction);
             rb2d.velocity = rb2d.velocity.normalized * 0;
         }
-        else if (player)
+        else if (player && player.GetComponent<Player>().getMyData().currentHealth > 0)
         {
             target = player.GetComponent<Transform>();
 
