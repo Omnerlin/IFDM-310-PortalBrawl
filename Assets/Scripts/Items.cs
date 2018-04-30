@@ -81,6 +81,7 @@ public class Items : MonoBehaviour {
 
     private void OnDestroy()
     {
+        if(musicManager)
         musicManager.GetComponent<PickUpSoundPlayer>().PlaySound();
     }
 }
