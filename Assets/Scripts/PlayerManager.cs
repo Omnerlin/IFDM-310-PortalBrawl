@@ -249,9 +249,4 @@ public class PlayerManager : MonoBehaviour
         fadeScreen.gameObject.SetActive(false);
 
     }
-
-    private void OnDestroy()
-    {
-        Debug.Log("Destrying the playermanager for some reason");
-    }
 }

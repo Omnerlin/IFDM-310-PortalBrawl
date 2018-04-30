@@ -39,7 +39,7 @@ public class EnemyHp : MonoBehaviour {
         if (currentHP <= 0)
         {
             float randNum = Random.Range(0.0f,1.0f);
-            Debug.Log(randNum + "number");
+            // Debug.Log(randNum + "number");
             if(randNum < chanceToDropMystery)
             {
                 Instantiate(itemsToDrop[3], transform.position, transform.rotation);
