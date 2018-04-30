@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour {
 
     public NavigationType navigationType;
 
-    public Rewired.Player player { get; set;}
+    public IList<Rewired.Player> players { get; set;}
 
     public List<Button> menuButtons;
 
@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour {
 
     private void Awake()
     {
-        player = ReInput.players.GetPlayer(4);
+        players = ReInput.players.GetPlayers(false);
         totalOptions = menuButtons.Count - 1;
     }
 
@@ -41,37 +41,40 @@ public class MainMenu : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (player.GetButtonDown(navigationType == NavigationType.TopToBottom ? "DPadUp" : "DPadLeft"))
+        foreach (Rewired.Player player in players)
         {
-            if (index > 0)
+            if (player.GetButtonDown(navigationType == NavigationType.TopToBottom ? "DPadUp" : "DPadLeft"))
             {
-                index--;
-                menuButtons[index].Select();
-                Vector2 postion = transform.position;
-                postion.y += yOffset;
-                postion.x -= xOffset;
-                transform.position = postion;
-                sounds[0].Play();
+                if (index > 0)
+                {
+                    index--;
+                    menuButtons[index].Select();
+                    Vector2 postion = transform.position;
+                    postion.y += yOffset;
+                    postion.x -= xOffset;
+                    transform.position = postion;
+                    sounds[0].Play();
+                }
             }
-        }
-        if (player.GetButtonDown(navigationType == NavigationType.TopToBottom ? "DPadDown" : "DPadRight"))
-        {
-            if ((index < totalOptions))
+            if (player.GetButtonDown(navigationType == NavigationType.TopToBottom ? "DPadDown" : "DPadRight"))
             {
-                index++;
-                menuButtons[index].Select();
-                Vector2 postion = transform.position;
-                postion.y -= yOffset;
-                postion.x += xOffset;
-                transform.position = postion;
-                sounds[0].Play();
+                if ((index < totalOptions))
+                {
+                    index++;
+                    menuButtons[index].Select();
+                    Vector2 postion = transform.position;
+                    postion.y -= yOffset;
+                    postion.x += xOffset;
+                    transform.position = postion;
+                    sounds[0].Play();
+                }
             }
-        }
 
-        if (player.GetButtonDown("Start"))
-        {
-            menuButtons[index].onClick.Invoke();
-            sounds[1].Play();
+            if (player.GetButtonDown("Start") || player.GetButtonDown("XButton"))
+            {
+                menuButtons[index].onClick.Invoke();
+                sounds[1].Play();
+            }
         }
     }
 }
