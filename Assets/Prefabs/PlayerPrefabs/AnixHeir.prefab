@@ -876,7 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseAtt: 1
   baseDef: 0
-  timeForEffect: 5
+  timeForEffect: 10
 --- !u!114 &114460633658977900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -894,6 +894,7 @@ MonoBehaviour:
   timeBetweenShots: 0.25
   firePoint: {fileID: 0}
   damage: 0
+  gunSound: {fileID: 0}
 --- !u!210 &210105545828057172
 SortingGroup:
   m_ObjectHideFlags: 1

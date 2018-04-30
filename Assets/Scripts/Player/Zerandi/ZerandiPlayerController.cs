@@ -47,8 +47,9 @@ public partial class ZerandiPlayerController : PlayerControl
         if (player.GetButton("RightBumper"))
         {
             theGun.setDamage(myStats.getAttStat());
+            theGun.SetSound(playerSounds[0]);
             theGun.isFiring = true;
-            playerSounds[0].Play();
+
         }
         else
         {

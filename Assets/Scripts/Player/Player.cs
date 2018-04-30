@@ -225,7 +225,7 @@ public class Player : MonoBehaviour {
 		//Destroy(this.gameObject); 
 	}
 
-	public bool isDead()
+    public bool isDead()
 	{
 		return myData.currentHealth <= 0;
 	}

@@ -12,6 +12,9 @@ public class EnemyHp : MonoBehaviour {
     public Material flashMaterial;
     public float flashTime = 0.1f;
 
+    public float chanceToDropMystery;
+    
+
     private Material baseMat; // make sure we keep a reference to what base material the enemy uses
 
     private void Awake()
@@ -35,8 +38,20 @@ public class EnemyHp : MonoBehaviour {
 
         if (currentHP <= 0)
         {
-            Instantiate(itemsToDrop[Random.Range(0,itemsToDrop.Length)], transform.position,transform.rotation);
-            Destroy(gameObject);
+            float randNum = Random.Range(0.0f,1.0f);
+            Debug.Log(randNum + "number");
+            if(randNum < chanceToDropMystery)
+            {
+                Instantiate(itemsToDrop[3], transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instantiate(itemsToDrop[Random.Range(0, itemsToDrop.Length - 1)], transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+            
+            
         }
         else
         {

@@ -11,9 +11,11 @@ public class PlayerStats : MonoBehaviour {
     public float timeForEffect;
     private float timerAttBuff;
     private float timerDefBuff;
+    private Player myPlayer;
 
     // Use this for initialization
     void Start () {
+        myPlayer = gameObject.GetComponent<Player>();
         attStat = baseAtt;
         defStat = baseDef;
         timerAttBuff = 0;
@@ -41,7 +43,7 @@ public class PlayerStats : MonoBehaviour {
         {
             if (timerDefBuff >= timeForEffect)
             {
-                defStat = baseAtt;
+                defStat = baseDef;
                 timerDefBuff = 0;
             }
             else

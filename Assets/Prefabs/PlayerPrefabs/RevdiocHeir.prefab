@@ -863,7 +863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseAtt: 1
   baseDef: 0
-  timeForEffect: 5
+  timeForEffect: 10
 --- !u!210 &210218651604749124
 SortingGroup:
   m_ObjectHideFlags: 1

@@ -37,7 +37,6 @@ public class BulletController : MonoBehaviour
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
                 return;
             }
-            DestroyBullet();
         }
         else
         {

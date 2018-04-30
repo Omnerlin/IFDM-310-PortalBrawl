@@ -24,9 +24,10 @@ public class PortalSpawn : MonoBehaviour {
 
     public void spawnEnemy()
     {
-        Instantiate(monsterToSpawn, this.transform.position, this.transform.rotation);
-        soundSource.clip = portalSounds[1];
+        soundSource.clip = portalSounds[0];
         soundSource.Play();
+        Instantiate(monsterToSpawn, this.transform.position, this.transform.rotation);
+        
         GetComponent<Animator>().SetTrigger("Close");
     }
 

@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if(player)
+        if(player && player.GetComponent<Player>().getMyData().currentHealth > 0)
         {
 
             target = player.GetComponent<Transform>();
