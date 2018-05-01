@@ -30,6 +30,7 @@ public class BulletController : MonoBehaviour
             if (other.gameObject.tag.Equals("Player"))
             {
                 other.gameObject.GetComponent<Player>().hurtPlayer(damageForEnemy);
+                Destroy(gameObject);
             }
             else if (other.gameObject.tag.Equals("Enemy"))
             {
@@ -50,13 +51,12 @@ public class BulletController : MonoBehaviour
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
                 return;
             }
+            // Trigger the explode animation and stop the movement
+            GetComponent<Animator>().SetTrigger("Explode");
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            speed = 0;
+            GetComponent<Collider2D>().enabled = false;
         }
-
-        // Trigger the explode animation and stop the movement
-        GetComponent<Animator>().SetTrigger("Explode");
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        speed = 0;
-        GetComponent<Collider2D>().enabled = false;
 
     }
 

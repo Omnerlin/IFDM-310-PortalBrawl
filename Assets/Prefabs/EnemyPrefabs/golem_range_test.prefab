@@ -194,7 +194,7 @@ MonoBehaviour:
   isFiring: 0
   bullet: {fileID: 114803402199914292, guid: 2a8fdad6498911b439561c4d082f54ac, type: 2}
   bulletSpeed: 30
-  timeBetweenShots: 1
+  timeBetweenShots: 1.5
   firePoint: {fileID: 4861964124735472}
   damage: 1
   gunSound: {fileID: 0}

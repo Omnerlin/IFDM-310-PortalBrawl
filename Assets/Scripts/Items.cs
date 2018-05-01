@@ -27,55 +27,105 @@ public class Items : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+       
         
 	}
 
-    void OnCollisionEnter2D(Collision2D collision)
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag.Equals("Player"))
+    //    {
+    //        if (item.Equals(ItemType.HEAL))
+    //        {
+    //            if (collision.gameObject.GetComponent<Player>().getMyData().currentHealth == collision.gameObject.GetComponent<Player>().maxHP)
+    //            {
+    //                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
+    //                return;
+    //            }
+    //            collision.gameObject.GetComponent<Player>().healPlayer(ammountToHeal);
+    //            Destroy(gameObject);
+    //        }
+    //        if (item.Equals(ItemType.ATT_UP))
+    //        {
+    //            if (collision.gameObject.GetComponent<PlayerStats>().getAttStat() > collision.gameObject.GetComponent<PlayerStats>().baseAtt)
+    //            {
+    //                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
+    //                return;
+    //            }
+    //            collision.gameObject.GetComponent<PlayerStats>().setAttStat(attUp);
+    //            Destroy(gameObject);
+    //        }
+    //        if (item.Equals(ItemType.DEF_UP))
+    //        {
+    //            if (collision.gameObject.GetComponent<PlayerStats>().getDefStat() > collision.gameObject.GetComponent<PlayerStats>().baseDef)
+    //            {
+    //                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
+    //                return;
+    //            }
+    //            collision.gameObject.GetComponent<PlayerStats>().setDefStat(defUp);
+    //            Destroy(gameObject);
+    //        }
+    //        if (item.Equals(ItemType.MYSTERY))
+    //        {
+                
+    //            enimiesToDestroy = GameObject.FindGameObjectsWithTag("Enemy");
+    //            foreach (GameObject i in enimiesToDestroy)
+    //            {
+    //                Destroy(i);
+    //            }
+    //            Destroy(gameObject);
+    //        }
+            
+    //    }
+    //    else if (collision.gameObject.tag.Equals("Enemy"))
+    //    {
+    //        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
+    //        return;
+    //    }
+    //}
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.transform.root.tag.Equals("Player"))
         {
             if (item.Equals(ItemType.HEAL))
             {
-                if (collision.gameObject.GetComponent<Player>().getMyData().currentHealth == collision.gameObject.GetComponent<Player>().maxHP)
+                if (collision.gameObject.transform.root.GetComponent<Player>().getMyData().currentHealth == collision.gameObject.transform.root.GetComponent<Player>().maxHP)
                 {
-                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
                     return;
                 }
-                collision.gameObject.GetComponent<Player>().healPlayer(ammountToHeal);
+                collision.gameObject.transform.root.GetComponent<Player>().healPlayer(ammountToHeal);
+                Destroy(gameObject);
             }
             if (item.Equals(ItemType.ATT_UP))
             {
-                if (collision.gameObject.GetComponent<PlayerStats>().getAttStat() > collision.gameObject.GetComponent<PlayerStats>().baseAtt)
+                if (collision.gameObject.transform.root.GetComponent<PlayerStats>().getAttStat() > collision.gameObject.transform.root.GetComponent<PlayerStats>().baseAtt)
                 {
-                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
                     return;
                 }
-                collision.gameObject.GetComponent<PlayerStats>().setAttStat(attUp);
+                collision.gameObject.transform.root.GetComponent<PlayerStats>().setAttStat(attUp);
+                Destroy(gameObject);
             }
             if (item.Equals(ItemType.DEF_UP))
             {
-                if (collision.gameObject.GetComponent<PlayerStats>().getDefStat() > collision.gameObject.GetComponent<PlayerStats>().baseDef)
+                if (collision.gameObject.transform.root.GetComponent<PlayerStats>().getDefStat() > collision.gameObject.transform.root.GetComponent<PlayerStats>().baseDef)
                 {
-                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
                     return;
                 }
-                collision.gameObject.GetComponent<PlayerStats>().setDefStat(defUp);
+                collision.gameObject.transform.root.GetComponent<PlayerStats>().setDefStat(defUp);
+                Destroy(gameObject);
             }
             if (item.Equals(ItemType.MYSTERY))
             {
-                
+
                 enimiesToDestroy = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject i in enimiesToDestroy)
                 {
                     Destroy(i);
                 }
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.tag.Equals("Enemy"))
-        {
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
-            return;
+
         }
     }
 
