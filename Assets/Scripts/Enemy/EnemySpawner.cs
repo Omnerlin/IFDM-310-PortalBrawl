@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour {
 
@@ -22,7 +23,10 @@ public class EnemySpawner : MonoBehaviour {
     public float waveCountdown;
     public waveState state = waveState.COUNTING;
     private float searchCountdown = 1f;
+
+    // New variables added by Alex B. for win condition vs. next level condition.
     public bool loop = false;
+    public bool lastLevel = false;
 
     public GameObject[] spawnPoints;
 
@@ -34,10 +38,11 @@ public class EnemySpawner : MonoBehaviour {
             Debug.LogError("No spawn points found");
         }
         waveCountdown = timeBetweenWaves;
+        Debug.Log(SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
         if(state == waveState.DONE)
         {
@@ -50,9 +55,17 @@ public class EnemySpawner : MonoBehaviour {
                 // Test to see if there are any waves left if we killed all the enemies.
                 if (nextWave + 1 >= waves.Length && !loop)
                 {
-                    Debug.Log("hey there, I'm done spawning now");
-                    PlayerManager.instance.GameWin();
-                    state = waveState.DONE;
+                    if (!lastLevel)
+                    {
+                        SceneTransitionManager.Instance.TransitionToScene(SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1),
+                            SceneTransitionManager.AnimationType.forward);
+                    }
+                    else
+                    {
+                        Debug.Log("hey there, I'm done spawning now");
+                        PlayerManager.instance.GameWin();
+                        state = waveState.DONE;
+                    }
                 }
                 else
                 {
