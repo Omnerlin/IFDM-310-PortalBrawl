@@ -811,7 +811,7 @@ MonoBehaviour:
   characterNameImage: {fileID: 21300000, guid: 4bf9248b44aff5f48b4c19288a79e895, type: 3}
   playerNumber: 0
   controllerID: 0
-  maxHP: 90
+  maxHP: 50
   maxUltimate: 0
   hurtclips:
   - {fileID: 8300000, guid: 0bde0536e17b5aa448e6d726bfc0c2ca, type: 3}
@@ -842,8 +842,8 @@ MonoBehaviour:
   staff: {fileID: 1667213439204698}
   staffVisuals: {fileID: 1963141830262882}
   staffHitbox: {fileID: 1662926873209984}
-  hitForce: 10
-  attackCooldown: 1
+  hitForce: 12000
+  attackCooldown: 0.5
   hitboxTimeActive: 0.2
   hitboxFilter:
     useTriggers: 0
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681e386bb2c94bb49b15c06682db955b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAtt: 1
+  baseAtt: 4
   baseDef: 0
   timeForEffect: 10
 --- !u!114 &114460633658977900

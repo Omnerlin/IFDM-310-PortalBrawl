@@ -814,7 +814,7 @@ MonoBehaviour:
   characterNameImage: {fileID: 21300000, guid: 41112b2353d3add43aca917e5c64c56f, type: 3}
   playerNumber: 0
   controllerID: 0
-  maxHP: 90
+  maxHP: 40
   maxUltimate: 0
   hurtclips:
   - {fileID: 8300000, guid: b472f25fff5250a4d8f50b6f8bb496ec, type: 3}
@@ -875,7 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFiring: 0
-  bullet: {fileID: 114235545059977038, guid: 92273da5264c6b1408fe26fe6587a577, type: 2}
+  bullet: {fileID: 114235545059977038, guid: abcd9445436dd5249821c5099267e07d, type: 2}
   bulletSpeed: 30
   timeBetweenShots: 0.25
   firePoint: {fileID: 4412425633146424}

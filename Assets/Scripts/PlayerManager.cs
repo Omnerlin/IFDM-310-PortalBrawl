@@ -118,7 +118,7 @@ public class PlayerManager : MonoBehaviour
 
                 // Spawn the players in a row based on their player number
                 int playerNum = playerObject.GetComponent<Player>().playerNumber;
-                playerObject.transform.position = new Vector2(playerPortal.transform.position.x + playerNum - 2, playerPortal.transform.position.y);
+                playerObject.transform.position = new Vector2(playerPortal.transform.position.x + playerNum - 2, playerPortal.transform.position.y - 2);
 
                 // We want to be able to keep track of the players that are spawned during this run so that we can do things like check if they are dead.
                 activePlayers.Add(playerObject);

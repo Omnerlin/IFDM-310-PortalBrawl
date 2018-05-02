@@ -799,7 +799,7 @@ MonoBehaviour:
   characterNameImage: {fileID: 21300000, guid: 61ccb09defb59b64d82e0187c026858b, type: 3}
   playerNumber: 0
   controllerID: 0
-  maxHP: 30
+  maxHP: 60
   maxUltimate: 0
   hurtclips:
   - {fileID: 8300000, guid: d7fee5f4967d45b4bbb97ffe29e17a9a, type: 3}
@@ -829,9 +829,9 @@ MonoBehaviour:
   hammer: {fileID: 1631263659832848}
   hammerVisuals: {fileID: 1029864509034566}
   hammerHitBox: {fileID: 1976511762412632}
-  hitForce: 10000
-  attackCooldown: 0.05
-  hitboxTimeActive: 0.05
+  hitForce: 12000
+  attackCooldown: 1
+  hitboxTimeActive: 0.07
   hitboxFilter:
     useTriggers: 1
     useLayerMask: 1
@@ -861,7 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681e386bb2c94bb49b15c06682db955b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAtt: 1
+  baseAtt: 8
   baseDef: 0
   timeForEffect: 10
 --- !u!210 &210218651604749124
