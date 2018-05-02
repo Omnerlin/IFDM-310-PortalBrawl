@@ -12,23 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelection.unity
     guid: 53eed0d33d7a069438868ab2a0cce34d
   - enabled: 0
-    path: Assets/Scenes/OldScenes/TestScene.unity
-    guid: 0a9781f852c39254dadd1ea286abe025
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/TestSceneNewAnnaTemp.unity
-    guid: 32bd242789bc1d64fb6038516895b695
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/ffd180ed199659c40ad09bfdc39b3eef
-    guid: ffd180ed199659c40ad09bfdc39b3eef
-  - enabled: 1
     path: Assets/Scenes/TestSceneNewAlexTemp.unity
     guid: 48a1ca833b9c1b448b8c390aa065704b
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: 3a1d4cbefe314934f860136b9812fada
+    path: Assets/Scenes/Alexlevel.unity
+    guid: 7b679ab78bf05bf4ba17b95da5639e5b
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: fd07405ea287fa7428ce1f79128856af
+    path: Assets/Scenes/Alexlevel 2.unity
+    guid: 7b6b7f1d790c2d44b863993c56bc278d
+  - enabled: 1
+    path: Assets/Scenes/Alexlevel 3.unity
+    guid: 1993e936145eda3458c8b89c189b2a46
