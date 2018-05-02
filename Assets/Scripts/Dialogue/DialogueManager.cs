@@ -7,15 +7,23 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
-    public Dialogue d;
+    public Dialogue d1;
+    public Dialogue d2;
+    public Image backgroundImg;
+    public Image blackPanel;
+    public float fadeTime = 4.0f;
+    public Sprite img1;
+    public Sprite img2;
 
+    private Dialogue currentD;
     private Queue<string> sentencesQ;
 
     // Use this for initialization
     void Start()
     {
+        currentD = d1;
         sentencesQ = new Queue<string>();
-        StartDialogue(d);
+        StartDialogue(d1);
     }
 
     public void StartDialogue(Dialogue d)
@@ -59,8 +67,25 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    IEnumerator MyFade()
+    {
+        Debug.Log("Calling fade!");
+        blackPanel.CrossFadeAlpha(255.0f, fadeTime, true);
+        yield return new WaitForSeconds(5.0f);
+        backgroundImg.sprite = img2;
+        blackPanel.CrossFadeAlpha(0.0f, fadeTime, true);
+        StartDialogue(d2);
+    }
+
+
     public void EndDialogue()
     {
-        Debug.Log("The End!");
+        if (currentD == d1)
+        {
+            currentD = d2;
+            //StopAllCoroutines();
+            StartCoroutine(MyFade());
+        }
+        //Debug.Log("The End!");
     }
 }
