@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public float fadeTime = 4.0f;
     public Sprite img1;
     public Sprite img2;
+    public Button continueButton;
 
     private Dialogue currentD;
     private Queue<string> sentencesQ;
@@ -24,6 +25,18 @@ public class DialogueManager : MonoBehaviour
         currentD = d1;
         sentencesQ = new Queue<string>();
         StartDialogue(d1);
+    }
+
+    private void Update()
+    {
+        IList<Rewired.Player> playas = Rewired.ReInput.players.GetPlayers();
+        foreach (Rewired.Player p in playas)
+        {
+            if (p.GetButtonDown("XButton"))
+            {
+                continueButton.onClick.Invoke();
+            }
+        }
     }
 
     public void StartDialogue(Dialogue d)
@@ -69,7 +82,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator MyFade()
     {
-        Debug.Log("Calling fade!");
+        //Debug.Log("Calling fade!");
         blackPanel.CrossFadeAlpha(255.0f, fadeTime, true);
         yield return new WaitForSeconds(5.0f);
         backgroundImg.sprite = img2;
