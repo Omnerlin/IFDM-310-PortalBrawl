@@ -18070,7 +18070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTransitionCanvasPrefab: {fileID: 1416777117688130, guid: b0370c8c7d100ba41bccaee85b0fbb18,
     type: 2}
-  sceneToLoad: TestSceneNewAlexTemp
+  sceneToLoad: Alexlevel
   hasBeenPressed: 0
   myRenderer: {fileID: 0}
 --- !u!61 &669360593
