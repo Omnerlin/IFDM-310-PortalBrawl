@@ -33,21 +33,25 @@ public class CameraBoundaries : MonoBehaviour {
             
             switch(i)
             {
+                // Top
                 case 0:
-                    col.offset = transform.InverseTransformDirection(cam.ViewportToWorldPoint(new Vector3(0.5f, 1)));
                     col.size = new Vector2(camWidth, boxThiccness);
+                    col.offset = new Vector2(0, camHalfHeight + boxThiccness/2);
                     break;
+                // Right
                 case 1:
-                    col.offset = cam.ViewportToWorldPoint(new Vector3(1, 0.5f));
                     col.size = new Vector2(boxThiccness, camHeight);
+                    col.offset = new Vector2(camHalfWidth + boxThiccness / 2, 0);
                     break;
+                // Bottom
                 case 2:
-                    col.offset = cam.ViewportToWorldPoint(new Vector3(0.5f, 0));
                     col.size = new Vector2(camWidth, boxThiccness);
+                    col.offset = new Vector2(0, -camHalfHeight - boxThiccness / 2);
                     break;
+                // Left
                 case 3:
-                    col.offset = cam.ViewportToWorldPoint(new Vector3(0, 0.5f));
                     col.size = new Vector2(boxThiccness, camHeight);
+                    col.offset = new Vector2(-camHalfWidth - boxThiccness / 2, 0);
                     break;
             }
         }
