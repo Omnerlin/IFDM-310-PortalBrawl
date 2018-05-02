@@ -180,7 +180,6 @@ public class CursorControl : MonoBehaviour {
                 else if (selected.GetComponent<LoadScene>() != null)
                 {
                     selected.GetComponent<LoadScene>().loadScene();
-
                 }
             }
         }

@@ -376,7 +376,7 @@ MonoBehaviour:
   waveCountdown: 2
   state: 2
   loop: 0
-  lastLevel: 0
+  lastLevel: 1
   spawnPoints:
   - {fileID: 994195873}
   - {fileID: 1118863957}
@@ -798,11 +798,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4173592238024284, guid: 3509c4170662adc4590af8fe437d6f13, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 4173592238024284, guid: 3509c4170662adc4590af8fe437d6f13, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 3.64
       objectReference: {fileID: 0}
     - target: {fileID: 4173592238024284, guid: 3509c4170662adc4590af8fe437d6f13, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3227,6 +3227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095434775}
   - component: {fileID: 1095434774}
+  - component: {fileID: 1095434776}
   m_Layer: 0
   m_Name: ancientSymbol
   m_TagString: Untagged
@@ -3291,6 +3292,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &1095434776
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095434773}
+  m_Enabled: 1
+  m_SortingLayerID: 635481423
+  m_SortingLayer: -1
+  m_SortingOrder: 0
 --- !u!1001 &1118863956
 Prefab:
   m_ObjectHideFlags: 0
@@ -4034,11 +4045,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: -6.48
       objectReference: {fileID: 0}
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -7.36
       objectReference: {fileID: 0}
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -11964,11 +11975,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -7.49
       objectReference: {fileID: 0}
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -26897,11 +26908,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 6.49
       objectReference: {fileID: 0}
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -26943,11 +26954,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 5.55
       objectReference: {fileID: 0}
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -7.33
       objectReference: {fileID: 0}
     - target: {fileID: 4086197520193696, guid: 906ba35d41500a042b7c013458813d0c, type: 2}
       propertyPath: m_LocalPosition.z

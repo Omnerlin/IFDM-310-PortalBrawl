@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char c in currentS.ToCharArray())
         {
             dialogueText.text += c;
-            yield return new WaitForSeconds(0.07f);
+            yield return new WaitForSeconds(0.04f);
         }
     }
 

@@ -2893,6 +2893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095434775}
   - component: {fileID: 1095434774}
+  - component: {fileID: 1095434776}
   m_Layer: 0
   m_Name: ancientSymbol
   m_TagString: Untagged
@@ -2957,6 +2958,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &1095434776
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095434773}
+  m_Enabled: 1
+  m_SortingLayerID: 635481423
+  m_SortingLayer: -1
+  m_SortingOrder: 0
 --- !u!1001 &1118863956
 Prefab:
   m_ObjectHideFlags: 0
@@ -10364,7 +10375,7 @@ Tilemap:
   - m_RefCount: 691
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 0.6911765, b: 0.6911765, a: 1}
+  m_Color: {r: 1, g: 0.8998986, b: 0.8455882, a: 1}
   m_Origin: {x: -19, y: -14, z: 0}
   m_Size: {x: 36, y: 26, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -25797,7 +25808,7 @@ Tilemap:
   - m_RefCount: 1380
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 0.6911765, b: 0.6911765, a: 1}
+  m_Color: {r: 1, g: 0.8998986, b: 0.8455882, a: 1}
   m_Origin: {x: -24, y: -16, z: 0}
   m_Size: {x: 46, y: 30, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -26029,7 +26040,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: NaN, g: NaN, b: 0, a: NaN}
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 0.6911765, b: 0.6911765, a: 1}
+  m_Color: {r: 1, g: 0.8998986, b: 0.8455882, a: 1}
   m_Origin: {x: -18, y: -8, z: 0}
   m_Size: {x: 35, y: 19, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
