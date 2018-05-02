@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102870727}
   - component: {fileID: 102870726}
+  - component: {fileID: 102870728}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -144,11 +145,14 @@ MonoBehaviour:
   dialogueText: {fileID: 198088719}
   d1: {fileID: 846430336}
   d2: {fileID: 834269942}
+  d3: {fileID: 1107054486}
   backgroundImg: {fileID: 1313665021}
   blackPanel: {fileID: 1207412716}
   fadeTime: 4
   img1: {fileID: 21300000, guid: dd6121450c3b2844488ec67084478ad6, type: 3}
-  img2: {fileID: 21300000, guid: b3c317034945ea745b0dad0c53209147, type: 3}
+  img2: {fileID: 21300000, guid: 9a378f81aea86b94990120ad5e23f37f, type: 3}
+  img3: {fileID: 21300000, guid: b3c317034945ea745b0dad0c53209147, type: 3}
+  currentSprite: {fileID: 0}
   continueButton: {fileID: 423711432}
 --- !u!4 &102870727
 Transform:
@@ -163,6 +167,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &102870728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 102870725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a65081ed050bd42a8b9ceaf7bc8366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneTransitionCanvasPrefab: {fileID: 1416777117688130, guid: b0370c8c7d100ba41bccaee85b0fbb18,
+    type: 2}
+  sceneToLoad: CharacterSelection
+  hasBeenPressed: 0
+  myRenderer: {fileID: 0}
 --- !u!1 &187530320
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +274,7 @@ RectTransform:
   - {fileID: 1809951449}
   - {fileID: 423711431}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -293,8 +313,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -67.34, y: 0.81}
-  m_SizeDelta: {x: 628.5, y: 37.38}
+  m_AnchoredPosition: {x: -58.7, y: 0.81}
+  m_SizeDelta: {x: 611.1, y: 37.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198088719
 MonoBehaviour:
@@ -1385,7 +1405,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &834269941
 GameObject:
@@ -1416,9 +1436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: ???
   sentences:
-  - Hey! This is dialogue 2.
-  - Looks like things are working properly.
-  - Okay.
+  - '...a dangerous, unknown power fell into the wrong hands.'
+  - A new universe began to take shape.
 --- !u!4 &834269943
 Transform:
   m_ObjectHideFlags: 0
@@ -1625,6 +1644,51 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 935996050}
+--- !u!1 &1107054485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1107054487}
+  - component: {fileID: 1107054486}
+  m_Layer: 0
+  m_Name: Dialogue3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1107054486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1107054485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b999169dac918d4d919407bf55092e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charName: ???
+  sentences:
+  - Corruption spread its veins across the cosmos.
+  - The pulse of evil runs through existence itself.
+  - This power must be stopped. You must work together to purge it from the land...
+--- !u!4 &1107054487
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1107054485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 133.27556, y: 220.24641, z: -0.5833745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1207412714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,7 +1885,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1809951448
 GameObject:
@@ -1856,8 +1920,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -3.1500306, y: 33.70044}
-  m_SizeDelta: {x: -6.3, y: 67.4}
+  m_AnchoredPosition: {x: 1.4, y: 33.70044}
+  m_SizeDelta: {x: -15.5, y: 67.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1809951450
 MonoBehaviour:
@@ -1925,7 +1989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 72.5, y: 87.1}
+  m_AnchoredPosition: {x: 81.64282, y: 87.1}
   m_SizeDelta: {x: 257.5, y: 65.599976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1969016626

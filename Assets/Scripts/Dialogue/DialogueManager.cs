@@ -9,11 +9,14 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public Dialogue d1;
     public Dialogue d2;
+    public Dialogue d3;
     public Image backgroundImg;
     public Image blackPanel;
     public float fadeTime = 4.0f;
     public Sprite img1;
     public Sprite img2;
+    public Sprite img3;
+    public Sprite currentSprite;
     public Button continueButton;
 
     private Dialogue currentD;
@@ -23,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         currentD = d1;
+        currentSprite = img1;
         sentencesQ = new Queue<string>();
         StartDialogue(d1);
     }
@@ -85,9 +89,9 @@ public class DialogueManager : MonoBehaviour
         //Debug.Log("Calling fade!");
         blackPanel.CrossFadeAlpha(255.0f, fadeTime, true);
         yield return new WaitForSeconds(5.0f);
-        backgroundImg.sprite = img2;
+        backgroundImg.sprite = currentSprite;
         blackPanel.CrossFadeAlpha(0.0f, fadeTime, true);
-        StartDialogue(d2);
+        StartDialogue(currentD);
     }
 
 
@@ -96,8 +100,20 @@ public class DialogueManager : MonoBehaviour
         if (currentD == d1)
         {
             currentD = d2;
+            currentSprite = img2;
             //StopAllCoroutines();
             StartCoroutine(MyFade());
+        }
+        else if (currentD == d2)
+        {
+            currentD = d3;
+            currentSprite = img3;
+            StartCoroutine(MyFade());
+        }
+        else
+        {
+            LoadScene ls = GetComponent<LoadScene>();
+            ls.loadScene();
         }
         //Debug.Log("The End!");
     }

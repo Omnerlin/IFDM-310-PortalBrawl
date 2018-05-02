@@ -2115,7 +2115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneTransitionCanvasPrefab: {fileID: 0}
-  sceneToLoad: CharacterSelection
+  sceneToLoad: DialogueIntro
   hasBeenPressed: 0
   myRenderer: {fileID: 0}
 --- !u!1 &1656691879

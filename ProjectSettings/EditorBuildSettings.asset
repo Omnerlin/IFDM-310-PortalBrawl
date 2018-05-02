@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TestSceneNewAnnaTemp.unity
     guid: 32bd242789bc1d64fb6038516895b695
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/ffd180ed199659c40ad09bfdc39b3eef
+    path: 
     guid: ffd180ed199659c40ad09bfdc39b3eef
   - enabled: 1
     path: Assets/Scenes/TestSceneNewAlexTemp.unity
@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: fd07405ea287fa7428ce1f79128856af
+  - enabled: 1
+    path: Assets/Scenes/DialogueIntro.unity
+    guid: 751ce6ee998326740b30b1089fec183a

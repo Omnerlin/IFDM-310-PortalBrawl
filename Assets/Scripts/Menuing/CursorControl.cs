@@ -49,6 +49,8 @@ public class CursorControl : MonoBehaviour {
     private AudioSource sound;
     public AudioClip clipSound;
 
+    //Allie was here
+
     // Variables for accessing the data that we want to save for this player.
     public int playerNumber
     {
@@ -144,6 +146,7 @@ public class CursorControl : MonoBehaviour {
                 if (selected.GetComponent<characterButtonScript>() != null &&
                     !selected.GetComponent<characterButtonScript>().selected) //If this character hasn't already been selected **
                 {
+                    //playImg.setActive(true);
                     // TODO: We want the player to be able to switch characters after they've already selected, so see if they already have a name assigned.
                     // We should probably offer a "back" button to undo character select. Otherwise, nobody could change their character if everyone
                     // has picked one, ya see?
@@ -168,7 +171,7 @@ public class CursorControl : MonoBehaviour {
 						oldSelection.GetComponent<characterButtonScript>().deselect();
                     }
 
-                    Debug.Log("Assigning " + selected.name + " to Player " + playerNumber + ".");
+
 					characterName = selected.name;
 					selected.GetComponent<characterButtonScript>().select(myCollider);
 					selectedCharPortraitRenderer.sprite = selected.GetComponent<characterButtonScript> ().getTokenSprite ();
