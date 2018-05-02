@@ -72,6 +72,10 @@ public class MainMenu : MonoBehaviour {
 
             if (player.GetButtonDown("Start") || player.GetButtonDown("XButton"))
             {
+                if(index > 0)
+                {
+                    Application.Quit();
+                }
                 menuButtons[index].onClick.Invoke();
                 sounds[1].Play();
             }

@@ -157,6 +157,7 @@ MonoBehaviour:
   portalSounds:
   - {fileID: 8300000, guid: 28348c4cc2d681e4985b24ee927ca8e6, type: 3}
   - {fileID: 8300000, guid: 06f935347978f54449a93bd0f58976a0, type: 3}
+  - {fileID: 8300000, guid: f41ec288580c9d8449a1fe69ec2f5f56, type: 3}
 --- !u!210 &210828685903922088
 SortingGroup:
   m_ObjectHideFlags: 1
