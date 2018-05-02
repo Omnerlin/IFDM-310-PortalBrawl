@@ -19696,7 +19696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTransitionCanvasPrefab: {fileID: 1416777117688130, guid: b0370c8c7d100ba41bccaee85b0fbb18,
     type: 2}
-  sceneToLoad: Alexlevel
+  sceneToLoad: Alexlevel 3
   hasBeenPressed: 0
   myRenderer: {fileID: 0}
 --- !u!61 &1311558907
@@ -19827,10 +19827,10 @@ RectTransform:
   m_Father: {fileID: 664601667}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.0000038146973, y: -439}
-  m_SizeDelta: {x: 398.7, y: 65.2}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 81}
+  m_SizeDelta: {x: 398.7, y: 65.20001}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1451570777
 MonoBehaviour:

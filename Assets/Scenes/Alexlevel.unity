@@ -26373,23 +26373,9 @@ Prefab:
       objectReference: {fileID: 949366751}
     - target: {fileID: 114731654741326382, guid: 021400250479ebc41a634e246267626d,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: HealAllPlayersToFull
-      objectReference: {fileID: 0}
-    - target: {fileID: 114731654741326382, guid: 021400250479ebc41a634e246267626d,
-        type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 949366751}
-    - target: {fileID: 114731654741326382, guid: 021400250479ebc41a634e246267626d,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetAllPlayersInactive
-      objectReference: {fileID: 0}
-    - target: {fileID: 1146209685868146, guid: 021400250479ebc41a634e246267626d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 021400250479ebc41a634e246267626d, type: 2}
   m_IsPrefabParent: 0
