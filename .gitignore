@@ -8,6 +8,8 @@ Library/
 Builds/
 Assets/AssetStoreTools*
 
+.vs/
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
