@@ -19,9 +19,13 @@ public class PlayerManager : MonoBehaviour
     public GameObject portraitPrefab;
     public GameObject playerPortraitGroup;
 
-	public GameObject[] playerDisplays = new GameObject[4]; //Indexed by PLAYER number, NOT Rewired-ID
+	// public GameObject[] playerDisplays = new GameObject[4]; //Indexed by PLAYER number, NOT Rewired-ID
 
     public GameObject playerPrefab;
+
+    // Getting a reference to this so that we can close the portal after players are spawned.
+    // We also want to be able to spawn players relative to the portal's position.
+    public GameObject playerPortal;
 
     // Game win and loss screens. Putting them in playerManager for now, since I'm using it
     // to tell whether or not they should be displayed in the first place. Meh.
@@ -31,7 +35,7 @@ public class PlayerManager : MonoBehaviour
     public float fadeTime = 1.5f;
 
 
-    private List<GameObject> activePlayers = new List<GameObject>();
+    [HideInInspector] public List<GameObject> activePlayers = new List<GameObject>();
 
     private void Awake()
     {
@@ -44,11 +48,27 @@ public class PlayerManager : MonoBehaviour
         {
             Destroy(this);
         }
+    }
 
+    private void Start()
+    {
+        playerPortal.SetActive(true);
+
+        // Add the portal to the cameraFollow
+        CinemachineTargetGroup groupComp = cameraFollowGroup.GetComponent<CinemachineTargetGroup>();
+        List<CinemachineTargetGroup.Target> group = new List<CinemachineTargetGroup.Target>(groupComp.m_Targets);
+        CinemachineTargetGroup.Target newTarget = new CinemachineTargetGroup.Target();
+        newTarget.target = playerPortal.transform;
+        newTarget.weight = 1.0f;
+        group.Add(newTarget);
+    }
+
+    public void LoadPlayers()
+    {
         Debug.Log("Trying to load players");
 
         // Instaniate characters based on their character name
-        if(!GlobalControl.instance)
+        if (!GlobalControl.instance)
         {
             return;
         }
@@ -61,8 +81,8 @@ public class PlayerManager : MonoBehaviour
                 // Doing this since we only have 4 characters. Otherwise we could do something more generic 
                 Debug.Log("Iteration " + i);
                 GameObject playerObject = null;
-				Debug.Log ("Instanciating " + GlobalControl.instance.savedPlayerData[i].characterName + " prefab from PlayerManager");
-                switch(GlobalControl.instance.savedPlayerData[i].characterName)
+                Debug.Log("Instanciating " + GlobalControl.instance.savedPlayerData[i].characterName + " prefab from PlayerManager");
+                switch (GlobalControl.instance.savedPlayerData[i].characterName)
                 {
                     case "Anix":
                         playerObject = Instantiate(anixPrefab);
@@ -79,7 +99,7 @@ public class PlayerManager : MonoBehaviour
                 }
 
                 // Return with an error if the player name doesn't match any of the cases above
-                if(!playerObject)
+                if (!playerObject)
                 {
                     Debug.LogError("Player object name could not find a prefab to spawn!");
                     return;
@@ -93,8 +113,12 @@ public class PlayerManager : MonoBehaviour
 
                 //Assign the playerNumber and the text display object to the player for its use.
                 playerObject.GetComponent<Player>().playerNumber = GlobalControl.instance.savedPlayerData[i].playerNumber;
-				playerObject.GetComponent<Player> ().setDisplay( portrait );
+                playerObject.GetComponent<Player>().setDisplay(portrait);
                 playerObject.GetComponent<PlayerControl>().player = ReInput.players.GetPlayer(GlobalControl.instance.savedPlayerData[i].controllerID);
+
+                // Spawn the players in a row based on their player number
+                int playerNum = playerObject.GetComponent<Player>().playerNumber;
+                playerObject.transform.position = new Vector2(playerPortal.transform.position.x + playerNum - 2, playerPortal.transform.position.y);
 
                 // We want to be able to keep track of the players that are spawned during this run so that we can do things like check if they are dead.
                 activePlayers.Add(playerObject);
@@ -107,8 +131,23 @@ public class PlayerManager : MonoBehaviour
                 newTarget.target = playerObject.transform;
                 newTarget.weight = 1.0f;
                 group.Add(newTarget);
+                
+                // Remove the portal if it is there.
+                foreach (CinemachineTargetGroup.Target target in group)
+                {
+                    if(target.target == playerPortal.transform)
+                    {
+                        group.Remove(target);
+                    }
+                }
 
+                // Reassign the group as an array
                 groupComp.m_Targets = group.ToArray();
+
+                if(playerPortal)
+                {
+                    playerPortal.GetComponent<Animator>().SetTrigger("Close");
+                }
             }
         }
     }
