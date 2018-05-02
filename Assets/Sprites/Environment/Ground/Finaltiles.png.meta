@@ -143,9 +143,9 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -1, y: 8}
-        - {x: -1, y: 2}
-        - {x: 8, y: 2}
+      - - {x: 1, y: 8}
+        - {x: 1, y: 1}
+        - {x: 8, y: 1}
         - {x: 8, y: 8}
       tessellationDetail: 0
     - serializedVersion: 2
@@ -333,9 +333,9 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -8, y: 8}
-        - {x: -8, y: 2}
-        - {x: 0, y: 2}
-        - {x: 0, y: 8}
+        - {x: -8, y: 1}
+        - {x: -1, y: 1}
+        - {x: -1, y: 8}
       tessellationDetail: 0
     - serializedVersion: 2
       name: Finaltiles_13
