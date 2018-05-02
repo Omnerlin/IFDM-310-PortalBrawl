@@ -50,6 +50,19 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        playerPortal.SetActive(true);
+
+        // Add the portal to the cameraFollow
+        CinemachineTargetGroup groupComp = cameraFollowGroup.GetComponent<CinemachineTargetGroup>();
+        List<CinemachineTargetGroup.Target> group = new List<CinemachineTargetGroup.Target>(groupComp.m_Targets);
+        CinemachineTargetGroup.Target newTarget = new CinemachineTargetGroup.Target();
+        newTarget.target = playerPortal.transform;
+        newTarget.weight = 1.0f;
+        group.Add(newTarget);
+    }
+
     public void LoadPlayers()
     {
         Debug.Log("Trying to load players");
@@ -118,7 +131,17 @@ public class PlayerManager : MonoBehaviour
                 newTarget.target = playerObject.transform;
                 newTarget.weight = 1.0f;
                 group.Add(newTarget);
+                
+                // Remove the portal if it is there.
+                foreach (CinemachineTargetGroup.Target target in group)
+                {
+                    if(target.target == playerPortal.transform)
+                    {
+                        group.Remove(target);
+                    }
+                }
 
+                // Reassign the group as an array
                 groupComp.m_Targets = group.ToArray();
 
                 if(playerPortal)
