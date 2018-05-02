@@ -57,8 +57,7 @@ public class EnemySpawner : MonoBehaviour {
                 {
                     if (!lastLevel)
                     {
-                        SceneTransitionManager.Instance.TransitionToScene(SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1),
-                            SceneTransitionManager.AnimationType.forward);
+                        PlayerManager.instance.playerPortal.SetActive(true);
                     }
                     else
                     {
