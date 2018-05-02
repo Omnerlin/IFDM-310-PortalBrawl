@@ -196,7 +196,7 @@ MonoBehaviour:
   bulletSpeed: 30
   timeBetweenShots: 1.5
   firePoint: {fileID: 4861964124735472}
-  damage: 1
+  damage: 3
   gunSound: {fileID: 0}
 --- !u!114 &114634533572576262
 MonoBehaviour:
