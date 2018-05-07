@@ -247,12 +247,12 @@ MonoBehaviour:
     enemy:
     - {fileID: 1423105977789258, guid: 0fe7b2e5bb38fcf48ad9d6a684cb028f, type: 2}
     count: 5
-    rate: 0.2
+    rate: 0.9
   - waveName: Wave 1
     enemy:
     - {fileID: 1423105977789258, guid: 0fe7b2e5bb38fcf48ad9d6a684cb028f, type: 2}
     count: 7
-    rate: 0.2
+    rate: 0.9
   timeBetweenWaves: 5
   waveCountdown: 2
   state: 2

@@ -367,19 +367,19 @@ MonoBehaviour:
     - {fileID: 1423105977789258, guid: 0fe7b2e5bb38fcf48ad9d6a684cb028f, type: 2}
     - {fileID: 1261399859927974, guid: 8fd08b358ba0e774ba58c867ee59a75c, type: 2}
     count: 6
-    rate: 0.2
+    rate: 0.9
   - waveName: Wave 1
     enemy:
     - {fileID: 1261399859927974, guid: 8fd08b358ba0e774ba58c867ee59a75c, type: 2}
     count: 6
-    rate: 0.2
+    rate: 0.9
   - waveName: Wave 1
     enemy:
     - {fileID: 1261399859927974, guid: 8fd08b358ba0e774ba58c867ee59a75c, type: 2}
     - {fileID: 1261399859927974, guid: 8fd08b358ba0e774ba58c867ee59a75c, type: 2}
     - {fileID: 1423105977789258, guid: 0fe7b2e5bb38fcf48ad9d6a684cb028f, type: 2}
     count: 9
-    rate: 0.2
+    rate: 0.9
   timeBetweenWaves: 5
   waveCountdown: 2
   state: 2
