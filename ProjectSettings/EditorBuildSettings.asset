@@ -35,3 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 912a569c983c11940b2e03d018f82f84
+  - enabled: 1
+    path: Assets/Scenes/ControlScreen.unity
+    guid: a719d477de069864b8db8c20e354e7b9
