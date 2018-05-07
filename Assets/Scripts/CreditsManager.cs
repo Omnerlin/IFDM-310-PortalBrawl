@@ -8,7 +8,6 @@ public class CreditsManager : MonoBehaviour {
     public GameObject target1;
     public GameObject target2;
     public float fadeTime = 4.0f;
-    public Image blackPanel;
 
     private Queue<GameObject> credQ;
     private bool scrolling = false;
@@ -70,16 +69,9 @@ public class CreditsManager : MonoBehaviour {
         DisplayNext();
     }
 
-    IEnumerator MyFade() {
-        //Debug.Log("Calling fade!");
-        blackPanel.CrossFadeAlpha(255.0f, fadeTime, true);
-        yield return new WaitForSeconds(5);
-    }
-
     public void EndCredits() {
         Debug.Log("The End!");
         StopAllCoroutines();
-        StartCoroutine(MyFade());
         LoadScene ls = GetComponent<LoadScene>();
         ls.loadScene();
     }
