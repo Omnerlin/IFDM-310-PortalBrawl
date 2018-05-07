@@ -1160,7 +1160,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 650976296043b4b47a10b96518129f21, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1240,7 +1240,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f764fd7c2eb2674469d5ff8ae0cfd60b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1660,7 +1660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.14470552}
   m_AnchorMax: {x: 0.5, y: 0.14470552}
-  m_AnchoredPosition: {x: 7.1000137, y: 8.6}
+  m_AnchoredPosition: {x: 7.1000137, y: 8.599976}
   m_SizeDelta: {x: 183.08, y: 33.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1351752736
@@ -1890,6 +1890,11 @@ Prefab:
         type: 2}
       propertyPath: timeToWait
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82772774521643750, guid: 4bd5cbe1a96829644b1cc1fd10eeeb8e,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82083860293545880, guid: 4bd5cbe1a96829644b1cc1fd10eeeb8e, type: 2}
