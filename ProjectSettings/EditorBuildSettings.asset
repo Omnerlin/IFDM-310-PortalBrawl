@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Alexlevel 3.unity
     guid: 1993e936145eda3458c8b89c189b2a46
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 912a569c983c11940b2e03d018f82f84

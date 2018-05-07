@@ -793,7 +793,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Main Menu
+  m_Text: Finish
 --- !u!114 &114297793548414466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTransitionCanvasPrefab: {fileID: 1416777117688130, guid: b0370c8c7d100ba41bccaee85b0fbb18,
     type: 2}
-  sceneToLoad: MainMenu
+  sceneToLoad: Credits
   hasBeenPressed: 0
   myRenderer: {fileID: 0}
 --- !u!114 &114654793934811468
