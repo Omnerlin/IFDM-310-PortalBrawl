@@ -30,7 +30,8 @@ public class CreditsManager : MonoBehaviour {
     }
 
     public void DisplayNext() {
-        if (credQ.Count == 0) {
+        if (credQ.Count == 0)
+        {
             EndCredits();
             return;
         }
@@ -40,7 +41,20 @@ public class CreditsManager : MonoBehaviour {
         StartCoroutine(ScrollCredit(currentText));
     }
 
+    private void Update()
+    {
+        // Let's make it so that people don't have to watch our awesome names if they don't want to.
+        foreach (Rewired.Player player in Rewired.ReInput.players.GetPlayers())
+        {
+            if (player.GetButtonDown("Start") || player.GetButtonDown("XButton"))
+            {
+                EndCredits();
+            }
+        }
+    }
+
     IEnumerator ScrollCredit(GameObject currentText) {
+
         Vector3 myPos = currentText.transform.position;
         Vector3 yourPos = target1.transform.position;
         Vector3 herPos = target2.transform.position;
