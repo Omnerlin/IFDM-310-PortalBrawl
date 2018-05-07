@@ -53,6 +53,7 @@ public partial class DennisPlayerController : PlayerControl
         public override void OnEnter()
         {
             PlayerManager.instance.CheckForGameOver();
+            MessageBroadcaster.Instance.BroadcastAnnouncement("Dennis is Down!");
 
             pControl.animator.SetTrigger("Die");
             pControl.deathVisuals.SetActive(true);

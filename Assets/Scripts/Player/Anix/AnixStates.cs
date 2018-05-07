@@ -132,8 +132,9 @@ public partial class AnixPlayerController : PlayerControl
 
         public override void OnEnter()
         {
-            PlayerManager.instance.CheckForGameOver();
 
+            PlayerManager.instance.CheckForGameOver();
+            MessageBroadcaster.Instance.BroadcastAnnouncement("Anix is Down!");
 
             pControl.animator.SetTrigger("Die");
             pControl.deathVisuals.SetActive(true);

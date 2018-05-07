@@ -72,6 +72,7 @@ public partial class ZerandiPlayerController : PlayerControl
         public override void OnEnter()
         {
             PlayerManager.instance.CheckForGameOver();
+            MessageBroadcaster.Instance.BroadcastAnnouncement("Zerandi is Down!");
 
             pControl.animator.SetTrigger("Die");
             pControl.deathVisuals.SetActive(true);

@@ -51,6 +51,7 @@ public class BulletController : MonoBehaviour
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.collider);
                 return;
             }
+
             // Trigger the explode animation and stop the movement
             GetComponent<Animator>().SetTrigger("Explode");
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;

@@ -127,9 +127,11 @@ public partial class RevdiocPlayerController : PlayerControl
 		public override void OnEnter() 
 		{
             PlayerManager.instance.CheckForGameOver();
+            MessageBroadcaster.Instance.BroadcastAnnouncement("Revdioc is Down!");
 
-			//Trigger Death animation
-			pControl.animator.SetTrigger("Die");
+
+            //Trigger Death animation
+            pControl.animator.SetTrigger("Die");
             pControl.deathVisuals.SetActive(true);
             pControl.rb2d.isKinematic = true;
             pControl.rb2d.velocity = Vector2.zero;

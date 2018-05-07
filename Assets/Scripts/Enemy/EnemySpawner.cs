@@ -38,7 +38,6 @@ public class EnemySpawner : MonoBehaviour {
             Debug.LogError("No spawn points found");
         }
         waveCountdown = timeBetweenWaves;
-        Debug.Log(SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     // Update is called once per frame
@@ -57,6 +56,7 @@ public class EnemySpawner : MonoBehaviour {
                 {
                     if (!lastLevel)
                     {
+                        MessageBroadcaster.Instance.BroadcastAnnouncement("Wave " + waves.Length + " of " + waves.Length + " Defeated. Level Complete");
                         PlayerManager.instance.playerPortal.SetActive(true);
                     }
                     else
@@ -95,6 +95,7 @@ public class EnemySpawner : MonoBehaviour {
     void waveCompleted()
     {
         Debug.Log("Wave Complete");
+        MessageBroadcaster.Instance.BroadcastAnnouncement("Wave " + (nextWave + 1) + " of " + waves.Length + " Defeated");
         state = waveState.COUNTING;
         waveCountdown = timeBetweenWaves;
         if(nextWave + 1 > waves.Length)

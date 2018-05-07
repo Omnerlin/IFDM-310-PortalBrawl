@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using Rewired;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -53,6 +54,8 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         playerPortal.SetActive(true);
+
+        MessageBroadcaster.Instance.BroadcastAnnouncement("Level " + (SceneManager.GetActiveScene().buildIndex - 2));
 
         // Add the portal to the cameraFollow
         CinemachineTargetGroup groupComp = cameraFollowGroup.GetComponent<CinemachineTargetGroup>();
